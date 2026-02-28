@@ -35,7 +35,7 @@ const ContactSection = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-4">
                 <Mail className="w-5 h-5 text-primary" />
-                <span className="text-sm text-muted-foreground font-light">contact@morilles-du-yukon.fr</span>
+                <span className="text-sm text-muted-foreground font-light">contact@morillesducanada.fr</span>
               </div>
               <div className="flex items-center gap-4">
                 <MapPin className="w-5 h-5 text-primary" />

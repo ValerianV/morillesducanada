@@ -4,6 +4,7 @@ const products = [
   {
     name: "Découverte",
     weight: "12g",
+    price: "10€",
     description: "Idéal pour une première dégustation ou un cadeau raffiné. Environ 2 à 3 portions.",
     format: "Pot en verre",
     badge: null,
@@ -11,6 +12,7 @@ const products = [
   {
     name: "Essentiel",
     weight: "30g",
+    price: "20€",
     description: "Le format parfait pour sublimer vos plats du quotidien. Environ 6 à 8 portions.",
     format: "Pot en verre",
     badge: "Populaire",
@@ -18,6 +20,7 @@ const products = [
   {
     name: "Prestige",
     weight: "45g",
+    price: "25€",
     description: "Pour les amateurs passionnés. Suffisant pour plusieurs recettes d'exception.",
     format: "Pot en verre",
     badge: null,
@@ -25,6 +28,7 @@ const products = [
   {
     name: "Professionnel",
     weight: "200g+",
+    price: "Sur devis",
     description: "Conditionnement sous vide pour les chefs et restaurateurs. Quantités sur mesure disponibles.",
     format: "Sous vide",
     badge: "Pro",
@@ -43,7 +47,7 @@ const ProductsSection = () => {
           </h2>
           <div className="divider-gold w-24 mx-auto mt-8" />
           <p className="text-muted-foreground font-light mt-6 max-w-xl mx-auto">
-            Séchées lentement à basse température pour préserver l'intégralité de leurs arômes fumés et de leur texture unique.
+            Séchées lentement à basse température, sans queue, pour préserver l'intégralité de leurs arômes fumés. Mélange de variétés sauvages de feu : <em>M. tomentosa, M. conica, M. brunnea, M. americana, M. esculenta, M. sextelata, M. prava, M. septimelata</em>.
           </p>
         </div>
 
@@ -74,7 +78,8 @@ const ProductsSection = () => {
                   </span>
                 )}
                 <p className="font-serif text-3xl text-gradient-gold mb-1">{product.weight}</p>
-                <h3 className="font-serif text-xl mb-3">{product.name}</h3>
+                <h3 className="font-serif text-xl mb-2">{product.name}</h3>
+                <p className="font-serif text-lg text-primary mb-3">{product.price}</p>
                 <p className="text-sm text-muted-foreground font-light leading-relaxed mb-4">
                   {product.description}
                 </p>
@@ -95,7 +100,7 @@ const ProductsSection = () => {
             Commander
           </a>
           <p className="text-xs text-muted-foreground mt-4">
-            Prix sur demande · Livraison en France métropolitaine
+            Livraison en France métropolitaine · Morilles séchées sans queue
           </p>
         </div>
       </div>
