@@ -27,16 +27,16 @@ const OriginSection = () => {
           {/* Text */}
           <div className="space-y-6">
             <h3 className="font-serif text-2xl md:text-3xl font-light leading-relaxed">
-              Un phénomène unique au monde
+              Le plus vieux métier du monde, à l'ère moderne
             </h3>
             <p className="text-secondary-foreground/80 font-light leading-relaxed">
-              Chaque été, les forêts boréales de la Colombie-Britannique et du Yukon sont marquées par d'immenses feux de forêt. Le printemps suivant, un miracle se produit : des morilles surgissent par milliers des sols brûlés — les célèbres <strong className="text-foreground">morilles de feu</strong> (<em>Morchella tomentosa</em>).
+              Après trois étés passés à chasser la morille dans les forêts boréales du Canada, j'ai découvert un métier ancestral à l'ère de l'intelligence artificielle : <strong className="text-foreground">cueilleur</strong>. Animé par l'amour de la nature, des grands espaces et de l'aventure, je parcours les zones brûlées de la Colombie-Britannique et du Yukon pour récolter à la main ces trésors éphémères.
             </p>
             <p className="text-secondary-foreground/80 font-light leading-relaxed">
-              Contrairement aux morilles cultivées en Chine — produites en masse et au goût neutre — ou aux morilles sauvages européennes, plus petites et aux arômes terreux, les <strong className="text-foreground">morilles de feu canadiennes</strong> développent un profil aromatique unique : des notes fumées intenses, une texture charnue et une profondeur de saveur que seul le feu peut conférer.
+              Chaque été, d'immenses feux de forêt marquent ces territoires. Le printemps suivant, un miracle se produit : des morilles surgissent par milliers des sols calcinés — les célèbres <strong className="text-foreground">morilles de feu</strong>. Contrairement aux morilles cultivées en Chine ou aux variétés européennes, elles développent un profil aromatique unique : des notes fumées intenses et une profondeur de saveur que seul le feu peut conférer.
             </p>
             <p className="text-secondary-foreground/80 font-light leading-relaxed">
-              Nous les cueillons à la main dans des zones reculées, souvent accessibles uniquement par hélicoptère ou après des heures de piste forestière. Cette cueillette extrême, combinée à une fenêtre de récolte de seulement 3 à 4 semaines par an, explique leur rareté et leur valeur exceptionnelle.
+              90% de ma récolte est vendue à des entreprises canadiennes. Le reste, je le ramène en France pour proposer à des amateurs de produits d'exception ces morilles sauvages, séchées sans queue, issues d'un mélange de variétés de feu : <em>M. tomentosa, M. conica, M. brunnea, M. americana</em> et d'autres espèces rares.
             </p>
 
             <div className="grid grid-cols-3 gap-6 pt-6 border-t border-gold/20">
