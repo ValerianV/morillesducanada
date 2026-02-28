@@ -1,45 +1,54 @@
-import productImage from "@/assets/product-jar.jpg";
-
-const products = [
-  {
-    name: "Découverte",
-    weight: "12g",
-    price: "10€",
-    description: "Idéal pour une première dégustation ou un cadeau raffiné. Environ 2 à 3 portions.",
-    format: "Pot en verre",
-    badge: null,
-  },
-  {
-    name: "Essentiel",
-    weight: "30g",
-    price: "20€",
-    description: "Le format parfait pour sublimer vos plats du quotidien. Environ 6 à 8 portions.",
-    format: "Pot en verre",
-    badge: "Populaire",
-  },
-  {
-    name: "Prestige",
-    weight: "45g",
-    price: "25€",
-    description: "Pour les amateurs passionnés. Suffisant pour plusieurs recettes d'exception.",
-    format: "Pot en verre",
-    badge: null,
-  },
-  {
-    name: "Professionnel",
-    weight: "200g+",
-    price: "Sur devis",
-    description: "Conditionnement sous vide pour les chefs et restaurateurs. Quantités sur mesure disponibles.",
-    format: "Sous vide",
-    badge: "Pro",
-  },
-];
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Loader2, ShoppingCart } from "lucide-react";
+import { toast } from "sonner";
+import { storefrontApiRequest, STOREFRONT_QUERY, ShopifyProduct } from "@/lib/shopify";
+import { useCartStore } from "@/stores/cartStore";
 
 const ProductsSection = () => {
+  const [products, setProducts] = useState<ShopifyProduct[]>([]);
+  const [loading, setLoading] = useState(true);
+  const addItem = useCartStore(state => state.addItem);
+  const isCartLoading = useCartStore(state => state.isLoading);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const data = await storefrontApiRequest(STOREFRONT_QUERY, { first: 10 });
+        if (data?.data?.products?.edges) {
+          setProducts(data.data.products.edges);
+        }
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchProducts();
+  }, []);
+
+  const handleAddToCart = async (product: ShopifyProduct, e: React.MouseEvent) => {
+    e.stopPropagation();
+    const variant = product.node.variants.edges[0]?.node;
+    if (!variant) return;
+    await addItem({
+      product,
+      variantId: variant.id,
+      variantTitle: variant.title,
+      price: variant.price,
+      quantity: 1,
+      selectedOptions: variant.selectedOptions || [],
+    });
+    toast.success("Ajouté au panier", {
+      description: product.node.title,
+      position: "top-center",
+    });
+  };
+
   return (
     <section id="produits" className="py-24 md:py-32 bg-gradient-card">
       <div className="container mx-auto px-6">
-        {/* Header */}
         <div className="text-center mb-16">
           <p className="text-sm tracking-[0.3em] uppercase text-primary mb-4">Nos Morilles</p>
           <h2 className="font-serif text-4xl md:text-5xl font-light">
@@ -47,61 +56,72 @@ const ProductsSection = () => {
           </h2>
           <div className="divider-gold w-24 mx-auto mt-8" />
           <p className="text-muted-foreground font-light mt-6 max-w-xl mx-auto">
-            Séchées lentement à basse température, sans queue, pour préserver l'intégralité de leurs arômes fumés. Mélange de variétés sauvages de feu : <em>M. tomentosa, M. conica, M. brunnea, M. americana, M. esculenta, M. sextelata, M. prava, M. septimelata</em>.
+            Séchées lentement à basse température, sans queue, pour préserver l'intégralité de leurs arômes fumés. Mélange de variétés sauvages de feu.
           </p>
         </div>
 
-        {/* Product image + grid */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
-          {/* Product image */}
-          <div className="relative flex justify-center">
-            <div className="relative">
-              <img
-                src={productImage}
-                alt="Pot de morilles séchées premium"
-                className="w-80 h-80 object-cover rounded-sm shadow-gold"
-              />
-              <div className="absolute -inset-4 border border-gold/20 rounded-sm -z-10" />
-            </div>
+        {loading ? (
+          <div className="flex justify-center py-20">
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
           </div>
-
-          {/* Products grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {products.map((product) => (
-              <div
-                key={product.weight}
-                className="relative p-6 border border-gold/15 rounded-sm bg-background/50 hover:border-gold/40 transition-all duration-500 group"
-              >
-                {product.badge && (
-                  <span className="absolute -top-3 right-4 px-3 py-1 bg-primary text-primary-foreground text-[10px] tracking-widest uppercase rounded-sm">
-                    {product.badge}
-                  </span>
-                )}
-                <p className="font-serif text-3xl text-gradient-gold mb-1">{product.weight}</p>
-                <h3 className="font-serif text-xl mb-2">{product.name}</h3>
-                <p className="font-serif text-lg text-primary mb-3">{product.price}</p>
-                <p className="text-sm text-muted-foreground font-light leading-relaxed mb-4">
-                  {product.description}
-                </p>
-                <p className="text-xs tracking-widest uppercase text-primary/70">
-                  {product.format}
-                </p>
-              </div>
-            ))}
+        ) : products.length === 0 ? (
+          <div className="text-center py-20">
+            <p className="text-muted-foreground font-light">Aucun produit disponible pour le moment.</p>
           </div>
-        </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {products.map((product) => {
+              const variant = product.node.variants.edges[0]?.node;
+              const image = product.node.images.edges[0]?.node;
+              const price = variant?.price;
 
-        {/* CTA */}
+              return (
+                <div
+                  key={product.node.id}
+                  onClick={() => navigate(`/product/${product.node.handle}`)}
+                  className="relative border border-gold/15 rounded-sm bg-background/50 hover:border-gold/40 transition-all duration-500 group cursor-pointer overflow-hidden"
+                >
+                  {image && (
+                    <div className="aspect-square overflow-hidden">
+                      <img
+                        src={image.url}
+                        alt={image.altText || product.node.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <h3 className="font-serif text-lg mb-2">{product.node.title}</h3>
+                    {price && (
+                      <p className="font-serif text-2xl text-gradient-gold mb-3">
+                        {parseFloat(price.amount).toFixed(2)} €
+                      </p>
+                    )}
+                    <p className="text-sm text-muted-foreground font-light leading-relaxed mb-4 line-clamp-2">
+                      {product.node.description}
+                    </p>
+                    <button
+                      onClick={(e) => handleAddToCart(product, e)}
+                      disabled={isCartLoading || !variant?.availableForSale}
+                      className="w-full py-3 bg-primary text-primary-foreground font-medium tracking-widest uppercase text-xs hover:bg-gold-light transition-colors duration-300 rounded-sm disabled:opacity-50 flex items-center justify-center gap-2"
+                    >
+                      {isCartLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ShoppingCart className="w-4 h-4" />Ajouter au panier</>}
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* CTA for pro */}
         <div className="text-center mt-16">
           <a
             href="#contact"
-            className="inline-block px-10 py-4 bg-primary text-primary-foreground font-medium tracking-widest uppercase text-sm hover:bg-gold-light transition-colors duration-300 rounded-sm"
+            className="inline-block px-10 py-4 border border-primary/40 text-foreground font-light tracking-widest uppercase text-sm hover:border-primary hover:text-primary transition-colors duration-300 rounded-sm"
           >
-            Commander
+            Quantités supérieures à 200g · Demander un devis
           </a>
-          <p className="text-xs text-muted-foreground mt-4">
-            Livraison en France métropolitaine · Morilles séchées sans queue
-          </p>
         </div>
       </div>
     </section>

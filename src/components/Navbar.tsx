@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { CartDrawer } from "@/components/CartDrawer";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,18 +33,18 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          <CartDrawer />
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-foreground"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile */}
+        <div className="flex md:hidden items-center gap-4">
+          <CartDrawer />
+          <button onClick={() => setIsOpen(!isOpen)} className="text-foreground">
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-md border-b border-gold/20 animate-fade-in">
           <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
