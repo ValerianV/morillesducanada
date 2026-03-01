@@ -1,6 +1,5 @@
-import landscapeImage from "@/assets/landscape-canada.jpg";
-import morelCloseup from "@/assets/morels/morels-closeup-texture.jpg";
-import morelClassic from "@/assets/morels/morel-classic-stem.jpg";
+import morelOverhead from "@/assets/morels/morels-overhead-needles.jpg";
+import morelBurnedLog from "@/assets/morels/morel-burned-log.jpg";
 
 const OriginSection = () => {
   return (
@@ -16,17 +15,23 @@ const OriginSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
-          {/* Image */}
-          <div className="relative rounded-sm overflow-hidden shadow-gold h-[400px] md:h-[500px]">
-            <iframe
-              src="https://www.youtube.com/embed/4ogERBVLPmo?autoplay=1&mute=1&loop=1&playlist=4ogERBVLPmo&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3"
-              title="Paysage de montagne brûlée — Colombie-Britannique"
-              className="absolute inset-0 w-full h-full pointer-events-none"
-              style={{ border: "none" }}
-              allow="autoplay; encrypted-media"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
+          {/* Video */}
+          <div className="space-y-4">
+            <div className="relative rounded-sm overflow-hidden shadow-gold aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/4ogERBVLPmo?autoplay=1&mute=1&loop=1&playlist=4ogERBVLPmo&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3"
+                title="Paysage de montagne brûlée — Colombie-Britannique"
+                className="absolute inset-0 w-full h-full pointer-events-none"
+                style={{ border: "none" }}
+                allow="autoplay; encrypted-media"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <img src={morelOverhead} alt="Morilles vues du dessus sur aiguilles de pin" loading="lazy" className="w-full h-32 object-cover rounded-sm opacity-80" />
+              <img src={morelBurnedLog} alt="Morille poussant près d'un tronc brûlé" loading="lazy" className="w-full h-32 object-cover rounded-sm opacity-80" />
+            </div>
           </div>
 
           {/* Text */}
@@ -44,10 +49,6 @@ const OriginSection = () => {
               90% de ma récolte est vendue à des entreprises canadiennes. Le reste, je le ramène en France pour proposer à des amateurs de produits d'exception ces morilles sauvages, séchées sans queue, issues d'un mélange de variétés de feu : <em>M. tomentosa, M. conica, M. brunnea, M. americana</em> et d'autres espèces rares.
             </p>
 
-            <div className="grid grid-cols-2 gap-3 mb-6">
-              <img src={morelCloseup} alt="Texture d'une morille de feu" loading="lazy" className="w-full h-32 object-cover rounded-sm opacity-80" />
-              <img src={morelClassic} alt="Morille sauvage sur pied" loading="lazy" className="w-full h-32 object-cover rounded-sm opacity-80" />
-            </div>
 
             <div className="grid grid-cols-3 gap-6 pt-6 border-t border-gold/20">
               <div className="text-center">

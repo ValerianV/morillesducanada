@@ -1,4 +1,4 @@
-import heroImage from "@/assets/morels/morels-group-golden.jpg";
+import heroImage from "@/assets/hero-jars.png";
 
 const HeroSection = () => {
   return (
