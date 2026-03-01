@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Menu, X, UserCircle, LogOut } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import logo from "@/assets/logo.png";
@@ -26,7 +26,7 @@ const Navbar = () => {
   const links = [
     { href: "#origine", label: "Notre Histoire" },
     { href: "#produits", label: "Nos Morilles" },
-    { href: "#pourquoi", label: "Pourquoi Nos Morilles" },
+    { href: "/recettes", label: "Recettes", isRoute: true },
     { href: "#professionnels", label: "Professionnels" },
     { href: "#contact", label: "Contact" },
   ];
@@ -41,15 +41,25 @@ const Navbar = () => {
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-light tracking-widest uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
-            >
-              {link.label}
-            </a>
-          ))}
+          {links.map((link) =>
+            link.isRoute ? (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="text-sm font-light tracking-widest uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm font-light tracking-widest uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
+              >
+                {link.label}
+              </a>
+            )
+          )}
           {session ? (
             <button onClick={handleLogout} className="text-muted-foreground hover:text-primary transition-colors" title="Se déconnecter">
               <LogOut size={20} />
@@ -83,16 +93,27 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-md border-b border-gold/20 animate-fade-in">
           <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-sm font-light tracking-widest uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
-              >
-                {link.label}
-              </a>
-            ))}
+            {links.map((link) =>
+              link.isRoute ? (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-sm font-light tracking-widest uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-sm font-light tracking-widest uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
+                >
+                  {link.label}
+                </a>
+              )
+            )}
           </div>
         </div>
       )}

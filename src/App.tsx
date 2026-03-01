@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { useCartSync } from "@/hooks/useCartSync";
 import Index from "./pages/Index";
 import ProductPage from "./pages/ProductPage";
@@ -11,6 +12,8 @@ import ResetPassword from "./pages/ResetPassword";
 import MentionsLegales from "./pages/MentionsLegales";
 import CGV from "./pages/CGV";
 import Livraison from "./pages/Livraison";
+import Recettes from "./pages/Recettes";
+import RecetteDetail from "./pages/RecetteDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,21 +29,25 @@ const AppContent = () => {
       <Route path="/mentions-legales" element={<MentionsLegales />} />
       <Route path="/cgv" element={<CGV />} />
       <Route path="/livraison" element={<Livraison />} />
+      <Route path="/recettes" element={<Recettes />} />
+      <Route path="/recettes/:slug" element={<RecetteDetail />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AppContent />
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AppContent />
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
 );
 
 export default App;
