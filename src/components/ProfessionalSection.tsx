@@ -1,4 +1,4 @@
-import { ChefHat, Truck, MessageSquare } from "lucide-react";
+import { ChefHat, Truck, MessageSquare, CalendarClock } from "lucide-react";
 
 const ProfessionalSection = () => {
   return (
@@ -43,7 +43,33 @@ const ProfessionalSection = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        {/* Pre-order banner */}
+        <div className="max-w-3xl mx-auto mt-12 p-6 md:p-8 border border-primary/30 rounded-sm bg-background/40 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-5">
+            <CalendarClock className="w-10 h-10 text-primary flex-shrink-0" />
+            <div className="flex-1">
+              <h3 className="font-serif text-xl md:text-2xl mb-2">
+                Saison 2026 — Réservez votre approvisionnement
+              </h3>
+              <p className="text-sm text-muted-foreground font-light leading-relaxed">
+                La saison de cueillette est très courte (juin-juillet) et les quantités limitées. 
+                Pré-commandez dès maintenant pour garantir votre stock à des <strong className="text-foreground">tarifs dégressifs</strong>, 
+                avec <strong className="text-foreground">priorité de livraison</strong> et <strong className="text-foreground">lot garanti</strong>.
+              </p>
+            </div>
+          </div>
+          <div className="mt-6 text-center md:text-left">
+            <a
+              href="#contact"
+              className="inline-block px-8 py-3.5 bg-primary text-primary-foreground font-medium tracking-widest uppercase text-sm hover:bg-gold-light transition-colors duration-300 rounded-sm"
+            >
+              Pré-commander pour l'été 2026
+            </a>
+          </div>
+        </div>
+
+        <div className="text-center mt-8">
           <a
             href="#contact"
             className="inline-block px-10 py-4 border border-primary/40 text-foreground font-light tracking-widest uppercase text-sm hover:border-primary hover:text-primary transition-colors duration-300 rounded-sm"

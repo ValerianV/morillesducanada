@@ -29,8 +29,8 @@ const OriginSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
             </div>
             <div className="grid grid-cols-2 gap-3">
-              <img src={morelOverhead} alt="Morilles vues du dessus sur aiguilles de pin" loading="lazy" className="w-full h-32 object-cover rounded-sm opacity-80" />
-              <img src={morelBurnedLog} alt="Morille poussant près d'un tronc brûlé" loading="lazy" className="w-full h-32 object-cover rounded-sm opacity-80" />
+              <img src={morelOverhead} alt="Morilles vues du dessus sur aiguilles de pin" loading="lazy" className="w-full h-24 md:h-32 object-cover rounded-sm opacity-80" />
+              <img src={morelBurnedLog} alt="Morille poussant près d'un tronc brûlé" loading="lazy" className="w-full h-24 md:h-32 object-cover rounded-sm opacity-80" />
             </div>
           </div>
 
@@ -39,8 +39,8 @@ const OriginSection = () => {
             <h3 className="font-serif text-2xl md:text-3xl font-light leading-relaxed">
               Le plus vieux métier du monde, à l'ère moderne
             </h3>
-            <p className="text-secondary-foreground/80 font-light leading-relaxed">Voila plusieurs étés passés à chasser la morille dans les forêts boréales du Canada, j'ai découvert un métier ancestral à l'ère de l'intelligence artificielle : cueilleur. Animé par l'amour de la nature, des grands espaces et de l'aventure, j'ai parcouru les zones brûlées de la Colombie-Britannique et du Yukon pour récolter à la main ces trésors éphémères.
-              <strong className="text-foreground">cueilleur</strong>. Animé par l'amour de la nature, des grands espaces et de l'aventure, je parcours les zones brûlées de la Colombie-Britannique et du Yukon pour récolter à la main ces trésors éphémères.
+            <p className="text-secondary-foreground/80 font-light leading-relaxed">
+              Voilà plusieurs étés passés à chasser la morille dans les forêts boréales du Canada. J'ai découvert un métier ancestral à l'ère de l'intelligence artificielle : <strong className="text-foreground">cueilleur</strong>. Animé par l'amour de la nature, des grands espaces et de l'aventure, je parcours les zones brûlées de la Colombie-Britannique et du Yukon pour récolter à la main ces trésors éphémères.
             </p>
             <p className="text-secondary-foreground/80 font-light leading-relaxed">
               Chaque été, d'immenses feux de forêt marquent ces territoires. Le printemps suivant, un miracle se produit : des morilles surgissent par milliers des sols calcinés — les célèbres <strong className="text-foreground">morilles de feu</strong>. Contrairement aux morilles cultivées en Chine ou aux variétés européennes, elles développent un profil aromatique unique : des notes fumées intenses et une profondeur de saveur que seul le feu peut conférer.

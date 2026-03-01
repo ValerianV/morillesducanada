@@ -85,10 +85,10 @@ const WhySection = () => {
                   ["Rareté", "Très rare", "Rare", "Abondant"],
                 ].map(([label, fire, euro, china]) => (
                   <tr key={label} className="border-b border-gold/10">
-                    <td className="py-3 px-4 text-muted-foreground">{label}</td>
-                    <td className="py-3 px-4 text-center text-foreground">{fire}</td>
-                    <td className="py-3 px-4 text-center text-muted-foreground">{euro}</td>
-                    <td className="py-3 px-4 text-center text-muted-foreground">{china}</td>
+                    <td className="py-3 px-2 md:px-4 text-muted-foreground whitespace-nowrap">{label}</td>
+                    <td className="py-3 px-2 md:px-4 text-center text-foreground">{fire}</td>
+                    <td className="py-3 px-2 md:px-4 text-center text-muted-foreground">{euro}</td>
+                    <td className="py-3 px-2 md:px-4 text-center text-muted-foreground">{china}</td>
                   </tr>
                 ))}
               </tbody>
