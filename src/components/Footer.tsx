@@ -11,6 +11,8 @@ const Footer = () => {
             <span className="hidden md:inline">·</span>
             <Link to="/cgv" className="hover:text-primary transition-colors">CGV</Link>
             <span className="hidden md:inline">·</span>
+            <Link to="/livraison" className="hover:text-primary transition-colors">Livraison & Retours</Link>
+            <span className="hidden md:inline">·</span>
             <span>© {new Date().getFullYear()} Morilles du Canada</span>
           </div>
         </div>
