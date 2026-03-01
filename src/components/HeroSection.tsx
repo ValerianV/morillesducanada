@@ -3,12 +3,21 @@ import heroImage from "@/assets/morels/morels-group-golden.jpg";
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
+      {/* Background video */}
       <div className="absolute inset-0">
+        {/* Fallback image while video loads */}
         <img
           src={heroImage}
           alt="Morilles de feu séchées canadiennes"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover absolute inset-0"
+        />
+        <iframe
+          src="https://www.youtube.com/embed/4ogERBVLPmo?autoplay=1&mute=1&loop=1&playlist=4ogERBVLPmo&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3"
+          title="Paysage de montagne brûlée — Colombie-Britannique"
+          className="absolute inset-0 w-[300%] h-[300%] -top-[100%] -left-[100%] pointer-events-none"
+          style={{ border: "none" }}
+          allow="autoplay; encrypted-media"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
       </div>
