@@ -25,7 +25,7 @@ const faqs = [
   {
     question: "Quelle quantité pour un plat ?",
     answer:
-      "Comptez environ 10 à 15 g de morilles séchées par personne (elles triplent de volume à la réhydratation). Nos sachets de 12 g conviennent pour 1 à 2 personnes, ceux de 30 g pour 3 à 4 personnes.",
+      "Comptez environ 5 à 8 g de morilles séchées par personne (elles triplent de volume à la réhydratation). Nos sachets de 12 g conviennent pour 2 personnes, ceux de 30 g pour 4 à 6 personnes.",
   },
   {
     question: "Livrez-vous en dehors de la France ?",

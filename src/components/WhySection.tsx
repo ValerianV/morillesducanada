@@ -16,7 +16,7 @@ const reasons = [
   {
     icon: Timer,
     title: "Récolte éphémère",
-    description: "3 à 4 semaines par an, exclusivement au printemps suivant un feu de forêt. Une fenêtre de cueillette unique et imprévisible.",
+    description: "4 à 6 semaines par an, exclusivement au printemps suivant un feu de forêt. Une fenêtre de cueillette unique et imprévisible.",
   },
   {
     icon: Leaf,
