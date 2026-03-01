@@ -61,9 +61,14 @@ const Navbar = () => {
             )
           )}
           {session ? (
-            <button onClick={handleLogout} className="text-muted-foreground hover:text-primary transition-colors" title="Se déconnecter">
-              <LogOut size={20} />
-            </button>
+            <div className="flex items-center gap-3">
+              <button onClick={() => navigate("/profil")} className="text-muted-foreground hover:text-primary transition-colors" title="Mon profil">
+                <UserCircle size={22} />
+              </button>
+              <button onClick={handleLogout} className="text-muted-foreground hover:text-primary transition-colors" title="Se déconnecter">
+                <LogOut size={20} />
+              </button>
+            </div>
           ) : (
             <button onClick={() => navigate("/auth")} className="text-muted-foreground hover:text-primary transition-colors" title="Se connecter">
               <UserCircle size={22} />
@@ -75,8 +80,8 @@ const Navbar = () => {
         {/* Mobile */}
         <div className="flex md:hidden items-center gap-2">
           {session ? (
-            <button onClick={handleLogout} className="text-muted-foreground hover:text-primary transition-colors p-1" title="Se déconnecter">
-              <LogOut size={20} />
+            <button onClick={() => navigate("/profil")} className="text-muted-foreground hover:text-primary transition-colors p-1" title="Mon profil">
+              <UserCircle size={22} />
             </button>
           ) : (
             <button onClick={() => navigate("/auth")} className="text-muted-foreground hover:text-primary transition-colors p-1" title="Se connecter">
