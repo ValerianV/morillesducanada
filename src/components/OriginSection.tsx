@@ -61,7 +61,7 @@ const OriginSection = () => {
                   <p className="text-xs tracking-widest uppercase text-muted-foreground mt-1">Sauvage</p>
                 </div>
                 <div className="text-center">
-                  <AnimatedCounter value="3-4" className="font-serif text-3xl text-gradient-gold" />
+                  <AnimatedCounter value="4-6" className="font-serif text-3xl text-gradient-gold" />
                   <p className="text-xs tracking-widest uppercase text-muted-foreground mt-1">Semaines/an</p>
                 </div>
                 <div className="text-center">
