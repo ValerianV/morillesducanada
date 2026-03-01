@@ -90,7 +90,7 @@ const WhySection = () => {
                     ["Arôme", "Fumé, intense, boisé", "Terreux, délicat", "Neutre, fade"],
                     ["Taille", "Grande à très grande", "Petite à moyenne", "Variable"],
                     ["Texture", "Charnue, ferme", "Fine, fragile", "Spongieuse"],
-                    ["Saison", "3-4 semaines/an", "~2 mois/an", "Toute l'année"],
+                    ["Saison", "4-6 semaines/an", "~2 mois/an", "Toute l'année"],
                     ["Traitement", "Aucun", "Aucun", "Souvent traité"],
                     ["Rareté", "Très rare", "Rare", "Abondant"],
                   ].map(([label, fire, euro, china]) => (
