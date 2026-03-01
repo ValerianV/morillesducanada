@@ -30,8 +30,8 @@ const reasons = [
   },
   {
     icon: ShieldCheck,
-    title: "Traçabilité totale",
-    description: "Nous connaissons chaque zone de cueillette. Du sol brûlé à votre assiette, la chaîne est courte et transparente.",
+    title: "Circuit court, sans intermédiaire",
+    description: "Petite entreprise travaillant directement avec les cueilleurs. Pas de grossiste, pas de revendeur : du sol brûlé à votre assiette, la chaîne est courte et transparente.",
   },
 ];
 
