@@ -23,8 +23,14 @@ const AnimatedCounter = ({ value, className }: AnimatedCounterProps) => {
 
     const target = parseInt(match[1], 10);
     const suffix = value.slice(match[1].length); // e.g. "%" or "-4"
+
+    if (target === 0) {
+      setDisplayed(value);
+      return;
+    }
+
     const steps = Math.min(target, 40);
-    const stepDuration = 800 / Math.max(steps, 1);
+    const stepDuration = 800 / steps;
     let current = 0;
 
     const timer = setInterval(() => {
