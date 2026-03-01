@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useCartSync } from "@/hooks/useCartSync";
 import Index from "./pages/Index";
 import ProductPage from "./pages/ProductPage";
+import MentionsLegales from "./pages/MentionsLegales";
+import CGV from "./pages/CGV";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -16,6 +18,8 @@ const AppContent = () => {
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/product/:handle" element={<ProductPage />} />
+      <Route path="/mentions-legales" element={<MentionsLegales />} />
+      <Route path="/cgv" element={<CGV />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
