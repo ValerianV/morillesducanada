@@ -37,9 +37,9 @@ const Navbar = () => {
         </div>
 
         {/* Mobile */}
-        <div className="flex md:hidden items-center gap-4">
+        <div className="flex md:hidden items-center gap-2">
           <CartDrawer />
-          <button onClick={() => setIsOpen(!isOpen)} className="text-foreground">
+          <button onClick={() => setIsOpen(!isOpen)} className="text-foreground p-2" aria-label="Menu de navigation">
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
