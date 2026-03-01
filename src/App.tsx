@@ -10,6 +10,7 @@ import Auth from "./pages/Auth";
 import ResetPassword from "./pages/ResetPassword";
 import MentionsLegales from "./pages/MentionsLegales";
 import CGV from "./pages/CGV";
+import Livraison from "./pages/Livraison";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const AppContent = () => {
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/mentions-legales" element={<MentionsLegales />} />
       <Route path="/cgv" element={<CGV />} />
+      <Route path="/livraison" element={<Livraison />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
