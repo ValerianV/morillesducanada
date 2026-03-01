@@ -81,7 +81,7 @@ const WhySection = () => {
                   ["Taille", "Grande à très grande", "Petite à moyenne", "Variable"],
                   ["Texture", "Charnue, ferme", "Fine, fragile", "Spongieuse"],
                   ["Saison", "3-4 semaines/an", "~2 mois/an", "Toute l'année"],
-                  ["Traitement", "Aucun", "Variable", "Souvent traité"],
+                  ["Traitement", "Aucun", "Aucun", "Souvent traité"],
                   ["Rareté", "Très rare", "Rare", "Abondant"],
                 ].map(([label, fire, euro, china]) => (
                   <tr key={label} className="border-b border-gold/10">
