@@ -17,13 +17,16 @@ const OriginSection = () => {
 
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
           {/* Image */}
-          <div className="relative rounded-sm overflow-hidden shadow-gold">
-            <img
-              src={landscapeImage}
-              alt="Paysage de Colombie-Britannique après un feu de forêt"
-              className="w-full h-[400px] md:h-[500px] object-cover"
+          <div className="relative rounded-sm overflow-hidden shadow-gold h-[400px] md:h-[500px]">
+            <iframe
+              src="https://www.youtube.com/embed/4ogERBVLPmo?autoplay=1&mute=1&loop=1&playlist=4ogERBVLPmo&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3"
+              title="Paysage de montagne brûlée — Colombie-Britannique"
+              className="absolute inset-0 w-full h-full pointer-events-none"
+              style={{ border: "none" }}
+              allow="autoplay; encrypted-media"
+              loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
           </div>
 
           {/* Text */}
