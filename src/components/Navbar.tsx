@@ -1,11 +1,28 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Menu, X, UserCircle, LogOut } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import logo from "@/assets/logo.png";
 import { CartDrawer } from "@/components/CartDrawer";
+import type { Session } from "@supabase/supabase-js";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [session, setSession] = useState<Session | null>(null);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+    supabase.auth.getSession().then(({ data: { session } }) => setSession(session));
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setSession(null);
+  };
   const links = [
     { href: "#origine", label: "Notre Histoire" },
     { href: "#produits", label: "Nos Morilles" },
@@ -33,11 +50,29 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          {session ? (
+            <button onClick={handleLogout} className="text-muted-foreground hover:text-primary transition-colors" title="Se déconnecter">
+              <LogOut size={20} />
+            </button>
+          ) : (
+            <button onClick={() => navigate("/auth")} className="text-muted-foreground hover:text-primary transition-colors" title="Se connecter">
+              <UserCircle size={22} />
+            </button>
+          )}
           <CartDrawer />
         </div>
 
         {/* Mobile */}
         <div className="flex md:hidden items-center gap-2">
+          {session ? (
+            <button onClick={handleLogout} className="text-muted-foreground hover:text-primary transition-colors p-1" title="Se déconnecter">
+              <LogOut size={20} />
+            </button>
+          ) : (
+            <button onClick={() => navigate("/auth")} className="text-muted-foreground hover:text-primary transition-colors p-1" title="Se connecter">
+              <UserCircle size={22} />
+            </button>
+          )}
           <CartDrawer />
           <button onClick={() => setIsOpen(!isOpen)} className="text-foreground p-2" aria-label="Menu de navigation">
             {isOpen ? <X size={24} /> : <Menu size={24} />}
