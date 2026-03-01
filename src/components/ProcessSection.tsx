@@ -7,7 +7,7 @@ const steps = [
     icon: Flame,
     title: "Cueillette sauvage",
     description:
-      "Chaque morille est récoltée à la main sur les sols calcinés des forêts boréales, dans une fenêtre de 3 à 4 semaines par an. Aucune culture, aucun pesticide.",
+      "Chaque morille est récoltée à la main sur les sols calcinés des forêts boréales, dans une fenêtre de 4 à 6 semaines par an. Aucune culture, aucun pesticide.",
     detail: "Colombie-Britannique & Yukon",
   },
   {
@@ -28,7 +28,7 @@ const steps = [
     icon: Package,
     title: "Expédition",
     description:
-      "Les morilles sont conditionnées sous vide en sachets de 12 g ou 30 g, puis expédiées en colis suivi vers la France et l'Europe.",
+      "Les morilles sont conditionnées sous vide et en pots, puis expédiées en colis suivi vers la France et l'Europe.",
     detail: "Sous vide · Colis suivi",
   },
 ];

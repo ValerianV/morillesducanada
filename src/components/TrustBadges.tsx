@@ -4,7 +4,7 @@ const badges = [
   { icon: Leaf, label: "Cueillette 100% sauvage" },
   { icon: Truck, label: "Livraison France & Europe" },
   { icon: ShieldCheck, label: "Paiement sécurisé" },
-  { icon: Clock, label: "Expédition sous 48h" },
+  { icon: Clock, label: "Expédition rapide" },
 ];
 
 const TrustBadges = () => {
