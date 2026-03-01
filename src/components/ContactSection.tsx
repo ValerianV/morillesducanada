@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Loader2, CheckCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -8,11 +9,35 @@ const ContactSection = () => {
     type: "particulier",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: integrate with backend
-    alert("Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.");
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      const { error: insertError } = await supabase
+        .from("contact_messages")
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          type: formData.type,
+          message: formData.message,
+        });
+
+      if (insertError) throw insertError;
+
+      setIsSuccess(true);
+      setFormData({ name: "", email: "", type: "particulier", message: "" });
+    } catch (err: any) {
+      console.error("Contact form error:", err);
+      setError("Une erreur est survenue. Veuillez réessayer.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -51,65 +76,92 @@ const ContactSection = () => {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label className="block text-xs tracking-widest uppercase text-muted-foreground mb-2">
-                Nom
-              </label>
-              <input
-                type="text"
-                required
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full bg-secondary/50 border border-gold/15 rounded-sm px-4 py-3 text-sm text-foreground font-light focus:outline-none focus:border-primary transition-colors"
-              />
-            </div>
-            <div>
-              <label className="block text-xs tracking-widest uppercase text-muted-foreground mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full bg-secondary/50 border border-gold/15 rounded-sm px-4 py-3 text-sm text-foreground font-light focus:outline-none focus:border-primary transition-colors"
-              />
-            </div>
-            <div>
-              <label className="block text-xs tracking-widest uppercase text-muted-foreground mb-2">
-                Vous êtes
-              </label>
-              <select
-                value={formData.type}
-                onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                className="w-full bg-secondary/50 border border-gold/15 rounded-sm px-4 py-3 text-sm text-foreground font-light focus:outline-none focus:border-primary transition-colors"
+          {isSuccess ? (
+            <div className="flex flex-col items-center justify-center text-center space-y-4 p-8 border border-gold/15 rounded-sm">
+              <CheckCircle className="w-12 h-12 text-primary" />
+              <p className="font-serif text-xl">Merci pour votre message !</p>
+              <p className="text-sm text-muted-foreground font-light">
+                Nous vous répondrons dans les plus brefs délais.
+              </p>
+              <button
+                onClick={() => setIsSuccess(false)}
+                className="text-sm text-primary underline underline-offset-4 hover:text-gold-light transition-colors"
               >
-                <option value="particulier">Particulier</option>
-                <option value="professionnel">Professionnel (restaurateur, chef, traiteur)</option>
-                <option value="precommande-2026">Pré-commande saison 2026</option>
-              </select>
+                Envoyer un autre message
+              </button>
             </div>
-            <div>
-              <label className="block text-xs tracking-widest uppercase text-muted-foreground mb-2">
-                Message
-              </label>
-              <textarea
-                rows={4}
-                required
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full bg-secondary/50 border border-gold/15 rounded-sm px-4 py-3 text-sm text-foreground font-light focus:outline-none focus:border-primary transition-colors resize-none"
-                placeholder="Précisez les quantités souhaitées, la fréquence, ou toute question..."
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full py-4 bg-primary text-primary-foreground font-medium tracking-widest uppercase text-sm hover:bg-gold-light transition-colors duration-300 rounded-sm"
-            >
-              Envoyer
-            </button>
-          </form>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label className="block text-xs tracking-widest uppercase text-muted-foreground mb-2">
+                  Nom
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full bg-secondary/50 border border-gold/15 rounded-sm px-4 py-3 text-sm text-foreground font-light focus:outline-none focus:border-primary transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block text-xs tracking-widest uppercase text-muted-foreground mb-2">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full bg-secondary/50 border border-gold/15 rounded-sm px-4 py-3 text-sm text-foreground font-light focus:outline-none focus:border-primary transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block text-xs tracking-widest uppercase text-muted-foreground mb-2">
+                  Vous êtes
+                </label>
+                <select
+                  value={formData.type}
+                  onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+                  className="w-full bg-secondary/50 border border-gold/15 rounded-sm px-4 py-3 text-sm text-foreground font-light focus:outline-none focus:border-primary transition-colors"
+                >
+                  <option value="particulier">Particulier</option>
+                  <option value="professionnel">Professionnel (restaurateur, chef, traiteur)</option>
+                  <option value="precommande-2026">Pré-commande saison 2026</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs tracking-widest uppercase text-muted-foreground mb-2">
+                  Message
+                </label>
+                <textarea
+                  rows={4}
+                  required
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="w-full bg-secondary/50 border border-gold/15 rounded-sm px-4 py-3 text-sm text-foreground font-light focus:outline-none focus:border-primary transition-colors resize-none"
+                  placeholder="Précisez les quantités souhaitées, la fréquence, ou toute question..."
+                />
+              </div>
+              {error && (
+                <p className="text-sm text-destructive">{error}</p>
+              )}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-4 bg-primary text-primary-foreground font-medium tracking-widest uppercase text-sm hover:bg-gold-light transition-colors duration-300 rounded-sm disabled:opacity-50 flex items-center justify-center gap-2"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Envoi en cours...
+                  </>
+                ) : (
+                  "Envoyer"
+                )}
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </section>
