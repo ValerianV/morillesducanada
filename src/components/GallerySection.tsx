@@ -38,7 +38,7 @@ const GallerySection = () => {
         </div>
 
         {/* Masonry-style grid */}
-        <div className="columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4 max-w-6xl mx-auto">
+        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4 max-w-6xl mx-auto">
           {photos.map((photo, i) => (
             <div
               key={i}

@@ -87,6 +87,7 @@ const ContactSection = () => {
               >
                 <option value="particulier">Particulier</option>
                 <option value="professionnel">Professionnel (restaurateur, chef, traiteur)</option>
+                <option value="precommande-2026">Pré-commande saison 2026</option>
               </select>
             </div>
             <div>

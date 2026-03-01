@@ -14,7 +14,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center max-w-4xl">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center max-w-4xl">
         <p
           className="text-sm tracking-[0.4em] uppercase text-primary/80 mb-6 opacity-0 animate-fade-in-up"
           style={{ animationDelay: "0.2s" }}
@@ -22,7 +22,7 @@ const HeroSection = () => {
           Cueillies à la main · Colombie-Britannique & Yukon
         </p>
         <h1
-          className="font-serif text-5xl md:text-7xl lg:text-8xl font-light leading-tight mb-8 opacity-0 animate-fade-in-up"
+          className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-light leading-tight mb-6 md:mb-8 opacity-0 animate-fade-in-up"
           style={{ animationDelay: "0.5s" }}
         >
           Morilles de Feu

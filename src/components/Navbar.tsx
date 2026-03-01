@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3">
           <img src={logo} alt="Morilles du Canada" className="w-10 h-10 rounded-full" />
-          <span className="font-serif text-xl font-semibold text-gradient-gold tracking-wider">Morilles du Canada</span>
+          <span className="font-serif text-base sm:text-xl font-semibold text-gradient-gold tracking-wider">Morilles du Canada</span>
         </a>
 
         {/* Desktop */}
