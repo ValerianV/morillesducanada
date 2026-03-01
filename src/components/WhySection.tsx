@@ -35,11 +35,25 @@ const reasons = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 40, filter: "blur(6px)" },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.6,
+      delay: i * 0.1,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
+  }),
+};
+
 const WhySection = () => {
   return (
     <section id="pourquoi" className="py-24 md:py-32">
       <div className="container mx-auto px-6">
-        <ScrollReveal>
+        <ScrollReveal blur>
           <div className="text-center mb-16">
             <p className="text-sm tracking-[0.3em] uppercase text-primary mb-4">L'excellence</p>
             <h2 className="font-serif text-4xl md:text-5xl font-light">
@@ -53,14 +67,25 @@ const WhySection = () => {
           {reasons.map((reason, i) => (
             <motion.div
               key={reason.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
-              whileHover={{ y: -4, transition: { duration: 0.25 } }}
-              className="p-8 border border-gold/10 rounded-sm hover:border-gold/30 hover:shadow-gold transition-all duration-500 group"
+              variants={cardVariants}
+              whileHover={{
+                y: -8,
+                borderColor: "hsl(40 60% 50% / 0.3)",
+                boxShadow: "0 0 40px hsl(40 60% 50% / 0.1)",
+                transition: { duration: 0.3 },
+              }}
+              className="p-8 border border-gold/10 rounded-sm transition-all duration-500 group cursor-default"
             >
-              <reason.icon className="w-8 h-8 text-primary mb-6 group-hover:scale-110 transition-transform duration-300" />
+              <motion.div
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <reason.icon className="w-8 h-8 text-primary mb-6" />
+              </motion.div>
               <h3 className="font-serif text-xl mb-3">{reason.title}</h3>
               <p className="text-sm text-muted-foreground font-light leading-relaxed">
                 {reason.description}
@@ -70,7 +95,7 @@ const WhySection = () => {
         </div>
 
         {/* Comparison block */}
-        <ScrollReveal delay={0.2}>
+        <ScrollReveal delay={0.2} blur>
           <div className="mt-20 max-w-4xl mx-auto">
             <h3 className="font-serif text-2xl text-center mb-10">
               Morilles de feu vs. autres morilles
@@ -93,13 +118,20 @@ const WhySection = () => {
                     ["Saison", "4-6 semaines/an", "~2 mois/an", "Toute l'année"],
                     ["Traitement", "Aucun", "Aucun", "Souvent traité"],
                     ["Rareté", "Très rare", "Rare", "Abondant"],
-                  ].map(([label, fire, euro, china]) => (
-                    <tr key={label} className="border-b border-gold/10">
+                  ].map(([label, fire, euro, china], i) => (
+                    <motion.tr
+                      key={label}
+                      className="border-b border-gold/10"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: i * 0.05 }}
+                    >
                       <td className="py-3 px-2 md:px-4 text-muted-foreground whitespace-nowrap">{label}</td>
                       <td className="py-3 px-2 md:px-4 text-center text-foreground">{fire}</td>
                       <td className="py-3 px-2 md:px-4 text-center text-muted-foreground">{euro}</td>
                       <td className="py-3 px-2 md:px-4 text-center text-muted-foreground">{china}</td>
-                    </tr>
+                    </motion.tr>
                   ))}
                 </tbody>
               </table>
