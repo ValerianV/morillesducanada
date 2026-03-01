@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useCartSync } from "@/hooks/useCartSync";
 import Index from "./pages/Index";
 import ProductPage from "./pages/ProductPage";
+import Auth from "./pages/Auth";
+import ResetPassword from "./pages/ResetPassword";
 import MentionsLegales from "./pages/MentionsLegales";
 import CGV from "./pages/CGV";
 import NotFound from "./pages/NotFound";
@@ -18,6 +20,8 @@ const AppContent = () => {
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/product/:handle" element={<ProductPage />} />
+      <Route path="/auth" element={<Auth />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/mentions-legales" element={<MentionsLegales />} />
       <Route path="/cgv" element={<CGV />} />
       <Route path="*" element={<NotFound />} />
