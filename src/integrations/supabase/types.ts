@@ -65,6 +65,69 @@ export type Database = {
         }
         Relationships: []
       }
+      recipes: {
+        Row: {
+          chef_name: string
+          chef_title: string | null
+          cook_time: number
+          created_at: string
+          description: string
+          difficulty: string
+          id: string
+          image_url: string | null
+          ingredients: Json
+          prep_time: number
+          published: boolean
+          servings: number
+          slug: string
+          steps: Json
+          tags: string[] | null
+          tips: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          chef_name: string
+          chef_title?: string | null
+          cook_time?: number
+          created_at?: string
+          description: string
+          difficulty?: string
+          id?: string
+          image_url?: string | null
+          ingredients?: Json
+          prep_time?: number
+          published?: boolean
+          servings?: number
+          slug: string
+          steps?: Json
+          tags?: string[] | null
+          tips?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          chef_name?: string
+          chef_title?: string | null
+          cook_time?: number
+          created_at?: string
+          description?: string
+          difficulty?: string
+          id?: string
+          image_url?: string | null
+          ingredients?: Json
+          prep_time?: number
+          published?: boolean
+          servings?: number
+          slug?: string
+          steps?: Json
+          tags?: string[] | null
+          tips?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
