@@ -52,7 +52,7 @@ const OriginSection = () => {
                 Chaque été, d'immenses feux de forêt marquent ces territoires. Le printemps suivant, un miracle se produit : des morilles surgissent par milliers des sols calcinés — les célèbres <strong className="text-foreground">morilles de feu</strong>. Contrairement aux morilles cultivées en Chine ou aux variétés européennes, elles développent un profil aromatique unique : des notes fumées intenses et une profondeur de saveur que seul le feu peut conférer.
               </p>
               <p className="text-secondary-foreground/80 font-light leading-relaxed">
-                90% de ma récolte est vendue à des entreprises canadiennes. Le reste, je le ramène en France pour proposer à des amateurs de produits d'exception ces morilles sauvages, séchées sans queue, issues d'un mélange de variétés de feu : <em>M. tomentosa, M. conica, M. brunnea, M. americana</em> et d'autres espèces rares.
+                Morilles du Canada est une toute petite entreprise, sans intermédiaire. Je travaille directement avec d'autres cueilleurs que je connais personnellement sur le terrain. Pas de grossiste, pas de revendeur : une chaîne courte, du cueilleur à votre cuisine. 90% de ma récolte est vendue à des entreprises canadiennes. Le reste, je le ramène en France pour proposer à des amateurs de produits d'exception ces morilles sauvages, séchées sans queue, issues d'un mélange de variétés de feu : <em>M. tomentosa, M. conica, M. brunnea, M. americana</em> et d'autres espèces rares.
               </p>
 
               <div className="grid grid-cols-3 gap-6 pt-6 border-t border-gold/20">
