@@ -76,7 +76,7 @@ const ProductsSection = () => {
                 >
                   {image && (
                     <div className="aspect-square overflow-hidden">
-                      <img src={image.url} alt={image.altText || product.node.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <img src={image.url} alt={image.altText || product.node.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                     </div>
                   )}
                   <div className="p-6">

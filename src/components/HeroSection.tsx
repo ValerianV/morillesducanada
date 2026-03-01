@@ -20,7 +20,7 @@ const HeroSection = () => {
   return (
     <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <motion.div className="absolute inset-0" style={{ y: imageY, scale: imageScale }}>
-        <img src={heroImage} alt="Morilles de feu séchées canadiennes" className="w-full h-full object-cover" />
+        <img src={heroImage} alt="Morilles de feu séchées canadiennes" className="w-full h-full object-cover" fetchPriority="high" decoding="async" />
       </motion.div>
       <motion.div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" style={{ opacity: overlayOpacity }} />
 
