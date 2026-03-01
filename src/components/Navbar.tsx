@@ -42,7 +42,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-gold/20">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <a href="/" className="flex items-center gap-3">
-          <img src={logo} alt="Morilles du Canada" className="w-10 h-10 rounded-full" />
+          <img src={logo} alt="Morilles du Canada" className="w-10 h-10 rounded-full" width={40} height={40} />
           <span className="font-serif text-base sm:text-xl font-semibold text-gradient-gold tracking-wider">Morilles du Canada</span>
         </a>
 

@@ -1,17 +1,18 @@
+import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import OriginSection from "@/components/OriginSection";
-import ProductsSection from "@/components/ProductsSection";
-import TrustBadges from "@/components/TrustBadges";
-import WhySection from "@/components/WhySection";
-import ProcessSection from "@/components/ProcessSection";
-
-import GallerySection from "@/components/GallerySection";
-import ProfessionalSection from "@/components/ProfessionalSection";
-import FAQSection from "@/components/FAQSection";
-import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import FloatingCTA from "@/components/FloatingCTA";
+
+const OriginSection = lazy(() => import("@/components/OriginSection"));
+const ProductsSection = lazy(() => import("@/components/ProductsSection"));
+const TrustBadges = lazy(() => import("@/components/TrustBadges"));
+const WhySection = lazy(() => import("@/components/WhySection"));
+const ProcessSection = lazy(() => import("@/components/ProcessSection"));
+const GallerySection = lazy(() => import("@/components/GallerySection"));
+const ProfessionalSection = lazy(() => import("@/components/ProfessionalSection"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
+const FloatingCTA = lazy(() => import("@/components/FloatingCTA"));
 
 const Index = () => {
   return (
@@ -19,18 +20,22 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
-        <OriginSection />
-        <ProductsSection />
-        <TrustBadges />
-        <WhySection />
-        <ProcessSection />
-        <GallerySection />
-        <ProfessionalSection />
-        <FAQSection />
-        <ContactSection />
+        <Suspense fallback={null}>
+          <OriginSection />
+          <ProductsSection />
+          <TrustBadges />
+          <WhySection />
+          <ProcessSection />
+          <GallerySection />
+          <ProfessionalSection />
+          <FAQSection />
+          <ContactSection />
+        </Suspense>
       </main>
       <Footer />
-      <FloatingCTA />
+      <Suspense fallback={null}>
+        <FloatingCTA />
+      </Suspense>
     </div>
   );
 };
