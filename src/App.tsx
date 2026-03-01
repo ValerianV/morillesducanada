@@ -14,6 +14,7 @@ import CGV from "./pages/CGV";
 import Livraison from "./pages/Livraison";
 import Recettes from "./pages/Recettes";
 import RecetteDetail from "./pages/RecetteDetail";
+import Profil from "./pages/Profil";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const AppContent = () => {
       <Route path="/livraison" element={<Livraison />} />
       <Route path="/recettes" element={<Recettes />} />
       <Route path="/recettes/:slug" element={<RecetteDetail />} />
+      <Route path="/profil" element={<Profil />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
