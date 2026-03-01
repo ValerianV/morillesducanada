@@ -1,4 +1,6 @@
 import landscapeImage from "@/assets/landscape-canada.jpg";
+import morelCloseup from "@/assets/morels/morels-closeup-texture.jpg";
+import morelClassic from "@/assets/morels/morel-classic-stem.jpg";
 
 const OriginSection = () => {
   return (
@@ -38,6 +40,11 @@ const OriginSection = () => {
             <p className="text-secondary-foreground/80 font-light leading-relaxed">
               90% de ma récolte est vendue à des entreprises canadiennes. Le reste, je le ramène en France pour proposer à des amateurs de produits d'exception ces morilles sauvages, séchées sans queue, issues d'un mélange de variétés de feu : <em>M. tomentosa, M. conica, M. brunnea, M. americana</em> et d'autres espèces rares.
             </p>
+
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              <img src={morelCloseup} alt="Texture d'une morille de feu" loading="lazy" className="w-full h-32 object-cover rounded-sm opacity-80" />
+              <img src={morelClassic} alt="Morille sauvage sur pied" loading="lazy" className="w-full h-32 object-cover rounded-sm opacity-80" />
+            </div>
 
             <div className="grid grid-cols-3 gap-6 pt-6 border-t border-gold/20">
               <div className="text-center">
