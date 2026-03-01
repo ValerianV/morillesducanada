@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import { supabase } from "@/integrations/supabase/client";
-import { Clock, Users, ChefHat, ArrowRight } from "lucide-react";
+import { Clock, Users, ArrowRight, Leaf } from "lucide-react";
 
 interface Recipe {
   id: string;
@@ -79,7 +79,7 @@ const Recettes = () => {
                 <span className="italic text-gradient-gold">morilles de feu</span>
               </h1>
               <p className="text-secondary-foreground/70 font-light text-lg max-w-2xl mx-auto leading-relaxed">
-                Des chefs partagent leurs meilleures recettes pour sublimer
+                Découvrez nos meilleures recettes pour sublimer
                 l'arôme fumé unique de nos morilles sauvages canadiennes.
               </p>
               <div className="divider-gold w-24 mx-auto mt-6" />
@@ -105,10 +105,16 @@ const Recettes = () => {
                     className="group block bg-card border border-border rounded-lg overflow-hidden hover:border-primary/40 transition-all duration-300 hover:shadow-gold h-full"
                   >
                     <div className="p-7 flex flex-col h-full">
-                      <div className="flex items-center gap-2 mb-4">
+                      <div className="flex items-center gap-2 mb-4 flex-wrap">
                         <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${difficultyColor[recipe.difficulty] || "bg-muted text-muted-foreground"}`}>
                           {recipe.difficulty}
                         </span>
+                        {recipe.tags?.includes("vegan") && (
+                          <span className="flex items-center gap-1 text-xs px-2.5 py-1 rounded-full font-medium bg-green-900/40 text-green-300">
+                            <Leaf className="w-3 h-3" />
+                            Vegan
+                          </span>
+                        )}
                         <div className="flex items-center gap-1 text-xs text-muted-foreground">
                           <Clock className="w-3 h-3" />
                           {recipe.prep_time + recipe.cook_time} min
@@ -127,16 +133,7 @@ const Recettes = () => {
                         {recipe.description}
                       </p>
 
-                      <div className="flex items-center justify-between mt-auto pt-4 border-t border-border">
-                        <div className="flex items-center gap-2">
-                          <ChefHat className="w-4 h-4 text-primary" />
-                          <div>
-                            <p className="text-sm font-medium text-foreground">{recipe.chef_name}</p>
-                            {recipe.chef_title && (
-                              <p className="text-xs text-muted-foreground">{recipe.chef_title}</p>
-                            )}
-                          </div>
-                        </div>
+                      <div className="flex items-center justify-end mt-auto pt-4 border-t border-border">
                         <ArrowRight className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                       </div>
                     </div>

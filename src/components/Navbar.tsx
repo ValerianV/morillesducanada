@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Menu, X, UserCircle, LogOut, Globe } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import logo from "@/assets/logo.png";
@@ -11,7 +11,9 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [session, setSession] = useState<Session | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
   const { t, locale, setLocale } = useI18n();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -52,7 +54,7 @@ const Navbar = () => {
             link.isRoute ? (
               <Link key={link.href} to={link.href} className={linkClass}>{link.label}</Link>
             ) : (
-              <a key={link.href} href={link.href} className={linkClass}>{link.label}</a>
+              <a key={link.href} href={isHome ? link.href : `/${link.href}`} className={linkClass}>{link.label}</a>
             )
           )}
 
@@ -112,9 +114,9 @@ const Navbar = () => {
           <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
             {links.map((link) =>
               link.isRoute ? (
-                <Link key={link.href} to={link.href} onClick={() => setIsOpen(false)} className={linkClass}>{link.label}</Link>
+              <Link key={link.href} to={link.href} onClick={() => setIsOpen(false)} className={linkClass}>{link.label}</Link>
               ) : (
-                <a key={link.href} href={link.href} onClick={() => setIsOpen(false)} className={linkClass}>{link.label}</a>
+                <a key={link.href} href={isHome ? link.href : `/${link.href}`} onClick={() => setIsOpen(false)} className={linkClass}>{link.label}</a>
               )
             )}
           </div>

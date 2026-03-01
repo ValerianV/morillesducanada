@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import { supabase } from "@/integrations/supabase/client";
-import { Clock, Users, ChefHat, Lightbulb, ArrowLeft } from "lucide-react";
+import { Clock, Users, Lightbulb, ArrowLeft, Leaf } from "lucide-react";
 
 interface Recipe {
   id: string;
@@ -144,15 +144,12 @@ const RecetteDetail = () => {
                 </span>
               </div>
 
-              <div className="flex items-center gap-3 p-4 bg-card border border-border rounded-lg">
-                <ChefHat className="w-5 h-5 text-primary flex-shrink-0" />
-                <div>
-                  <p className="font-medium text-foreground">{recipe.chef_name}</p>
-                  {recipe.chef_title && (
-                    <p className="text-xs text-muted-foreground">{recipe.chef_title}</p>
-                  )}
+              {recipe.tags?.includes("vegan") && (
+                <div className="flex items-center gap-2 p-4 bg-green-900/20 border border-green-800/30 rounded-lg">
+                  <Leaf className="w-5 h-5 text-green-400 flex-shrink-0" />
+                  <p className="font-medium text-green-300">Recette vegan</p>
                 </div>
-              </div>
+              )}
             </div>
           </ScrollReveal>
 
@@ -200,7 +197,7 @@ const RecetteDetail = () => {
                   <Lightbulb className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <div>
                     <h3 className="font-serif text-lg text-foreground mb-2">
-                      Le conseil du chef
+                      Conseil de préparation
                     </h3>
                     <p className="text-sm text-secondary-foreground/80 font-light leading-relaxed">
                       {recipe.tips}

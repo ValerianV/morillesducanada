@@ -110,8 +110,9 @@ export const en = {
       { q: "How to rehydrate morels?", a: "Soak them in warm water (not boiling) for 20 to 30 minutes. Keep the soaking water: it's a precious broth for your sauces and risottos." },
       { q: "What's the difference between fire morels and cultivated morels?", a: "Fire morels grow naturally on the burned soil of Canadian boreal forests. They develop an intense smoky aroma impossible to reproduce through cultivation. Cultivated morels (mainly Chinese) are grown in greenhouses and have a much more neutral taste." },
       { q: "How much for a dish?", a: "Allow about 5 to 8 g of dried morels per person (they triple in volume when rehydrated). Our 12 g pouches serve 2 people, 30 g pouches serve 4 to 6." },
-      { q: "Do you deliver outside France?", a: "Yes, we deliver throughout the European Union. Shipping costs and times vary by destination. Contact us for a custom quote for orders outside France." },
+      { q: "Do you deliver outside France?", a: "For the moment, we only deliver to mainland France. We're working on expanding our delivery zones soon. Feel free to contact us to be notified when shipping becomes available in your country." },
       { q: "Are the morels stemless?", a: "Yes, all our morels are sold without stems (foot removed). You only buy the cap, the most flavourful and aromatic part of the mushroom." },
+      { q: "What mistakes should I avoid when preparing morels?", a: "Here are the most common mistakes: 1) Never eat morels raw or undercooked — they contain haemolysin, a toxin only destroyed by cooking (minimum 15 minutes over medium heat). 2) Don't use boiling water to rehydrate, as it destroys the texture and aromas — use warm water (30-40°C) for 20 to 30 minutes. 3) Never discard the soaking water: it's a concentrated flavour base perfect for sauces, risottos and soups. 4) Split morels in half after rehydration to check for sand or insects inside the honeycomb cap. 5) Avoid drowning them in an overpowering sauce: fire morels have a subtle smoky aroma best paired with gentle accompaniments (cream, butter, shallots)." },
     ],
   },
   contact: {
