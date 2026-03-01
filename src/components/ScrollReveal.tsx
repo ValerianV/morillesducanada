@@ -5,16 +5,20 @@ interface ScrollRevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
-  direction?: "up" | "down" | "left" | "right";
+  direction?: "up" | "down" | "left" | "right" | "none";
   duration?: number;
   once?: boolean;
+  blur?: boolean;
+  scale?: boolean;
+  stagger?: boolean;
 }
 
 const directionOffset = {
-  up: { y: 40 },
-  down: { y: -40 },
-  left: { x: 40 },
-  right: { x: -40 },
+  up: { y: 50 },
+  down: { y: -50 },
+  left: { x: 60 },
+  right: { x: -60 },
+  none: {},
 };
 
 const ScrollReveal = ({
@@ -22,18 +26,31 @@ const ScrollReveal = ({
   className,
   delay = 0,
   direction = "up",
-  duration = 0.6,
+  duration = 0.7,
   once = true,
+  blur = false,
+  scale = false,
 }: ScrollRevealProps) => {
   const offset = directionOffset[direction];
 
   const variants: Variants = {
-    hidden: { opacity: 0, ...offset },
+    hidden: {
+      opacity: 0,
+      ...offset,
+      ...(blur ? { filter: "blur(8px)" } : {}),
+      ...(scale ? { scale: 0.92 } : {}),
+    },
     visible: {
       opacity: 1,
       x: 0,
       y: 0,
-      transition: { duration, delay, ease: [0.25, 0.4, 0.25, 1] },
+      filter: "blur(0px)",
+      scale: 1,
+      transition: {
+        duration,
+        delay,
+        ease: [0.22, 1, 0.36, 1], // custom cubic-bezier for luxury feel
+      },
     },
   };
 
@@ -41,7 +58,7 @@ const ScrollReveal = ({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, margin: "-60px" }}
+      viewport={{ once, margin: "-80px" }}
       variants={variants}
       className={className}
     >

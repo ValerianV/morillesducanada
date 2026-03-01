@@ -1,14 +1,24 @@
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import morelOverhead from "@/assets/morels/morels-overhead-needles.jpg";
 import morelBurnedLog from "@/assets/morels/morel-burned-log.jpg";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedCounter from "@/components/AnimatedCounter";
 
 const OriginSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const imageParallax = useTransform(scrollYProgress, [0, 1], [30, -30]);
+
   return (
-    <section id="origine" className="py-24 md:py-32">
+    <section id="origine" className="py-24 md:py-32" ref={sectionRef}>
       <div className="container mx-auto px-6">
         {/* Section header */}
-        <ScrollReveal>
+        <ScrollReveal blur>
           <div className="text-center mb-16">
             <p className="text-sm tracking-[0.3em] uppercase text-primary mb-4">Notre Histoire</p>
             <h2 className="font-serif text-4xl md:text-5xl font-light">
@@ -29,12 +39,27 @@ const OriginSection = () => {
                   className="absolute inset-0 w-full h-full pointer-events-none"
                   style={{ border: "none" }}
                   allow="autoplay; encrypted-media"
-                  loading="lazy" />
+                  loading="lazy"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
               </div>
-              <div className="grid grid-cols-2 gap-3">
-                <img src={morelOverhead} alt="Morilles vues du dessus sur aiguilles de pin" loading="lazy" className="w-full h-24 md:h-32 object-cover rounded-sm opacity-80" />
-                <img src={morelBurnedLog} alt="Morille poussant près d'un tronc brûlé" loading="lazy" className="w-full h-24 md:h-32 object-cover rounded-sm opacity-80" />
+              <div className="grid grid-cols-2 gap-3 overflow-hidden">
+                <motion.div style={{ y: imageParallax }} className="overflow-hidden rounded-sm">
+                  <img
+                    src={morelOverhead}
+                    alt="Morilles vues du dessus sur aiguilles de pin"
+                    loading="lazy"
+                    className="w-full h-24 md:h-32 object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-500"
+                  />
+                </motion.div>
+                <motion.div style={{ y: useTransform(scrollYProgress, [0, 1], [-20, 20]) }} className="overflow-hidden rounded-sm">
+                  <img
+                    src={morelBurnedLog}
+                    alt="Morille poussant près d'un tronc brûlé"
+                    loading="lazy"
+                    className="w-full h-24 md:h-32 object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-500"
+                  />
+                </motion.div>
               </div>
             </div>
           </ScrollReveal>
@@ -56,18 +81,23 @@ const OriginSection = () => {
               </p>
 
               <div className="grid grid-cols-3 gap-6 pt-6 border-t border-gold/20">
-                <div className="text-center">
-                  <AnimatedCounter value="100%" className="font-serif text-3xl text-gradient-gold" />
-                  <p className="text-xs tracking-widest uppercase text-muted-foreground mt-1">Sauvage</p>
-                </div>
-                <div className="text-center">
-                  <AnimatedCounter value="4-6" className="font-serif text-3xl text-gradient-gold" />
-                  <p className="text-xs tracking-widest uppercase text-muted-foreground mt-1">Semaines/an</p>
-                </div>
-                <div className="text-center">
-                  <AnimatedCounter value="0" className="font-serif text-3xl text-gradient-gold" />
-                  <p className="text-xs tracking-widest uppercase text-muted-foreground mt-1">Pesticide</p>
-                </div>
+                {[
+                  { value: "100%", label: "Sauvage" },
+                  { value: "4-6", label: "Semaines/an" },
+                  { value: "0", label: "Pesticide" },
+                ].map((stat, i) => (
+                  <motion.div
+                    key={stat.label}
+                    className="text-center"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <AnimatedCounter value={stat.value} className="font-serif text-3xl text-gradient-gold" />
+                    <p className="text-xs tracking-widest uppercase text-muted-foreground mt-1">{stat.label}</p>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </ScrollReveal>
