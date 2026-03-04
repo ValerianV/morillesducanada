@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import Footer from "@/components/Footer";
+import JsonLdSchemas from "@/components/JsonLdSchemas";
 
 const OriginSection = lazy(() => import("@/components/OriginSection"));
 const ProductsSection = lazy(() => import("@/components/ProductsSection"));
@@ -17,6 +18,7 @@ const FloatingCTA = lazy(() => import("@/components/FloatingCTA"));
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <JsonLdSchemas />
       <Navbar />
       <main>
         <HeroSection />
