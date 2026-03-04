@@ -19,6 +19,7 @@ const Livraison = lazy(() => import("./pages/Livraison"));
 const Recettes = lazy(() => import("./pages/Recettes"));
 const RecetteDetail = lazy(() => import("./pages/RecetteDetail"));
 const Profil = lazy(() => import("./pages/Profil"));
+const GuideMorellesDeFeu = lazy(() => import("./pages/GuideMorellesDeFeu"));
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const AppContent = () => {
         <Route path="/recettes" element={<Recettes />} />
         <Route path="/recettes/:slug" element={<RecetteDetail />} />
         <Route path="/profil" element={<Profil />} />
+        <Route path="/guide-morilles-de-feu" element={<GuideMorellesDeFeu />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
