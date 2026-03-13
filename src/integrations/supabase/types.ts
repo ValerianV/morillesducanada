@@ -41,6 +41,105 @@ export type Database = {
         }
         Relationships: []
       }
+      orders: {
+        Row: {
+          created_at: string
+          currency: string
+          customer_name: string
+          email: string
+          id: string
+          items: Json
+          shipping_address: Json | null
+          status: string
+          stripe_payment_intent: string | null
+          stripe_session_id: string | null
+          total_amount: number
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          currency?: string
+          customer_name: string
+          email: string
+          id?: string
+          items?: Json
+          shipping_address?: Json | null
+          status?: string
+          stripe_payment_intent?: string | null
+          stripe_session_id?: string | null
+          total_amount?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          currency?: string
+          customer_name?: string
+          email?: string
+          id?: string
+          items?: Json
+          shipping_address?: Json | null
+          status?: string
+          stripe_payment_intent?: string | null
+          stripe_session_id?: string | null
+          total_amount?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      pre_orders: {
+        Row: {
+          company_name: string
+          contact_name: string
+          created_at: string
+          email: string
+          id: string
+          morel_type: string
+          notes: string | null
+          phone: string | null
+          quantity_kg: number
+          status: string
+          stripe_payment_intent: string | null
+          stripe_session_id: string | null
+          total_amount: number
+          updated_at: string
+        }
+        Insert: {
+          company_name: string
+          contact_name: string
+          created_at?: string
+          email: string
+          id?: string
+          morel_type: string
+          notes?: string | null
+          phone?: string | null
+          quantity_kg: number
+          status?: string
+          stripe_payment_intent?: string | null
+          stripe_session_id?: string | null
+          total_amount: number
+          updated_at?: string
+        }
+        Update: {
+          company_name?: string
+          contact_name?: string
+          created_at?: string
+          email?: string
+          id?: string
+          morel_type?: string
+          notes?: string | null
+          phone?: string | null
+          quantity_kg?: number
+          status?: string
+          stripe_payment_intent?: string | null
+          stripe_session_id?: string | null
+          total_amount?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
