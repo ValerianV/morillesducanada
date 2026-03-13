@@ -48,6 +48,7 @@ const App = () => (
                 <Route path="/pre-commande" element={<PreOrder />} />
                 <Route path="/paiement-reussi" element={<PaymentSuccess />} />
                 <Route path="/precommande-confirmee" element={<PreOrderSuccess />} />
+                <Route path="/admin" element={<AdminDashboard />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
