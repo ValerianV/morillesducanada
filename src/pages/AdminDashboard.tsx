@@ -1,0 +1,272 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { Loader2, ShieldAlert, Download, RefreshCw } from "lucide-react";
+import Navbar from "@/components/Navbar";
+
+type Order = {
+  id: string;
+  email: string;
+  customer_name: string;
+  status: string;
+  items: unknown;
+  total_amount: number;
+  currency: string;
+  stripe_session_id: string | null;
+  created_at: string;
+};
+
+type PreOrder = {
+  id: string;
+  company_name: string;
+  contact_name: string;
+  email: string;
+  phone: string | null;
+  morel_type: string;
+  quantity_kg: number;
+  total_amount: number;
+  status: string;
+  stripe_session_id: string | null;
+  notes: string | null;
+  created_at: string;
+};
+
+const STATUS_OPTIONS = ["pending", "paid", "shipped", "delivered", "cancelled"];
+const PRE_STATUS_OPTIONS = ["pending", "paid", "confirmed", "delivered", "cancelled"];
+
+function exportCsv(filename: string, headers: string[], rows: string[][]) {
+  const csv = [headers.join(","), ...rows.map((r) => r.map((c) => `"${String(c ?? "").replace(/"/g, '""')}"`).join(","))].join("\n");
+  const blob = new Blob([csv], { type: "text/csv" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+const AdminDashboard = () => {
+  const navigate = useNavigate();
+  const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
+  const [tab, setTab] = useState<"orders" | "preorders">("orders");
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [preOrders, setPreOrders] = useState<PreOrder[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [statusFilter, setStatusFilter] = useState("all");
+
+  useEffect(() => {
+    checkAdmin();
+  }, []);
+
+  async function checkAdmin() {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) { navigate("/auth"); return; }
+    const { data } = await supabase.from("user_roles").select("role").eq("user_id", user.id).eq("role", "admin");
+    if (!data || data.length === 0) { setIsAdmin(false); return; }
+    setIsAdmin(true);
+    fetchData();
+  }
+
+  async function fetchData() {
+    setLoading(true);
+    const [ordersRes, preOrdersRes] = await Promise.all([
+      supabase.from("orders").select("*").order("created_at", { ascending: false }),
+      supabase.from("pre_orders").select("*").order("created_at", { ascending: false }),
+    ]);
+    if (ordersRes.data) setOrders(ordersRes.data as Order[]);
+    if (preOrdersRes.data) setPreOrders(preOrdersRes.data as PreOrder[]);
+    setLoading(false);
+  }
+
+  async function updateOrderStatus(id: string, status: string) {
+    await supabase.from("orders").update({ status, updated_at: new Date().toISOString() }).eq("id", id);
+    setOrders((prev) => prev.map((o) => (o.id === id ? { ...o, status } : o)));
+  }
+
+  async function updatePreOrderStatus(id: string, status: string) {
+    await supabase.from("pre_orders").update({ status, updated_at: new Date().toISOString() }).eq("id", id);
+    setPreOrders((prev) => prev.map((o) => (o.id === id ? { ...o, status } : o)));
+  }
+
+  const filteredOrders = statusFilter === "all" ? orders : orders.filter((o) => o.status === statusFilter);
+  const filteredPreOrders = statusFilter === "all" ? preOrders : preOrders.filter((o) => o.status === statusFilter);
+
+  const handleExportOrders = () => {
+    exportCsv("commandes.csv", ["ID", "Client", "Email", "Statut", "Total", "Date"], filteredOrders.map((o) => [o.id, o.customer_name, o.email, o.status, `${(o.total_amount / 100).toFixed(2)}€`, new Date(o.created_at).toLocaleDateString("fr-FR")]));
+  };
+
+  const handleExportPreOrders = () => {
+    exportCsv("pre-commandes.csv", ["ID", "Entreprise", "Contact", "Email", "Téléphone", "Type", "Quantité (kg)", "Total", "Statut", "Notes", "Date"], filteredPreOrders.map((o) => [o.id, o.company_name, o.contact_name, o.email, o.phone || "", o.morel_type, String(o.quantity_kg), `${o.total_amount}€`, o.status, o.notes || "", new Date(o.created_at).toLocaleDateString("fr-FR")]));
+  };
+
+  if (isAdmin === null) {
+    return <div className="min-h-screen bg-background flex items-center justify-center"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>;
+  }
+
+  if (isAdmin === false) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <div className="pt-24 flex flex-col items-center justify-center min-h-[60vh] gap-4">
+          <ShieldAlert className="w-16 h-16 text-destructive" />
+          <h1 className="font-serif text-2xl">Accès refusé</h1>
+          <p className="text-muted-foreground font-light">Vous n'avez pas les droits administrateur.</p>
+        </div>
+      </div>
+    );
+  }
+
+  const statusBadge = (status: string) => {
+    const colors: Record<string, string> = {
+      pending: "bg-yellow-500/20 text-yellow-400",
+      paid: "bg-green-500/20 text-green-400",
+      shipped: "bg-blue-500/20 text-blue-400",
+      confirmed: "bg-green-500/20 text-green-400",
+      delivered: "bg-emerald-500/20 text-emerald-400",
+      cancelled: "bg-red-500/20 text-red-400",
+    };
+    return <span className={`px-2 py-0.5 rounded text-xs font-medium ${colors[status] || "bg-muted text-muted-foreground"}`}>{status}</span>;
+  };
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <main className="pt-24 pb-16">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h1 className="font-serif text-3xl text-gradient-gold">Dashboard Admin</h1>
+              <p className="text-sm text-muted-foreground font-light mt-1">Gestion des commandes et pré-commandes</p>
+            </div>
+            <button onClick={fetchData} disabled={loading} className="flex items-center gap-2 px-4 py-2 border border-gold/20 rounded-sm text-sm text-muted-foreground hover:text-primary hover:border-primary transition-colors">
+              <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} /> Actualiser
+            </button>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            {[
+              { label: "Commandes", value: orders.length },
+              { label: "Pré-commandes", value: preOrders.length },
+              { label: "En attente", value: [...orders, ...preOrders].filter((o) => o.status === "pending").length },
+              { label: "Pré-commandes (kg)", value: `${preOrders.reduce((s, o) => s + Number(o.quantity_kg), 0)} kg` },
+            ].map((stat) => (
+              <div key={stat.label} className="border border-gold/15 rounded-sm p-4 bg-background/50">
+                <p className="text-xs text-muted-foreground font-light tracking-wider uppercase">{stat.label}</p>
+                <p className="font-serif text-2xl text-gradient-gold mt-1">{stat.value}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Tabs + filter */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+            <div className="flex gap-2">
+              {(["orders", "preorders"] as const).map((t) => (
+                <button key={t} onClick={() => { setTab(t); setStatusFilter("all"); }}
+                  className={`px-4 py-2 text-sm tracking-wider uppercase rounded-sm transition-colors ${tab === t ? "bg-primary text-primary-foreground" : "border border-gold/20 text-muted-foreground hover:text-primary"}`}
+                >{t === "orders" ? "Commandes" : "Pré-commandes"}</button>
+              ))}
+            </div>
+            <div className="flex items-center gap-3">
+              <select
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value)}
+                className="px-3 py-2 bg-secondary/30 border border-gold/15 rounded-sm text-sm text-foreground focus:outline-none focus:border-primary"
+              >
+                <option value="all">Tous les statuts</option>
+                {(tab === "orders" ? STATUS_OPTIONS : PRE_STATUS_OPTIONS).map((s) => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+              <button onClick={tab === "orders" ? handleExportOrders : handleExportPreOrders}
+                className="flex items-center gap-2 px-3 py-2 border border-gold/20 rounded-sm text-sm text-muted-foreground hover:text-primary hover:border-primary transition-colors">
+                <Download className="w-4 h-4" /> CSV
+              </button>
+            </div>
+          </div>
+
+          {loading ? (
+            <div className="flex justify-center py-20"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>
+          ) : tab === "orders" ? (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-gold/15 text-left text-xs text-muted-foreground uppercase tracking-wider">
+                    <th className="py-3 px-3">Date</th>
+                    <th className="py-3 px-3">Client</th>
+                    <th className="py-3 px-3">Email</th>
+                    <th className="py-3 px-3">Total</th>
+                    <th className="py-3 px-3">Statut</th>
+                    <th className="py-3 px-3">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredOrders.length === 0 ? (
+                    <tr><td colSpan={6} className="py-12 text-center text-muted-foreground font-light">Aucune commande</td></tr>
+                  ) : filteredOrders.map((order) => (
+                    <tr key={order.id} className="border-b border-gold/10 hover:bg-secondary/10">
+                      <td className="py-3 px-3 text-muted-foreground">{new Date(order.created_at).toLocaleDateString("fr-FR")}</td>
+                      <td className="py-3 px-3 font-medium">{order.customer_name}</td>
+                      <td className="py-3 px-3 text-muted-foreground">{order.email}</td>
+                      <td className="py-3 px-3 text-primary">{(order.total_amount / 100).toFixed(2)} €</td>
+                      <td className="py-3 px-3">{statusBadge(order.status)}</td>
+                      <td className="py-3 px-3">
+                        <select value={order.status} onChange={(e) => updateOrderStatus(order.id, e.target.value)}
+                          className="px-2 py-1 bg-secondary/30 border border-gold/15 rounded-sm text-xs focus:outline-none focus:border-primary">
+                          {STATUS_OPTIONS.map((s) => <option key={s} value={s}>{s}</option>)}
+                        </select>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-gold/15 text-left text-xs text-muted-foreground uppercase tracking-wider">
+                    <th className="py-3 px-3">Date</th>
+                    <th className="py-3 px-3">Entreprise</th>
+                    <th className="py-3 px-3">Contact</th>
+                    <th className="py-3 px-3">Type</th>
+                    <th className="py-3 px-3">Quantité</th>
+                    <th className="py-3 px-3">Total</th>
+                    <th className="py-3 px-3">Statut</th>
+                    <th className="py-3 px-3">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredPreOrders.length === 0 ? (
+                    <tr><td colSpan={8} className="py-12 text-center text-muted-foreground font-light">Aucune pré-commande</td></tr>
+                  ) : filteredPreOrders.map((po) => (
+                    <tr key={po.id} className="border-b border-gold/10 hover:bg-secondary/10">
+                      <td className="py-3 px-3 text-muted-foreground">{new Date(po.created_at).toLocaleDateString("fr-FR")}</td>
+                      <td className="py-3 px-3 font-medium">{po.company_name}</td>
+                      <td className="py-3 px-3">
+                        <div>{po.contact_name}</div>
+                        <div className="text-xs text-muted-foreground">{po.email}</div>
+                      </td>
+                      <td className="py-3 px-3 capitalize">{po.morel_type}</td>
+                      <td className="py-3 px-3">{po.quantity_kg} kg</td>
+                      <td className="py-3 px-3 text-primary">{po.total_amount} €</td>
+                      <td className="py-3 px-3">{statusBadge(po.status)}</td>
+                      <td className="py-3 px-3">
+                        <select value={po.status} onChange={(e) => updatePreOrderStatus(po.id, e.target.value)}
+                          className="px-2 py-1 bg-secondary/30 border border-gold/15 rounded-sm text-xs focus:outline-none focus:border-primary">
+                          {PRE_STATUS_OPTIONS.map((s) => <option key={s} value={s}>{s}</option>)}
+                        </select>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default AdminDashboard;

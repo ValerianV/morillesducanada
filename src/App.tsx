@@ -21,6 +21,7 @@ const GuideMorellesDeFeu = lazy(() => import("./pages/GuideMorellesDeFeu"));
 const PreOrder = lazy(() => import("./pages/PreOrder"));
 const PaymentSuccess = lazy(() => import("./pages/PaymentSuccess"));
 const PreOrderSuccess = lazy(() => import("./pages/PreOrderSuccess"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 
 const queryClient = new QueryClient();
 
