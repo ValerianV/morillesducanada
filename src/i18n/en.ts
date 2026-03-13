@@ -97,7 +97,7 @@ export const en = {
       { title: "Dedicated service", description: "A single point of contact for your orders, custom quotes and regular supply." },
     ],
     preorderTitle: "Season 2026 — Secure your supply",
-    preorderDesc: "The picking season is very short (June-July) and quantities are limited. Pre-order now to guarantee your stock at <strong>volume discounts</strong>, with <strong>priority delivery</strong> and <strong>guaranteed batch</strong>.",
+    preorderDesc: "The picking season is very short (June-July) and quantities are limited. Brown or blonde morels at <strong>€300/kg</strong>, full payment upfront. Pre-order now to guarantee your stock with <strong>priority delivery</strong> and <strong>guaranteed batch</strong>.",
     preorderCta: "Pre-order for summer 2026",
     quoteCta: "Request a professional quote",
   },

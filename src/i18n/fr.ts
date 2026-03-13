@@ -97,7 +97,7 @@ export const fr = {
       { title: "Service dédié", description: "Un interlocuteur unique pour vos commandes, devis personnalisés et approvisionnement régulier." },
     ],
     preorderTitle: "Saison 2026 — Réservez votre approvisionnement",
-    preorderDesc: "La saison de cueillette est très courte (juin-juillet) et les quantités limitées. Pré-commandez dès maintenant pour garantir votre stock à des <strong>tarifs dégressifs</strong>, avec <strong>priorité de livraison</strong> et <strong>lot garanti</strong>.",
+    preorderDesc: "La saison de cueillette est très courte (juin-juillet) et les quantités limitées. Morilles brunes ou blondes à <strong>300 €/kg</strong>, paiement à l'avance. Pré-commandez dès maintenant pour garantir votre stock avec <strong>priorité de livraison</strong> et <strong>lot garanti</strong>.",
     preorderCta: "Pré-commander pour l'été 2026",
     quoteCta: "Demander un devis professionnel",
   },
