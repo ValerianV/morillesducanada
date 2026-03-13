@@ -1,5 +1,6 @@
 import { ChefHat, Truck, MessageSquare, CalendarClock } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
 import { useI18n } from "@/i18n/context";
 
@@ -52,9 +53,9 @@ const ProfessionalSection = () => {
               </div>
             </div>
             <div className="mt-6 text-center md:text-left">
-              <a href="#contact" className="inline-block px-8 py-3.5 bg-primary text-primary-foreground font-medium tracking-widest uppercase text-sm hover:bg-gold-light transition-colors duration-300 rounded-sm">
+              <Link to="/pre-commande" className="inline-block px-8 py-3.5 bg-primary text-primary-foreground font-medium tracking-widest uppercase text-sm hover:bg-gold-light transition-colors duration-300 rounded-sm">
                 {t("professional.preorderCta")}
-              </a>
+              </Link>
             </div>
           </div>
         </ScrollReveal>
