@@ -60,6 +60,12 @@ import clusterMorillesGrisesIncendie from "@/assets/morels/cluster-morilles-gris
 import morilleBruneHerbesHumides from "@/assets/morels/morille-brune-herbes-humides.jpg";
 import duoMorillesBrunesAiguilles from "@/assets/morels/duo-morilles-brunes-aiguilles.jpg";
 import caisseRecolteMorillesSolBrule from "@/assets/morels/caisse-recolte-morilles-sol-brule.jpg";
+import trioMorillesAiguillesPin from "@/assets/morels/trio-morilles-aiguilles-pin.jpg";
+import morilleJeuneMousseSoleil from "@/assets/morels/morille-jeune-mousse-soleil.jpg";
+import groupeMorillesGrisesAiguilles from "@/assets/morels/groupe-morilles-grises-aiguilles.jpg";
+import duoMorillesPlantulePrintemps from "@/assets/morels/duo-morilles-plantule-printemps.jpg";
+import morillesRacinesMousseForet from "@/assets/morels/morilles-racines-mousse-foret.jpg";
+import trioMorillesGrisesVerticales from "@/assets/morels/trio-morilles-grises-verticales.jpg";
 
 export interface GalleryPhoto {
   src: string;
