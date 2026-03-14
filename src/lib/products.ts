@@ -13,6 +13,7 @@ export interface Product {
   image: string;
   servings: string;
   inStock: boolean;
+  stock: number;
 }
 
 export const products: Product[] = [
