@@ -135,6 +135,12 @@ export const galleryPhotos: GalleryPhoto[] = [
   { src: morilleBruneHerbesHumides, alt: "Morille brune parmi les herbes humides en forêt de conifères", title: "Morille dans les herbes humides" },
   { src: duoMorillesBrunesAiguilles, alt: "Duo de morilles brunes sur tapis d'aiguilles de pin", title: "Duo de morilles brunes" },
   { src: caisseRecolteMorillesSolBrule, alt: "Caisse de récolte pleine de morilles sur sol brûlé en Colombie-Britannique", title: "Caisse de récolte sur terrain" },
+  { src: trioMorillesAiguillesPin, alt: "Trio de morilles aux teintes variées sur aiguilles de pin", title: "Trio sur aiguilles" },
+  { src: morilleJeuneMousseSoleil, alt: "Jeune morille brune sur mousse et micro-végétation en plein soleil", title: "Jeune morille sur mousse" },
+  { src: groupeMorillesGrisesAiguilles, alt: "Groupe dense de morilles grises sur tapis d'aiguilles de pin", title: "Groupe de morilles grises" },
+  { src: duoMorillesPlantulePrintemps, alt: "Deux morilles de feu avec une jeune plantule en arrière-plan", title: "Duo et plantule" },
+  { src: morillesRacinesMousseForet, alt: "Morilles blondes dispersées entre racines et mousse en forêt brûlée", title: "Morilles entre racines" },
+  { src: trioMorillesGrisesVerticales, alt: "Trio de morilles grises dressées sur sol noir post-incendie", title: "Trio grisé dressé" },
 ];
 
 /** Returns `count` random photos from the gallery (Fisher-Yates shuffle) */
