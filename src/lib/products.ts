@@ -28,6 +28,7 @@ export const products: Product[] = [
     image: product12g,
     servings: "2 personnes",
     inStock: true,
+    stock: 50,
   },
   {
     id: "morilles-30g",
