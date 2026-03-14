@@ -13,6 +13,7 @@ export interface Product {
   image: string;
   servings: string;
   inStock: boolean;
+  stock: number;
 }
 
 export const products: Product[] = [
@@ -27,6 +28,7 @@ export const products: Product[] = [
     image: product12g,
     servings: "2 personnes",
     inStock: true,
+    stock: 50,
   },
   {
     id: "morilles-30g",
@@ -39,6 +41,7 @@ export const products: Product[] = [
     image: product30g,
     servings: "4-6 personnes",
     inStock: true,
+    stock: 50,
   },
   {
     id: "morilles-45g",
@@ -51,6 +54,7 @@ export const products: Product[] = [
     image: product45g,
     servings: "6-8 personnes",
     inStock: true,
+    stock: 50,
   },
 ];
 
