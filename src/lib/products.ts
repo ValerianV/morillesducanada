@@ -54,6 +54,7 @@ export const products: Product[] = [
     image: product45g,
     servings: "6-8 personnes",
     inStock: true,
+    stock: 50,
   },
 ];
 
