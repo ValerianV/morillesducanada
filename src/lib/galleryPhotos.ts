@@ -59,6 +59,7 @@ import morilleBruneCharbonMacro from "@/assets/morels/morille-brune-charbon-macr
 import clusterMorillesGrisesIncendie from "@/assets/morels/cluster-morilles-grises-incendie.jpg";
 import morilleBruneHerbesHumides from "@/assets/morels/morille-brune-herbes-humides.jpg";
 import duoMorillesBrunesAiguilles from "@/assets/morels/duo-morilles-brunes-aiguilles.jpg";
+import caisseRecolteMorillesSolBrule from "@/assets/morels/caisse-recolte-morilles-sol-brule.jpg";
 
 export interface GalleryPhoto {
   src: string;
