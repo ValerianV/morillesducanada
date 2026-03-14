@@ -49,6 +49,16 @@ import groupeMorillesNoiresTranslucides from "@/assets/morels/groupe-morilles-no
 import duoMorillesJeunesSousSoleil from "@/assets/morels/duo-morilles-jeunes-sous-soleil.jpg";
 import duoMorillesGrisesPoussesVertes from "@/assets/morels/duo-morilles-grises-pousses-vertes.jpg";
 import groupeMorillesGrisesSolBrule from "@/assets/morels/groupe-morilles-grises-sol-brule.jpg";
+import morilleNoireSoloLitierePin from "@/assets/morels/morille-noire-solo-litiere-pin.jpg";
+import groupeMorillesNoiresSoleil from "@/assets/morels/groupe-morilles-noires-soleil.jpg";
+import duoMorillesGrisesCharbon from "@/assets/morels/duo-morilles-grises-charbon.jpg";
+import morilleGriseJeunePousse from "@/assets/morels/morille-grise-jeune-pousse.jpg";
+import morilleGriseBrouillardForet from "@/assets/morels/morille-grise-brouillard-foret.jpg";
+import morilleBruneSolNoir from "@/assets/morels/morille-brune-sol-noir.jpg";
+import morilleBruneCharbonMacro from "@/assets/morels/morille-brune-charbon-macro.jpg";
+import clusterMorillesGrisesIncendie from "@/assets/morels/cluster-morilles-grises-incendie.jpg";
+import morilleBruneHerbesHumides from "@/assets/morels/morille-brune-herbes-humides.jpg";
+import duoMorillesBrunesAiguilles from "@/assets/morels/duo-morilles-brunes-aiguilles.jpg";
 
 export interface GalleryPhoto {
   src: string;
