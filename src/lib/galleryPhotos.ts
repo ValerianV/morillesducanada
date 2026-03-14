@@ -29,6 +29,16 @@ import morilleGriseSousBoisBrule from "@/assets/morels/morille-grise-sous-bois-b
 import morilleNoirePiedBlancAiguilles from "@/assets/morels/morille-noire-pied-blanc-aiguilles.jpg";
 import morilleBrunePiedArbreBrule from "@/assets/morels/morille-brune-pied-arbre-brule.jpg";
 import trioMorillesLumiereSoir from "@/assets/morels/trio-morilles-lumiere-soir.jpg";
+import morilleForetRocherTronc from "@/assets/morels/morille-foret-rocher-tronc.jpg";
+import morilleGriseClairiereBrulee from "@/assets/morels/morille-grise-clairiere-brulee.jpg";
+import trioMorillesBlondesSousBois from "@/assets/morels/trio-morilles-blondes-sous-bois.jpg";
+import bouquetMorillesNoiresBoisBrule from "@/assets/morels/bouquet-morilles-noires-bois-brule.jpg";
+import caissesRecolteMorillesCanada from "@/assets/morels/caisses-recolte-morilles-canada.jpg";
+import caisseVerteMorillesFraiches from "@/assets/morels/caisse-verte-morilles-fraiches.jpg";
+import duoMorillesSolHumideBrule from "@/assets/morels/duo-morilles-sol-humide-brule.jpg";
+import duoMorillesAiguillesBois from "@/assets/morels/duo-morilles-aiguilles-bois.jpg";
+import morilleBruneVegetationPrintemps from "@/assets/morels/morille-brune-vegetation-printemps.jpg";
+import morilleNoireJeunePluie from "@/assets/morels/morille-noire-jeune-pluie.jpg";
 
 export interface GalleryPhoto {
   src: string;
@@ -67,6 +77,16 @@ export const galleryPhotos: GalleryPhoto[] = [
   { src: morilleNoirePiedBlancAiguilles, alt: "Morille noire à pied blanc sur aiguilles de pin et herbes fraîches", title: "Morille noire pied blanc" },
   { src: morilleBrunePiedArbreBrule, alt: "Morille brune adossée à un arbre brûlé, en lumière naturelle", title: "Morille près de l'écorce" },
   { src: trioMorillesLumiereSoir, alt: "Trio de morilles dorées au soleil du soir sur sol forestier brûlé", title: "Trio de morilles dorées" },
+  { src: morilleForetRocherTronc, alt: "Morille grise près d'un rocher et d'un tronc en forêt de conifères", title: "Morille près du rocher" },
+  { src: morilleGriseClairiereBrulee, alt: "Morille grise isolée dans une clairière de forêt brûlée au Canada", title: "Morille en clairière" },
+  { src: trioMorillesBlondesSousBois, alt: "Trio de morilles blondes sur aiguilles de pin en sous-bois", title: "Trio blond en sous-bois" },
+  { src: bouquetMorillesNoiresBoisBrule, alt: "Bouquet de morilles noires sur bois calciné et mousse verte", title: "Bouquet de morilles noires" },
+  { src: caissesRecolteMorillesCanada, alt: "Cinq caisses de récolte remplies de morilles fraîches dans l'herbe", title: "Caisses de récolte" },
+  { src: caisseVerteMorillesFraiches, alt: "Caisse verte pleine de morilles fraîches triées après cueillette", title: "Caisse de morilles fraîches" },
+  { src: duoMorillesSolHumideBrule, alt: "Deux morilles sur sol humide et brûlé avec jeunes pousses vertes", title: "Duo sur sol humide" },
+  { src: duoMorillesAiguillesBois, alt: "Duo de morilles sur aiguilles de pin près d'un bois mort", title: "Duo près du bois mort" },
+  { src: morilleBruneVegetationPrintemps, alt: "Morille brune entourée de végétation printanière en forêt boréale", title: "Morille et végétation" },
+  { src: morilleNoireJeunePluie, alt: "Jeune morille noire sur tapis d'aiguilles dans une forêt humide", title: "Jeune morille noire" },
 ];
 
 /** Returns `count` random photos from the gallery (Fisher-Yates shuffle) */
