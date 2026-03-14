@@ -22,6 +22,7 @@ const PreOrder = lazy(() => import("./pages/PreOrder"));
 const PaymentSuccess = lazy(() => import("./pages/PaymentSuccess"));
 const PreOrderSuccess = lazy(() => import("./pages/PreOrderSuccess"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const Galerie = lazy(() => import("./pages/Galerie"));
 
 const queryClient = new QueryClient();
 
