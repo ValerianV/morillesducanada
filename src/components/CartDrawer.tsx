@@ -16,10 +16,18 @@ export const CartDrawer = () => {
     if (items.length === 0) return;
     setCheckoutLoading(true);
     try {
-      const lineItems = items.map((item) => ({
-        priceId: item.product.priceId,
-        quantity: item.quantity,
-      }));
+      const lineItems = items.map((item) =>
+        item.product.priceId
+          ? {
+              priceId: item.product.priceId,
+              quantity: item.quantity,
+            }
+          : {
+              quantity: item.quantity,
+              unitAmountCents: Math.round(item.unitPrice * 100),
+              name: `${item.product.name}${item.selectedWeightGrams ? ` ${item.selectedWeightGrams}g` : ""}`,
+            }
+      );
 
       const { data, error } = await supabase.functions.invoke("create-checkout", {
         body: { lineItems },
@@ -69,25 +77,25 @@ export const CartDrawer = () => {
             <>
               <div className="flex-1 overflow-y-auto pr-2 min-h-0 space-y-4">
                 {items.map((item) => (
-                  <div key={item.product.id} className="flex gap-4 p-3 border border-gold/10 rounded-sm">
+                  <div key={item.id} className="flex gap-4 p-3 border border-gold/10 rounded-sm">
                     <div className="w-16 h-16 bg-secondary/20 rounded-sm overflow-hidden flex-shrink-0">
                       <img src={item.product.image} alt={item.product.name} className="w-full h-full object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <h4 className="font-serif text-sm truncate">{item.product.name}</h4>
-                      <p className="text-xs text-muted-foreground">{item.product.weight}</p>
-                      <p className="text-sm text-primary font-medium mt-1">{item.product.price.toFixed(2)} €</p>
+                      <p className="text-xs text-muted-foreground">{item.selectedWeightGrams ? `${item.selectedWeightGrams}g` : item.product.weight}</p>
+                      <p className="text-sm text-primary font-medium mt-1">{item.unitPrice.toFixed(2)} €</p>
                     </div>
                     <div className="flex flex-col items-end gap-2 flex-shrink-0">
-                      <button onClick={() => removeItem(item.product.id)} className="text-muted-foreground hover:text-destructive transition-colors">
+                      <button onClick={() => removeItem(item.id)} className="text-muted-foreground hover:text-destructive transition-colors">
                         <Trash2 className="h-3 w-3" />
                       </button>
                       <div className="flex items-center gap-1">
-                        <button onClick={() => updateQuantity(item.product.id, item.quantity - 1)} className="w-6 h-6 border border-gold/20 rounded-sm flex items-center justify-center text-muted-foreground hover:text-foreground">
+                        <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="w-6 h-6 border border-gold/20 rounded-sm flex items-center justify-center text-muted-foreground hover:text-foreground">
                           <Minus className="h-3 w-3" />
                         </button>
                         <span className="w-6 text-center text-xs">{item.quantity}</span>
-                        <button onClick={() => updateQuantity(item.product.id, item.quantity + 1)} className="w-6 h-6 border border-gold/20 rounded-sm flex items-center justify-center text-muted-foreground hover:text-foreground">
+                        <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="w-6 h-6 border border-gold/20 rounded-sm flex items-center justify-center text-muted-foreground hover:text-foreground">
                           <Plus className="h-3 w-3" />
                         </button>
                       </div>

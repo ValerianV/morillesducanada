@@ -1,6 +1,7 @@
 import product12g from "@/assets/product-12g.png";
 import product30g from "@/assets/product-30g.png";
 import product45g from "@/assets/product-45g.png";
+import productVacuumBag from "@/assets/product-vacuum-bag.png";
 
 export interface Product {
   id: string;
@@ -9,11 +10,16 @@ export interface Product {
   description: string;
   weight: string;
   price: number; // in euros
-  priceId: string; // Stripe price ID
+  priceId?: string; // Stripe price ID for fixed packs
   image: string;
   servings: string;
   inStock: boolean;
   stock: number;
+  variableWeight?: {
+    minGrams: number;
+    maxGrams: number;
+    stepGrams: number;
+  };
 }
 
 export const products: Product[] = [
@@ -56,7 +62,29 @@ export const products: Product[] = [
     inStock: true,
     stock: 50,
   },
+  {
+    id: "morilles-sous-vide",
+    name: "Morilles sous vide",
+    slug: "morilles-sous-vide",
+    description: "Conditionnement sous vide en grands formats. Choix de 100g à 1kg, par paliers de 50g.",
+    weight: "100g à 1kg",
+    price: 45,
+    image: productVacuumBag,
+    servings: "Format pro & passionnés",
+    inStock: true,
+    stock: 50,
+    variableWeight: {
+      minGrams: 100,
+      maxGrams: 1000,
+      stepGrams: 50,
+    },
+  },
 ];
+
+export function getVacuumMorelPrice(weightGrams: number): number {
+  const kiloRate = weightGrams >= 500 ? 400 : 450;
+  return Number(((weightGrams / 1000) * kiloRate).toFixed(2));
+}
 
 export function getProductBySlug(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
