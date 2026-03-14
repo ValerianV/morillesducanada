@@ -15,6 +15,47 @@ const STATUS_LABELS: Record<string, { fr: string; emoji: string }> = {
   confirmed: { fr: "Confirmée", emoji: "✅" },
 };
 
+function buildInvoiceTable(items: any[], totalAmount: number) {
+  if (!Array.isArray(items) || items.length === 0) return "";
+
+  const rows = items
+    .map(
+      (item: any) => `
+      <tr>
+        <td style="padding: 8px 12px; border-bottom: 1px solid #2a2520; color: #e8dcc8; font-size: 13px;">
+          ${item.name || item.product?.name || "Morilles de feu séchées"}
+        </td>
+        <td style="padding: 8px 12px; border-bottom: 1px solid #2a2520; color: #e8dcc8; font-size: 13px; text-align: center;">
+          ${item.quantity || 1}
+        </td>
+        <td style="padding: 8px 12px; border-bottom: 1px solid #2a2520; color: #e8dcc8; font-size: 13px; text-align: right;">
+          ${((item.price || 0) * (item.quantity || 1)).toFixed(2)} €
+        </td>
+      </tr>
+    `
+    )
+    .join("");
+
+  return `
+    <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
+      <thead>
+        <tr style="border-bottom: 2px solid #cc9a2e;">
+          <th style="padding: 8px 12px; text-align: left; font-size: 11px; color: #8a7e6b; text-transform: uppercase; letter-spacing: 0.05em;">Produit</th>
+          <th style="padding: 8px 12px; text-align: center; font-size: 11px; color: #8a7e6b; text-transform: uppercase;">Qté</th>
+          <th style="padding: 8px 12px; text-align: right; font-size: 11px; color: #8a7e6b; text-transform: uppercase;">Total</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2" style="padding: 12px; text-align: right; font-size: 14px; color: #8a7e6b; font-weight: 600;">Total TTC</td>
+          <td style="padding: 12px; text-align: right; font-size: 18px; color: #cc9a2e; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;">${(totalAmount / 100).toFixed(2)} €</td>
+        </tr>
+      </tfoot>
+    </table>
+  `;
+}
+
 function buildOrderEmail(customerName: string, status: string, type: "order" | "preorder", details: string) {
   const statusInfo = STATUS_LABELS[status] || { fr: status, emoji: "📋" };
   const typeLabel = type === "order" ? "commande" : "pré-commande";
@@ -60,7 +101,6 @@ serve(async (req) => {
     const { type, record, old_status } = await req.json();
     if (!record || !type) throw new Error("Missing type or record");
 
-    // Don't send email for pending status or if status hasn't changed
     if (record.status === "pending" || record.status === old_status) {
       return new Response(JSON.stringify({ skipped: true }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -75,12 +115,29 @@ serve(async (req) => {
       customerEmail = record.email;
       customerName = record.customer_name;
       const total = (record.total_amount / 100).toFixed(2);
+      const invoiceNumber = `FAC-${new Date(record.created_at).getFullYear()}-${record.id.substring(0, 8).toUpperCase()}`;
+
       details = `
         <p style="font-size: 14px; color: #e8dcc8;">
           <strong>Commande :</strong> ${record.id.substring(0, 8).toUpperCase()}<br/>
           <strong>Total :</strong> ${total} €
         </p>
       `;
+
+      // Add invoice table for paid status
+      if (record.status === "paid") {
+        details += buildInvoiceTable(record.items || [], record.total_amount || 0);
+        details += `
+          <div style="background: #2a2520; border: 1px solid #cc9a2e33; border-radius: 4px; padding: 16px; margin-top: 16px; text-align: center;">
+            <p style="font-size: 13px; color: #8a7e6b; margin: 0 0 8px;">Facture N° ${invoiceNumber}</p>
+            <p style="font-size: 13px; color: #e8dcc8; margin: 0;">
+              Votre facture est disponible dans votre espace client.<br/>
+              Connectez-vous à votre compte pour la télécharger.
+            </p>
+          </div>
+        `;
+      }
+
       if (record.status === "shipped") {
         details += `<p style="font-size: 14px; color: #e8dcc8;">Votre colis est en route ! Vous recevrez un numéro de suivi séparément.</p>`;
       }
