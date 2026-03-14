@@ -19,6 +19,16 @@ import morilleCharbon from "@/assets/morels/morille-charbon-vegetation.jpg";
 import morilleGrande from "@/assets/morels/morille-grande-alveolee.jpg";
 import morilleChampignons from "@/assets/morels/morille-champignons-oranges.jpg";
 import morilleNoire from "@/assets/morels/morille-noire-pied-arbre.jpg";
+import morilleDoreeCharbonForet from "@/assets/morels/morille-doree-charbon-foret.jpg";
+import morillesGrisesForetPrintemps from "@/assets/morels/morilles-grises-foret-printemps.jpg";
+import morilleSolBruleAiguillesOrange from "@/assets/morels/morille-sol-brule-aiguilles-orange.jpg";
+import morilleVerticaleForetBrulee from "@/assets/morels/morille-verticale-foret-brulee.jpg";
+import morillesNoiresTroncBrule from "@/assets/morels/morilles-noires-tronc-brule.jpg";
+import morilleDoreeSolBruleTronc from "@/assets/morels/morille-doree-sol-brule-tronc.jpg";
+import morilleGriseSousBoisBrule from "@/assets/morels/morille-grise-sous-bois-brule.jpg";
+import morilleNoirePiedBlancAiguilles from "@/assets/morels/morille-noire-pied-blanc-aiguilles.jpg";
+import morilleBrunePiedArbreBrule from "@/assets/morels/morille-brune-pied-arbre-brule.jpg";
+import trioMorillesLumiereSoir from "@/assets/morels/trio-morilles-lumiere-soir.jpg";
 
 export interface GalleryPhoto {
   src: string;
@@ -47,6 +57,16 @@ export const galleryPhotos: GalleryPhoto[] = [
   { src: morilleGrande, alt: "Grande morille de feu à alvéoles profondes en forêt brûlée canadienne", title: "Grande morille alvéolée" },
   { src: morilleChampignons, alt: "Morille sauvage entourée de petits champignons oranges sur sol carbonisé", title: "Morille et champignons" },
   { src: morilleNoire, alt: "Morille noire au pied d'un arbre brûlé en Colombie-Britannique", title: "Morille noire" },
+  { src: morilleDoreeCharbonForet, alt: "Morille dorée isolée sur charbon et mousse dans une forêt brûlée du Canada", title: "Morille dorée sur charbon" },
+  { src: morillesGrisesForetPrintemps, alt: "Morilles grises au ras du sol avec jeunes pousses en forêt boréale", title: "Morilles grises au printemps" },
+  { src: morilleSolBruleAiguillesOrange, alt: "Morille blonde sur sol brûlé avec aiguilles de pin et petits champignons orange", title: "Morille blonde sur aiguilles" },
+  { src: morilleVerticaleForetBrulee, alt: "Morille brune dressée au cœur d'une forêt brûlée en régénération", title: "Morille dressée" },
+  { src: morillesNoiresTroncBrule, alt: "Deux morilles noires près d'un tronc calciné en forêt canadienne", title: "Morilles noires et tronc" },
+  { src: morilleDoreeSolBruleTronc, alt: "Morille dorée poussant entre des troncs brûlés sur tapis d'aiguilles", title: "Morille dorée entre troncs" },
+  { src: morilleGriseSousBoisBrule, alt: "Morille grise en gros plan sur litière de pin dans un sous-bois brûlé", title: "Morille grise en sous-bois" },
+  { src: morilleNoirePiedBlancAiguilles, alt: "Morille noire à pied blanc sur aiguilles de pin et herbes fraîches", title: "Morille noire pied blanc" },
+  { src: morilleBrunePiedArbreBrule, alt: "Morille brune adossée à un arbre brûlé, en lumière naturelle", title: "Morille près de l'écorce" },
+  { src: trioMorillesLumiereSoir, alt: "Trio de morilles dorées au soleil du soir sur sol forestier brûlé", title: "Trio de morilles dorées" },
 ];
 
 /** Returns `count` random photos from the gallery (Fisher-Yates shuffle) */
