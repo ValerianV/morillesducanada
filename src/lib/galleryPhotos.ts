@@ -60,6 +60,12 @@ import clusterMorillesGrisesIncendie from "@/assets/morels/cluster-morilles-gris
 import morilleBruneHerbesHumides from "@/assets/morels/morille-brune-herbes-humides.jpg";
 import duoMorillesBrunesAiguilles from "@/assets/morels/duo-morilles-brunes-aiguilles.jpg";
 import caisseRecolteMorillesSolBrule from "@/assets/morels/caisse-recolte-morilles-sol-brule.jpg";
+import trioMorillesAiguillesPin from "@/assets/morels/trio-morilles-aiguilles-pin.jpg";
+import morilleJeuneMousseSoleil from "@/assets/morels/morille-jeune-mousse-soleil.jpg";
+import groupeMorillesGrisesAiguilles from "@/assets/morels/groupe-morilles-grises-aiguilles.jpg";
+import duoMorillesPlantulePrintemps from "@/assets/morels/duo-morilles-plantule-printemps.jpg";
+import morillesRacinesMousseForet from "@/assets/morels/morilles-racines-mousse-foret.jpg";
+import trioMorillesGrisesVerticales from "@/assets/morels/trio-morilles-grises-verticales.jpg";
 
 export interface GalleryPhoto {
   src: string;
@@ -129,6 +135,12 @@ export const galleryPhotos: GalleryPhoto[] = [
   { src: morilleBruneHerbesHumides, alt: "Morille brune parmi les herbes humides en forêt de conifères", title: "Morille dans les herbes humides" },
   { src: duoMorillesBrunesAiguilles, alt: "Duo de morilles brunes sur tapis d'aiguilles de pin", title: "Duo de morilles brunes" },
   { src: caisseRecolteMorillesSolBrule, alt: "Caisse de récolte pleine de morilles sur sol brûlé en Colombie-Britannique", title: "Caisse de récolte sur terrain" },
+  { src: trioMorillesAiguillesPin, alt: "Trio de morilles aux teintes variées sur aiguilles de pin", title: "Trio sur aiguilles" },
+  { src: morilleJeuneMousseSoleil, alt: "Jeune morille brune sur mousse et micro-végétation en plein soleil", title: "Jeune morille sur mousse" },
+  { src: groupeMorillesGrisesAiguilles, alt: "Groupe dense de morilles grises sur tapis d'aiguilles de pin", title: "Groupe de morilles grises" },
+  { src: duoMorillesPlantulePrintemps, alt: "Deux morilles de feu avec une jeune plantule en arrière-plan", title: "Duo et plantule" },
+  { src: morillesRacinesMousseForet, alt: "Morilles blondes dispersées entre racines et mousse en forêt brûlée", title: "Morilles entre racines" },
+  { src: trioMorillesGrisesVerticales, alt: "Trio de morilles grises dressées sur sol noir post-incendie", title: "Trio grisé dressé" },
 ];
 
 /** Returns `count` random photos from the gallery (Fisher-Yates shuffle) */

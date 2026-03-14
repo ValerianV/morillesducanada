@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { I18nProvider } from "@/i18n/context";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -26,39 +26,65 @@ const Galerie = lazy(() => import("./pages/Galerie"));
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <HelmetProvider>
-    <I18nProvider>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Suspense fallback={<div className="min-h-screen bg-background" />}>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/auth" element={<Auth />} />
-                <Route path="/reset-password" element={<ResetPassword />} />
-                <Route path="/mentions-legales" element={<MentionsLegales />} />
-                <Route path="/cgv" element={<CGV />} />
-                <Route path="/livraison" element={<Livraison />} />
-                <Route path="/recettes" element={<Recettes />} />
-                <Route path="/recettes/:slug" element={<RecetteDetail />} />
-                <Route path="/profil" element={<Profil />} />
-                <Route path="/guide-morilles-de-feu" element={<GuideMorellesDeFeu />} />
-                <Route path="/pre-commande" element={<PreOrder />} />
-                <Route path="/paiement-reussi" element={<PaymentSuccess />} />
-                <Route path="/precommande-confirmee" element={<PreOrderSuccess />} />
-                <Route path="/admin" element={<AdminDashboard />} />
-                <Route path="/galerie" element={<Galerie />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </BrowserRouter>
-        </TooltipProvider>
-      </QueryClientProvider>
-    </I18nProvider>
-  </HelmetProvider>
-);
+const App = () => {
+  useEffect(() => {
+    const isImageTarget = (target: EventTarget | null) => {
+      if (!(target instanceof Element)) return false;
+      return target.tagName === "IMG" || Boolean(target.closest("img"));
+    };
+
+    const handleContextMenu = (event: MouseEvent) => {
+      if (isImageTarget(event.target)) event.preventDefault();
+    };
+
+    const handleDragStart = (event: DragEvent) => {
+      if (isImageTarget(event.target)) event.preventDefault();
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+    document.addEventListener("dragstart", handleDragStart);
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+      document.removeEventListener("dragstart", handleDragStart);
+    };
+  }, []);
+
+  return (
+    <HelmetProvider>
+      <I18nProvider>
+        <QueryClientProvider client={queryClient}>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Suspense fallback={<div className="min-h-screen bg-background" />}>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/auth" element={<Auth />} />
+                  <Route path="/reset-password" element={<ResetPassword />} />
+                  <Route path="/mentions-legales" element={<MentionsLegales />} />
+                  <Route path="/cgv" element={<CGV />} />
+                  <Route path="/livraison" element={<Livraison />} />
+                  <Route path="/recettes" element={<Recettes />} />
+                  <Route path="/recettes/:slug" element={<RecetteDetail />} />
+                  <Route path="/profil" element={<Profil />} />
+                  <Route path="/guide-morilles-de-feu" element={<GuideMorellesDeFeu />} />
+                  <Route path="/pre-commande" element={<PreOrder />} />
+                  <Route path="/paiement-reussi" element={<PaymentSuccess />} />
+                  <Route path="/precommande-confirmee" element={<PreOrderSuccess />} />
+                  <Route path="/admin" element={<AdminDashboard />} />
+                  <Route path="/galerie" element={<Galerie />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
+            </BrowserRouter>
+          </TooltipProvider>
+        </QueryClientProvider>
+      </I18nProvider>
+    </HelmetProvider>
+  );
+};
 
 export default App;
+
