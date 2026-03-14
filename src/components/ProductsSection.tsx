@@ -1,7 +1,8 @@
 import { ShoppingCart } from "lucide-react";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
-import { products } from "@/lib/products";
+import { useState } from "react";
+import { products, getVacuumMorelPrice } from "@/lib/products";
 import { useCartStore } from "@/stores/cartStore";
 import ScrollReveal from "@/components/ScrollReveal";
 import { useI18n } from "@/i18n/context";
@@ -9,9 +10,21 @@ import { useI18n } from "@/i18n/context";
 const ProductsSection = () => {
   const addItem = useCartStore((state) => state.addItem);
   const { t } = useI18n();
+  const [vacuumWeight, setVacuumWeight] = useState(100);
 
   const handleAddToCart = (product: (typeof products)[0], e: React.MouseEvent) => {
     e.stopPropagation();
+
+    if (product.id === "morilles-sous-vide") {
+      const price = getVacuumMorelPrice(vacuumWeight);
+      addItem(product, 1, { selectedWeightGrams: vacuumWeight, unitPriceOverride: price });
+      toast.success(t("products.addedToCart"), {
+        description: `${product.name} · ${vacuumWeight}g`,
+        position: "top-center",
+      });
+      return;
+    }
+
     addItem(product);
     toast.success(t("products.addedToCart"), { description: product.name, position: "top-center" });
   };
@@ -30,42 +43,65 @@ const ProductsSection = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {products.map((product, i) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.15, ease: [0.25, 0.4, 0.25, 1] }}
-              whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              className="relative border border-gold/15 rounded-sm bg-background/50 hover:border-gold/40 hover:shadow-gold transition-all duration-500 group overflow-hidden"
-            >
-              <div className="aspect-square overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="font-serif text-lg mb-1">{product.name}</h3>
-                <p className="text-xs text-muted-foreground mb-2">{product.servings}</p>
-                <p className="font-serif text-2xl text-gradient-gold mb-3">{product.price.toFixed(2)} €</p>
-                <p className="text-sm text-muted-foreground font-light leading-relaxed mb-4 line-clamp-2">{product.description}</p>
-                <button
-                  onClick={(e) => handleAddToCart(product, e)}
-                  disabled={!product.inStock}
-                  className="w-full py-3 bg-primary text-primary-foreground font-medium tracking-widest uppercase text-xs hover:bg-gold-light transition-colors duration-300 rounded-sm disabled:opacity-50 flex items-center justify-center gap-2"
-                >
-                  <ShoppingCart className="w-4 h-4" />
-                  {t("products.addToCart")}
-                </button>
-              </div>
-            </motion.div>
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+          {products.map((product, i) => {
+            const isVacuum = product.id === "morilles-sous-vide";
+            const currentVacuumPrice = isVacuum ? getVacuumMorelPrice(vacuumWeight) : product.price;
+
+            return (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: i * 0.15, ease: [0.25, 0.4, 0.25, 1] }}
+                whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                className="relative border border-gold/15 rounded-sm bg-background/50 hover:border-gold/40 hover:shadow-gold transition-all duration-500 group overflow-hidden"
+              >
+                <div className="aspect-square overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-serif text-lg mb-1">{product.name}</h3>
+                  <p className="text-xs text-muted-foreground mb-2">{product.servings}</p>
+                  <p className="font-serif text-2xl text-gradient-gold mb-3">{currentVacuumPrice.toFixed(2)} €</p>
+                  <p className="text-sm text-muted-foreground font-light leading-relaxed mb-4 line-clamp-2">{product.description}</p>
+
+                  {isVacuum && (
+                    <div className="mb-4">
+                      <label className="block text-xs text-muted-foreground mb-2">Quantité (100g à 1kg, pas de 50g)</label>
+                      <select
+                        value={vacuumWeight}
+                        onChange={(e) => setVacuumWeight(Number(e.target.value))}
+                        className="w-full bg-secondary text-secondary-foreground border border-border rounded-sm px-3 py-2 text-sm"
+                      >
+                        {Array.from({ length: 19 }, (_, index) => 100 + index * 50).map((grams) => (
+                          <option key={grams} value={grams}>
+                            {grams}g · {getVacuumMorelPrice(grams).toFixed(2)} €
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
+
+                  <button
+                    onClick={(e) => handleAddToCart(product, e)}
+                    disabled={!product.inStock}
+                    className="w-full py-3 bg-primary text-primary-foreground font-medium tracking-widest uppercase text-xs hover:bg-gold-light transition-colors duration-300 rounded-sm disabled:opacity-50 flex items-center justify-center gap-2"
+                  >
+                    <ShoppingCart className="w-4 h-4" />
+                    {t("products.addToCart")}
+                  </button>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         <ScrollReveal delay={0.3}>
