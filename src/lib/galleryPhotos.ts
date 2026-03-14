@@ -59,6 +59,7 @@ import morilleBruneCharbonMacro from "@/assets/morels/morille-brune-charbon-macr
 import clusterMorillesGrisesIncendie from "@/assets/morels/cluster-morilles-grises-incendie.jpg";
 import morilleBruneHerbesHumides from "@/assets/morels/morille-brune-herbes-humides.jpg";
 import duoMorillesBrunesAiguilles from "@/assets/morels/duo-morilles-brunes-aiguilles.jpg";
+import caisseRecolteMorillesSolBrule from "@/assets/morels/caisse-recolte-morilles-sol-brule.jpg";
 
 export interface GalleryPhoto {
   src: string;
@@ -117,6 +118,17 @@ export const galleryPhotos: GalleryPhoto[] = [
   { src: duoMorillesJeunesSousSoleil, alt: "Duo de jeunes morilles au soleil sur sol post-incendie", title: "Duo de jeunes morilles" },
   { src: duoMorillesGrisesPoussesVertes, alt: "Deux morilles grises avec pousses vertes sur cendre humide", title: "Morilles et pousses vertes" },
   { src: groupeMorillesGrisesSolBrule, alt: "Groupe de morilles grises sur sol brûlé et minéral", title: "Groupe de morilles grises" },
+  { src: morilleNoireSoloLitierePin, alt: "Morille noire solitaire sur litière de pin en Colombie-Britannique", title: "Morille noire solitaire" },
+  { src: groupeMorillesNoiresSoleil, alt: "Groupe de morilles noires au soleil dans une forêt brûlée", title: "Morilles noires au soleil" },
+  { src: duoMorillesGrisesCharbon, alt: "Duo de morilles grises sur charbon et aiguilles", title: "Duo de morilles grises" },
+  { src: morilleGriseJeunePousse, alt: "Jeune morille grise émergeant du sol brûlé", title: "Jeune morille grise" },
+  { src: morilleGriseBrouillardForet, alt: "Morille grise dans le brouillard d'une forêt brûlée au Canada", title: "Morille dans le brouillard" },
+  { src: morilleBruneSolNoir, alt: "Morille brune sur sol noir carbonisé en forêt boréale", title: "Morille sur sol noir" },
+  { src: morilleBruneCharbonMacro, alt: "Gros plan macro d'une morille brune sur charbon de bois", title: "Macro morille brune" },
+  { src: clusterMorillesGrisesIncendie, alt: "Cluster de morilles grises après incendie forestier", title: "Cluster post-incendie" },
+  { src: morilleBruneHerbesHumides, alt: "Morille brune parmi les herbes humides en forêt de conifères", title: "Morille dans les herbes humides" },
+  { src: duoMorillesBrunesAiguilles, alt: "Duo de morilles brunes sur tapis d'aiguilles de pin", title: "Duo de morilles brunes" },
+  { src: caisseRecolteMorillesSolBrule, alt: "Caisse de récolte pleine de morilles sur sol brûlé en Colombie-Britannique", title: "Caisse de récolte sur terrain" },
 ];
 
 /** Returns `count` random photos from the gallery (Fisher-Yates shuffle) */
