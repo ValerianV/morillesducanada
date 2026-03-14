@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Camera, Loader2, LogOut, Save, User, Package, Mail } from "lucide-react";
+import { Camera, Loader2, LogOut, Save, User, Package, Mail, FileText, ExternalLink } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
@@ -17,15 +17,36 @@ interface Profile {
   updated_at: string;
 }
 
+interface Order {
+  id: string;
+  created_at: string;
+  status: string;
+  total_amount: number;
+  items: any;
+  customer_name: string;
+  email: string;
+}
+
+const STATUS_LABELS: Record<string, { label: string; color: string }> = {
+  pending: { label: "En attente", color: "text-yellow-500" },
+  paid: { label: "Payée", color: "text-green-500" },
+  shipped: { label: "Expédiée", color: "text-blue-500" },
+  delivered: { label: "Livrée", color: "text-primary" },
+  cancelled: { label: "Annulée", color: "text-destructive" },
+};
+
 const Profil = () => {
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
+  const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
+  const [ordersLoading, setOrdersLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [displayName, setDisplayName] = useState("");
+  const [downloadingInvoice, setDownloadingInvoice] = useState<string | null>(null);
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -44,6 +65,7 @@ const Profil = () => {
   useEffect(() => {
     if (!session?.user?.id) return;
     fetchProfile();
+    fetchOrders();
   }, [session?.user?.id]);
 
   const fetchProfile = async () => {
@@ -62,6 +84,45 @@ const Profil = () => {
       setDisplayName(data.display_name || "");
     }
     setLoading(false);
+  };
+
+  const fetchOrders = async () => {
+    if (!session?.user?.id) return;
+    setOrdersLoading(true);
+    const { data, error } = await supabase
+      .from("orders")
+      .select("id, created_at, status, total_amount, items, customer_name, email")
+      .eq("user_id", session.user.id)
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.error("Error fetching orders:", error);
+    } else {
+      setOrders(data || []);
+    }
+    setOrdersLoading(false);
+  };
+
+  const handleDownloadInvoice = async (orderId: string) => {
+    setDownloadingInvoice(orderId);
+    try {
+      const { data, error } = await supabase.functions.invoke("generate-invoice", {
+        body: { orderId },
+      });
+
+      if (error) throw error;
+
+      // data is HTML string - open in new tab
+      const blob = new Blob([data], { type: "text/html" });
+      const url = URL.createObjectURL(blob);
+      window.open(url, "_blank");
+      setTimeout(() => URL.revokeObjectURL(url), 10000);
+    } catch (err) {
+      console.error("Invoice error:", err);
+      toast.error("Impossible de générer la facture");
+    } finally {
+      setDownloadingInvoice(null);
+    }
   };
 
   const handleSaveProfile = async () => {
@@ -98,7 +159,6 @@ const Profil = () => {
     const ext = file.name.split(".").pop();
     const filePath = `${session.user.id}/avatar.${ext}`;
 
-    // Delete old avatar if exists
     await supabase.storage.from("avatars").remove([filePath]);
 
     const { error: uploadError } = await supabase.storage
@@ -270,15 +330,86 @@ const Profil = () => {
                   Historique de commandes
                 </h2>
               </div>
-              <div className="text-center py-10">
-                <Package className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
-                <p className="text-sm text-muted-foreground font-light mb-2">
-                  Vos commandes apparaîtront ici
-                </p>
-                <p className="text-xs text-muted-foreground/60 font-light max-w-sm mx-auto">
-                  Un email de confirmation avec le suivi vous est envoyé à chaque commande. Vous retrouverez ici l'historique de vos achats.
-                </p>
-              </div>
+              {ordersLoading ? (
+                <div className="flex justify-center py-10">
+                  <Loader2 className="w-6 h-6 animate-spin text-primary" />
+                </div>
+              ) : orders.length === 0 ? (
+                <div className="text-center py-10">
+                  <Package className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
+                  <p className="text-sm text-muted-foreground font-light mb-2">
+                    Aucune commande pour le moment
+                  </p>
+                  <p className="text-xs text-muted-foreground/60 font-light max-w-sm mx-auto">
+                    Vos commandes et factures apparaîtront ici après votre premier achat.
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {orders.map((order) => {
+                    const statusInfo = STATUS_LABELS[order.status] || { label: order.status, color: "text-muted-foreground" };
+                    const items = Array.isArray(order.items) ? order.items : [];
+                    const canDownloadInvoice = ["paid", "shipped", "delivered"].includes(order.status);
+
+                    return (
+                      <div
+                        key={order.id}
+                        className="border border-border/50 rounded-sm p-4 hover:border-primary/20 transition-colors"
+                      >
+                        <div className="flex items-start justify-between mb-3">
+                          <div>
+                            <p className="text-xs text-muted-foreground font-light">
+                              {new Date(order.created_at).toLocaleDateString("fr-FR", {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                              })}
+                            </p>
+                            <p className="text-sm text-foreground mt-1">
+                              Commande #{order.id.substring(0, 8).toUpperCase()}
+                            </p>
+                          </div>
+                          <span className={`text-xs font-medium ${statusInfo.color}`}>
+                            {statusInfo.label}
+                          </span>
+                        </div>
+
+                        {/* Items list */}
+                        <div className="space-y-1 mb-3">
+                          {items.map((item: any, idx: number) => (
+                            <p key={idx} className="text-xs text-muted-foreground font-light">
+                              {item.quantity || 1}× {item.name || item.product?.name || "Morilles"}
+                            </p>
+                          ))}
+                        </div>
+
+                        <div className="flex items-center justify-between pt-3 border-t border-border/30">
+                          <p className="text-sm font-medium text-primary">
+                            {(order.total_amount / 100).toFixed(2)} €
+                          </p>
+                          {canDownloadInvoice && (
+                            <motion.button
+                              onClick={() => handleDownloadInvoice(order.id)}
+                              disabled={downloadingInvoice === order.id}
+                              className="flex items-center gap-1.5 text-xs text-primary hover:text-primary/80 transition-colors disabled:opacity-50"
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                            >
+                              {downloadingInvoice === order.id ? (
+                                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                              ) : (
+                                <FileText className="w-3.5 h-3.5" />
+                              )}
+                              Facture
+                              <ExternalLink className="w-3 h-3" />
+                            </motion.button>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </ScrollReveal>
 
