@@ -39,6 +39,16 @@ import duoMorillesSolHumideBrule from "@/assets/morels/duo-morilles-sol-humide-b
 import duoMorillesAiguillesBois from "@/assets/morels/duo-morilles-aiguilles-bois.jpg";
 import morilleBruneVegetationPrintemps from "@/assets/morels/morille-brune-vegetation-printemps.jpg";
 import morilleNoireJeunePluie from "@/assets/morels/morille-noire-jeune-pluie.jpg";
+import morilleBlancheAiguillesPin from "@/assets/morels/morille-blanche-aiguilles-pin.jpg";
+import morillePommePinSolBrule from "@/assets/morels/morille-pomme-pin-sol-brule.jpg";
+import trioMorillesGrisesCendre from "@/assets/morels/trio-morilles-grises-cendre.jpg";
+import morilleGriseBoisCalcine from "@/assets/morels/morille-grise-bois-calcine.jpg";
+import duoMorillesGrisesSolCharbonne from "@/assets/morels/duo-morilles-grises-sol-charbonne.jpg";
+import grosPlanAlveolesMorille from "@/assets/morels/gros-plan-alveoles-morille.jpg";
+import groupeMorillesNoiresTranslucides from "@/assets/morels/groupe-morilles-noires-translucides.jpg";
+import duoMorillesJeunesSousSoleil from "@/assets/morels/duo-morilles-jeunes-sous-soleil.jpg";
+import duoMorillesGrisesPoussesVertes from "@/assets/morels/duo-morilles-grises-pousses-vertes.jpg";
+import groupeMorillesGrisesSolBrule from "@/assets/morels/groupe-morilles-grises-sol-brule.jpg";
 
 export interface GalleryPhoto {
   src: string;
@@ -87,6 +97,16 @@ export const galleryPhotos: GalleryPhoto[] = [
   { src: duoMorillesAiguillesBois, alt: "Duo de morilles sur aiguilles de pin près d'un bois mort", title: "Duo près du bois mort" },
   { src: morilleBruneVegetationPrintemps, alt: "Morille brune entourée de végétation printanière en forêt boréale", title: "Morille et végétation" },
   { src: morilleNoireJeunePluie, alt: "Jeune morille noire sur tapis d'aiguilles dans une forêt humide", title: "Jeune morille noire" },
+  { src: morilleBlancheAiguillesPin, alt: "Morille très claire sur aiguilles de pin dans une forêt de conifères", title: "Morille claire sur aiguilles" },
+  { src: morillePommePinSolBrule, alt: "Morille brune entourée de pommes de pin sur sol brûlé", title: "Morille et pommes de pin" },
+  { src: trioMorillesGrisesCendre, alt: "Trio de morilles grises émergent d'un sol cendré après incendie", title: "Trio gris sur cendre" },
+  { src: morilleGriseBoisCalcine, alt: "Morille grise près d'un morceau de bois calciné sur terre noire", title: "Morille et bois calciné" },
+  { src: duoMorillesGrisesSolCharbonne, alt: "Deux morilles grises sur sol charbonné avec jeunes pousses", title: "Duo de morilles grises" },
+  { src: grosPlanAlveolesMorille, alt: "Gros plan macro sur les alvéoles d'une morille sauvage", title: "Macro alvéoles" },
+  { src: groupeMorillesNoiresTranslucides, alt: "Groupe de morilles noires translucides en forêt brûlée", title: "Morilles noires translucides" },
+  { src: duoMorillesJeunesSousSoleil, alt: "Duo de jeunes morilles au soleil sur sol post-incendie", title: "Duo de jeunes morilles" },
+  { src: duoMorillesGrisesPoussesVertes, alt: "Deux morilles grises avec pousses vertes sur cendre humide", title: "Morilles et pousses vertes" },
+  { src: groupeMorillesGrisesSolBrule, alt: "Groupe de morilles grises sur sol brûlé et minéral", title: "Groupe de morilles grises" },
 ];
 
 /** Returns `count` random photos from the gallery (Fisher-Yates shuffle) */
