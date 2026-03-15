@@ -30,8 +30,8 @@ const OriginSection = () => {
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
           <ScrollReveal direction="left" delay={0.1}>
             <div className="space-y-4">
-              <div className="relative rounded-sm overflow-hidden shadow-gold aspect-video">
-                <iframe src="https://www.youtube.com/embed/4ogERBVLPmo?autoplay=1&mute=1&loop=1&playlist=4ogERBVLPmo&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3" title="British Columbia burned mountain landscape" className="absolute inset-0 w-full h-full pointer-events-none" style={{ border: "none" }} allow="autoplay; encrypted-media" loading="lazy" />
+              <div className="relative rounded-sm overflow-hidden shadow-gold aspect-[3/4] max-h-[420px]">
+                <img src={valerianPortrait} alt="Valérian, cueilleur de morilles au Canada" loading="lazy" className="w-full h-full object-cover object-top" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
               </div>
               <div className="grid grid-cols-2 gap-3 overflow-hidden">
