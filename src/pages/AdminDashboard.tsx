@@ -183,10 +183,10 @@ const AdminDashboard = () => {
           {/* Tabs + filter */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
             <div className="flex gap-2">
-              {(["orders", "preorders"] as const).map((t) => (
+              {(["orders", "preorders", "reviews"] as const).map((t) => (
                 <button key={t} onClick={() => { setTab(t); setStatusFilter("all"); }}
                   className={`px-4 py-2 text-sm tracking-wider uppercase rounded-sm transition-colors ${tab === t ? "bg-primary text-primary-foreground" : "border border-gold/20 text-muted-foreground hover:text-primary"}`}
-                >{t === "orders" ? "Commandes" : "Pré-commandes"}</button>
+                >{t === "orders" ? "Commandes" : t === "preorders" ? "Pré-commandes" : "Avis"}</button>
               ))}
             </div>
             <div className="flex items-center gap-3">
