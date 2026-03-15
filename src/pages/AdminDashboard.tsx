@@ -31,6 +31,15 @@ type PreOrder = {
   created_at: string;
 };
 
+type Review = {
+  id: string;
+  first_name: string;
+  rating: number;
+  comment: string;
+  approved: boolean;
+  created_at: string;
+};
+
 const STATUS_OPTIONS = ["pending", "paid", "shipped", "delivered", "cancelled"];
 const PRE_STATUS_OPTIONS = ["pending", "paid", "confirmed", "delivered", "cancelled"];
 
