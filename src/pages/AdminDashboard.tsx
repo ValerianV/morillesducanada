@@ -57,9 +57,10 @@ function exportCsv(filename: string, headers: string[], rows: string[][]) {
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
-  const [tab, setTab] = useState<"orders" | "preorders">("orders");
+  const [tab, setTab] = useState<"orders" | "preorders" | "reviews">("orders");
   const [orders, setOrders] = useState<Order[]>([]);
   const [preOrders, setPreOrders] = useState<PreOrder[]>([]);
+  const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState("all");
 
