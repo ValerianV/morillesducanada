@@ -245,7 +245,7 @@ const AdminDashboard = () => {
                 </tbody>
               </table>
             </div>
-          ) : (
+          ) : tab === "preorders" ? (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
@@ -280,6 +280,51 @@ const AdminDashboard = () => {
                           className="px-2 py-1 bg-secondary/30 border border-gold/15 rounded-sm text-xs focus:outline-none focus:border-primary">
                           {PRE_STATUS_OPTIONS.map((s) => <option key={s} value={s}>{s}</option>)}
                         </select>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            /* Reviews tab */
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-gold/15 text-left text-xs text-muted-foreground uppercase tracking-wider">
+                    <th className="py-3 px-3">Date</th>
+                    <th className="py-3 px-3">Prénom</th>
+                    <th className="py-3 px-3">Note</th>
+                    <th className="py-3 px-3">Commentaire</th>
+                    <th className="py-3 px-3">Statut</th>
+                    <th className="py-3 px-3">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviews.length === 0 ? (
+                    <tr><td colSpan={6} className="py-12 text-center text-muted-foreground font-light">Aucun avis</td></tr>
+                  ) : reviews.map((review) => (
+                    <tr key={review.id} className="border-b border-gold/10 hover:bg-secondary/10">
+                      <td className="py-3 px-3 text-muted-foreground">{new Date(review.created_at).toLocaleDateString("fr-FR")}</td>
+                      <td className="py-3 px-3 font-medium">{review.first_name}</td>
+                      <td className="py-3 px-3 text-primary">{"★".repeat(review.rating)}{"☆".repeat(5 - review.rating)}</td>
+                      <td className="py-3 px-3 text-muted-foreground max-w-xs truncate">{review.comment}</td>
+                      <td className="py-3 px-3">
+                        <span className={`px-2 py-0.5 rounded text-xs font-medium ${review.approved ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400"}`}>
+                          {review.approved ? "Publié" : "Masqué"}
+                        </span>
+                      </td>
+                      <td className="py-3 px-3">
+                        <div className="flex gap-2">
+                          <button onClick={() => toggleReviewApproval(review.id, review.approved)}
+                            className="px-2 py-1 border border-gold/15 rounded-sm text-xs hover:border-primary hover:text-primary transition-colors">
+                            {review.approved ? "Masquer" : "Publier"}
+                          </button>
+                          <button onClick={() => { if (confirm("Supprimer cet avis ?")) deleteReview(review.id); }}
+                            className="px-2 py-1 border border-red-500/30 rounded-sm text-xs text-red-400 hover:border-red-500 hover:text-red-300 transition-colors">
+                            Supprimer
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}
