@@ -100,6 +100,16 @@ const AdminDashboard = () => {
     setPreOrders((prev) => prev.map((o) => (o.id === id ? { ...o, status } : o)));
   }
 
+  async function deleteReview(id: string) {
+    await supabase.from("reviews").delete().eq("id", id);
+    setReviews((prev) => prev.filter((r) => r.id !== id));
+  }
+
+  async function toggleReviewApproval(id: string, approved: boolean) {
+    await supabase.from("reviews").update({ approved: !approved }).eq("id", id);
+    setReviews((prev) => prev.map((r) => (r.id === id ? { ...r, approved: !approved } : r)));
+  }
+
   const filteredOrders = statusFilter === "all" ? orders : orders.filter((o) => o.status === statusFilter);
   const filteredPreOrders = statusFilter === "all" ? preOrders : preOrders.filter((o) => o.status === statusFilter);
 
