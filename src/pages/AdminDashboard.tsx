@@ -79,12 +79,14 @@ const AdminDashboard = () => {
 
   async function fetchData() {
     setLoading(true);
-    const [ordersRes, preOrdersRes] = await Promise.all([
+    const [ordersRes, preOrdersRes, reviewsRes] = await Promise.all([
       supabase.from("orders").select("*").order("created_at", { ascending: false }),
       supabase.from("pre_orders").select("*").order("created_at", { ascending: false }),
+      supabase.from("reviews").select("*").order("created_at", { ascending: false }),
     ]);
     if (ordersRes.data) setOrders(ordersRes.data as Order[]);
     if (preOrdersRes.data) setPreOrders(preOrdersRes.data as PreOrder[]);
+    if (reviewsRes.data) setReviews(reviewsRes.data as Review[]);
     setLoading(false);
   }
 
