@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import valerianPortrait from "@/assets/valerian-portrait.png";
 import morelOverhead from "@/assets/morels/morels-overhead-needles.jpg";
 import morelBurnedLog from "@/assets/morels/morel-burned-log.jpg";
 import ScrollReveal from "@/components/ScrollReveal";
