@@ -12,6 +12,7 @@ const ProcessSection = lazy(() => import("@/components/ProcessSection"));
 const GallerySection = lazy(() => import("@/components/GallerySection"));
 const ProfessionalSection = lazy(() => import("@/components/ProfessionalSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
+const ReviewsSection = lazy(() => import("@/components/ReviewsSection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
 const FloatingCTA = lazy(() => import("@/components/FloatingCTA"));
 
@@ -31,6 +32,7 @@ const Index = () => {
           <GallerySection />
           <ProfessionalSection />
           <FAQSection />
+          <ReviewsSection />
           <ContactSection />
         </Suspense>
       </main>

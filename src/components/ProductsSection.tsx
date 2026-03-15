@@ -81,7 +81,7 @@ const ProductsSection = () => {
                         onChange={(e) => setVacuumWeight(Number(e.target.value))}
                         className="w-full bg-secondary text-secondary-foreground border border-border rounded-sm px-3 py-2 text-sm"
                       >
-                        {Array.from({ length: 19 }, (_, index) => 100 + index * 50).map((grams) => (
+                        {Array.from({ length: 19 }, (_, index) => 100 + index * 50).filter((g) => g !== 450).map((grams) => (
                           <option key={grams} value={grams}>
                             {grams}g · {getVacuumMorelPrice(grams).toFixed(2)} €
                           </option>

@@ -38,7 +38,7 @@ export const fr = {
     addToCart: "Ajouter au panier",
     addedToCart: "Ajouté au panier",
     noProducts: "Aucun produit disponible pour le moment.",
-    bulkCta: "Quantités supérieures à 200g · Demander un devis",
+    bulkCta: "Quantités supérieures à 1Kg · Demander un devis",
   },
   trust: {
     wild: "Cueillette 100% sauvage",

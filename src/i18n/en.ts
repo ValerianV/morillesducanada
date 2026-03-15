@@ -38,7 +38,7 @@ export const en = {
     addToCart: "Add to cart",
     addedToCart: "Added to cart",
     noProducts: "No products available at this time.",
-    bulkCta: "Over 200g · Request a quote",
+    bulkCta: "Over 1Kg · Request a quote",
   },
   trust: {
     wild: "100% wild harvest",

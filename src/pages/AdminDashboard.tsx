@@ -31,6 +31,15 @@ type PreOrder = {
   created_at: string;
 };
 
+type Review = {
+  id: string;
+  first_name: string;
+  rating: number;
+  comment: string;
+  approved: boolean;
+  created_at: string;
+};
+
 const STATUS_OPTIONS = ["pending", "paid", "shipped", "delivered", "cancelled"];
 const PRE_STATUS_OPTIONS = ["pending", "paid", "confirmed", "delivered", "cancelled"];
 
@@ -48,9 +57,10 @@ function exportCsv(filename: string, headers: string[], rows: string[][]) {
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
-  const [tab, setTab] = useState<"orders" | "preorders">("orders");
+  const [tab, setTab] = useState<"orders" | "preorders" | "reviews">("orders");
   const [orders, setOrders] = useState<Order[]>([]);
   const [preOrders, setPreOrders] = useState<PreOrder[]>([]);
+  const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState("all");
 
@@ -69,12 +79,14 @@ const AdminDashboard = () => {
 
   async function fetchData() {
     setLoading(true);
-    const [ordersRes, preOrdersRes] = await Promise.all([
+    const [ordersRes, preOrdersRes, reviewsRes] = await Promise.all([
       supabase.from("orders").select("*").order("created_at", { ascending: false }),
       supabase.from("pre_orders").select("*").order("created_at", { ascending: false }),
+      supabase.from("reviews").select("*").order("created_at", { ascending: false }),
     ]);
     if (ordersRes.data) setOrders(ordersRes.data as Order[]);
     if (preOrdersRes.data) setPreOrders(preOrdersRes.data as PreOrder[]);
+    if (reviewsRes.data) setReviews(reviewsRes.data as Review[]);
     setLoading(false);
   }
 
@@ -86,6 +98,16 @@ const AdminDashboard = () => {
   async function updatePreOrderStatus(id: string, status: string) {
     await supabase.from("pre_orders").update({ status, updated_at: new Date().toISOString() }).eq("id", id);
     setPreOrders((prev) => prev.map((o) => (o.id === id ? { ...o, status } : o)));
+  }
+
+  async function deleteReview(id: string) {
+    await supabase.from("reviews").delete().eq("id", id);
+    setReviews((prev) => prev.filter((r) => r.id !== id));
+  }
+
+  async function toggleReviewApproval(id: string, approved: boolean) {
+    await supabase.from("reviews").update({ approved: !approved }).eq("id", id);
+    setReviews((prev) => prev.map((r) => (r.id === id ? { ...r, approved: !approved } : r)));
   }
 
   const filteredOrders = statusFilter === "all" ? orders : orders.filter((o) => o.status === statusFilter);
@@ -161,12 +183,13 @@ const AdminDashboard = () => {
           {/* Tabs + filter */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
             <div className="flex gap-2">
-              {(["orders", "preorders"] as const).map((t) => (
+              {(["orders", "preorders", "reviews"] as const).map((t) => (
                 <button key={t} onClick={() => { setTab(t); setStatusFilter("all"); }}
                   className={`px-4 py-2 text-sm tracking-wider uppercase rounded-sm transition-colors ${tab === t ? "bg-primary text-primary-foreground" : "border border-gold/20 text-muted-foreground hover:text-primary"}`}
-                >{t === "orders" ? "Commandes" : "Pré-commandes"}</button>
+                >{t === "orders" ? "Commandes" : t === "preorders" ? "Pré-commandes" : "Avis"}</button>
               ))}
             </div>
+            {tab !== "reviews" && (
             <div className="flex items-center gap-3">
               <select
                 value={statusFilter}
@@ -183,6 +206,7 @@ const AdminDashboard = () => {
                 <Download className="w-4 h-4" /> CSV
               </button>
             </div>
+            )}
           </div>
 
           {loading ? (
@@ -221,7 +245,7 @@ const AdminDashboard = () => {
                 </tbody>
               </table>
             </div>
-          ) : (
+          ) : tab === "preorders" ? (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
@@ -256,6 +280,51 @@ const AdminDashboard = () => {
                           className="px-2 py-1 bg-secondary/30 border border-gold/15 rounded-sm text-xs focus:outline-none focus:border-primary">
                           {PRE_STATUS_OPTIONS.map((s) => <option key={s} value={s}>{s}</option>)}
                         </select>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            /* Reviews tab */
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-gold/15 text-left text-xs text-muted-foreground uppercase tracking-wider">
+                    <th className="py-3 px-3">Date</th>
+                    <th className="py-3 px-3">Prénom</th>
+                    <th className="py-3 px-3">Note</th>
+                    <th className="py-3 px-3">Commentaire</th>
+                    <th className="py-3 px-3">Statut</th>
+                    <th className="py-3 px-3">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviews.length === 0 ? (
+                    <tr><td colSpan={6} className="py-12 text-center text-muted-foreground font-light">Aucun avis</td></tr>
+                  ) : reviews.map((review) => (
+                    <tr key={review.id} className="border-b border-gold/10 hover:bg-secondary/10">
+                      <td className="py-3 px-3 text-muted-foreground">{new Date(review.created_at).toLocaleDateString("fr-FR")}</td>
+                      <td className="py-3 px-3 font-medium">{review.first_name}</td>
+                      <td className="py-3 px-3 text-primary">{"★".repeat(review.rating)}{"☆".repeat(5 - review.rating)}</td>
+                      <td className="py-3 px-3 text-muted-foreground max-w-xs truncate">{review.comment}</td>
+                      <td className="py-3 px-3">
+                        <span className={`px-2 py-0.5 rounded text-xs font-medium ${review.approved ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400"}`}>
+                          {review.approved ? "Publié" : "Masqué"}
+                        </span>
+                      </td>
+                      <td className="py-3 px-3">
+                        <div className="flex gap-2">
+                          <button onClick={() => toggleReviewApproval(review.id, review.approved)}
+                            className="px-2 py-1 border border-gold/15 rounded-sm text-xs hover:border-primary hover:text-primary transition-colors">
+                            {review.approved ? "Masquer" : "Publier"}
+                          </button>
+                          <button onClick={() => { if (confirm("Supprimer cet avis ?")) deleteReview(review.id); }}
+                            className="px-2 py-1 border border-red-500/30 rounded-sm text-xs text-red-400 hover:border-red-500 hover:text-red-300 transition-colors">
+                            Supprimer
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}
