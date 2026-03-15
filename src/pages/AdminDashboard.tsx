@@ -189,6 +189,7 @@ const AdminDashboard = () => {
                 >{t === "orders" ? "Commandes" : t === "preorders" ? "Pré-commandes" : "Avis"}</button>
               ))}
             </div>
+            {tab !== "reviews" && (
             <div className="flex items-center gap-3">
               <select
                 value={statusFilter}
@@ -205,6 +206,7 @@ const AdminDashboard = () => {
                 <Download className="w-4 h-4" /> CSV
               </button>
             </div>
+            )}
           </div>
 
           {loading ? (
