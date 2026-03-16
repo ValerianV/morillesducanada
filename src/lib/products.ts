@@ -9,8 +9,8 @@ export interface Product {
   slug: string;
   description: string;
   weight: string;
-  price: number; // in euros
-  priceId?: string; // Stripe price ID for fixed packs
+  price: number;
+  priceId?: string;
   image: string;
   servings: string;
   inStock: boolean;
@@ -27,7 +27,7 @@ export const products: Product[] = [
     id: "morilles-12g",
     name: "Découverte 12g",
     slug: "decouverte-12g",
-    description: "Sachet de 12g de morilles de feu séchées. Idéal pour découvrir nos morilles sauvages du Canada. Parfait pour 2 personnes.",
+    description: "Pot de 12g de morilles de feu séchées. Idéal pour découvrir nos morilles sauvages du Canada. Parfait pour 2 personnes.",
     weight: "12g",
     price: 10,
     priceId: "price_1TAc73EQBCcpAKNIN0IPxabl",
@@ -40,7 +40,7 @@ export const products: Product[] = [
     id: "morilles-30g",
     name: "Classique 30g",
     slug: "classique-30g",
-    description: "Sachet de 30g de morilles de feu séchées. Le format idéal pour un repas entre amis. Parfait pour 4-6 personnes.",
+    description: "Pot de 30g de morilles de feu séchées. Le format idéal pour un repas entre amis. Parfait pour 4-6 personnes.",
     weight: "30g",
     price: 20,
     priceId: "price_1TAc7PEQBCcpAKNIjfQGkL1a",
@@ -66,7 +66,7 @@ export const products: Product[] = [
     id: "morilles-sous-vide",
     name: "Morilles sous vide",
     slug: "morilles-sous-vide",
-    description: "Conditionnement sous vide en grands formats. Choix de 100g à 1kg, par paliers de 50g.",
+    description: "Conditionnement sous vide en grands formats. De 100g à 1kg.",
     weight: "100g à 1kg",
     price: 45,
     image: productVacuumBag,

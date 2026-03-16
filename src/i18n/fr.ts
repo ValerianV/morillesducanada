@@ -1,6 +1,6 @@
 export const fr = {
   nav: {
-    story: "Notre Histoire",
+    story: "La Morille de Feu",
     products: "Nos Morilles",
     recipes: "Recettes",
     professionals: "Professionnels",
@@ -19,16 +19,26 @@ export const fr = {
     story: "Notre histoire",
   },
   origin: {
-    label: "Notre Histoire",
+    label: "La Morille de Feu",
     title: "Nées du",
     titleHighlight: "feu",
-    heading: "Le plus vieux métier du monde, à l'ère moderne",
-    p1: "Voilà plusieurs étés passés à chasser la morille dans les forêts boréales du Canada. J'ai découvert un métier ancestral à l'ère de l'intelligence artificielle : <strong>cueilleur</strong>. Animé par l'amour de la nature, des grands espaces et de l'aventure, je parcours les zones brûlées de la Colombie-Britannique et du Yukon pour récolter à la main ces trésors éphémères.",
-    p2: "Chaque été, d'immenses feux de forêt marquent ces territoires. Le printemps suivant, un miracle se produit : des morilles surgissent par milliers des sols calcinés — les célèbres <strong>morilles de feu</strong>. Contrairement aux morilles cultivées en Chine ou aux variétés européennes, elles développent un profil aromatique unique : des notes fumées intenses et une profondeur de saveur que seul le feu peut conférer.",
-    p3: "Morilles du Canada est une toute petite entreprise, sans intermédiaire. Je travaille directement avec d'autres cueilleurs que je connais personnellement sur le terrain. Pas de grossiste, pas de revendeur : une chaîne courte, du cueilleur à votre cuisine. 90% de ma récolte est vendue à des entreprises canadiennes. Le reste, je le ramène en France pour proposer à des amateurs de produits d'exception ces morilles sauvages, séchées sans queue, issues d'un mélange de variétés de feu : <em>M. tomentosa, M. conica, M. brunnea, M. americana</em> et d'autres espèces rares.",
+    heading: "Un champignon légendaire, forgé par les flammes",
+    p1: "Chaque été, d'immenses incendies ravagent les forêts boréales du Canada. Des milliers d'hectares de conifères disparaissent dans les flammes. Mais au cœur de cette destruction, la nature prépare un miracle : le printemps suivant, des morilles surgissent par milliers des sols calcinés. Ce sont les <strong>morilles de feu</strong> — un phénomène rare et éphémère que les cueilleurs du monde entier attendent avec ferveur.",
+    p2: "Contrairement aux morilles cultivées en serre ou aux variétés européennes, les morilles de feu développent un <strong>profil aromatique unique</strong> : des notes fumées intenses, une profondeur boisée et une texture charnue que seul le passage du feu peut conférer. On y trouve plusieurs espèces rares — <em>M. tomentosa, M. conica, M. brunnea, M. americana</em> — chacune avec ses nuances.",
+    p3: "Les ramasser est une aventure en soi. Il faut s'enfoncer dans des forêts brûlées, parfois à des heures de route de toute civilisation, marcher dans les cendres et les troncs noircis, dormir sous la tente, affronter les ours et les moustiques. C'est un métier physique, solitaire et imprévisible — mais quand on découvre un <strong>champ de morilles à perte de vue</strong>, la magie opère.",
     stat1: "Sauvage",
     stat2: "Semaines/an",
     stat3: "Pesticide",
+  },
+  about: {
+    label: "À propos",
+    title: "L'histoire",
+    titleHighlight: "derrière nos morilles",
+    heading: "Valérian, cueilleur de morilles au Canada",
+    p1: "Je m'appelle Valérian. Il y a quelques années, j'ai tout quitté pour aller chasser la morille dans les forêts boréales du Canada. Ce qui devait être une parenthèse aventureuse est devenu une passion, puis un métier. <strong>Cueilleur</strong> — le plus vieux métier du monde, exercé à l'ère de l'intelligence artificielle.",
+    p2: "Chaque printemps, je parcours les zones incendiées de la <strong>Colombie-Britannique</strong> et du <strong>Yukon</strong>, sac au dos, couteau à la main, accompagné d'une poignée de cueilleurs que je connais personnellement. On vit en camp, on marche des kilomètres dans les cendres, et on rentre le soir avec des caisses pleines de morilles sauvages. C'est rude, c'est beau, et c'est vrai.",
+    p3: "<strong>Morilles du Canada</strong>, c'est une toute petite entreprise. Pas de grossiste, pas d'intermédiaire : une chaîne courte, du cueilleur à votre cuisine. 90% de ma récolte est vendue au Canada. Le reste, je le ramène en France pour ceux qui veulent goûter à ce que les forêts boréales ont de plus précieux. Chaque sachet, chaque pot a une histoire — et j'ai envie de vous la raconter.",
+    blogLink: "Lire le journal du cueilleur",
   },
   products: {
     label: "Nos Morilles",
@@ -47,8 +57,8 @@ export const fr = {
     shipping: "Expédition rapide",
   },
   why: {
-    label: "L'excellence",
-    title: "Pourquoi nos morilles sont",
+    label: "Nos morilles",
+    title: "Pourquoi nos morilles sont-elles",
     titleHighlight: "différentes",
     reasons: [
       { title: "Arôme fumé unique", description: "Les morilles de feu développent des notes fumées et boisées impossibles à reproduire en culture. Un goût que seul le feu de forêt peut conférer." },
@@ -107,12 +117,12 @@ export const fr = {
     titleHighlight: "fréquentes",
     items: [
       { q: "Comment conserver les morilles séchées ?", a: "Conservez-les dans un récipient hermétique, à l'abri de la lumière et de l'humidité, à température ambiante. Elles se conservent ainsi pendant 2 ans minimum sans perte d'arôme." },
-      { q: "Comment réhydrater les morilles ?", a: "Plongez-les dans de l'eau tiède (pas bouillante) pendant 20 à 30 minutes. Conservez l'eau de trempage : c'est un bouillon précieux pour vos sauces et risottos." },
+      { q: "Comment réhydrater les morilles ?", a: "Plongez-les dans de l'eau tiède (pas bouillante) pendant 20 à 30 minutes. Conservez l'eau de trempage : c'est un bouillon précieux pour vos sauces et risottos. Pour une touche gastronomique, vous pouvez aussi les réhydrater dans du vin blanc sec : le résultat est sublime, avec des arômes encore plus complexes et un jus de trempage idéal pour déglacer une poêle." },
       { q: "Quelle est la différence entre morille de feu et morille cultivée ?", a: "Les morilles de feu poussent naturellement sur les sols brûlés des forêts boréales canadiennes. Elles développent un arôme fumé intense impossible à reproduire en culture. Les morilles cultivées (principalement chinoises) sont produites en serre et ont un goût beaucoup plus neutre." },
-      { q: "Quelle quantité pour un plat ?", a: "Comptez environ 5 à 8 g de morilles séchées par personne (elles triplent de volume à la réhydratation). Nos sachets de 12 g conviennent pour 2 personnes, ceux de 30 g pour 4 à 6 personnes." },
+      { q: "Quelle quantité pour un plat ?", a: "Comptez environ 5 à 8 g de morilles séchées par personne (elles triplent de volume à la réhydratation). Nos pots de 12 g conviennent pour 2 personnes, ceux de 30 g pour 4 à 6 personnes." },
       { q: "Livrez-vous en dehors de la France ?", a: "Pour le moment, nous livrons uniquement en France métropolitaine. Nous travaillons à élargir nos zones de livraison prochainement. N'hésitez pas à nous contacter pour être informé dès que la livraison sera disponible dans votre pays." },
       { q: "Les morilles sont-elles sans queue ?", a: "Oui, toutes nos morilles sont vendues sans queue (pied retiré). Vous n'achetez que la tête, la partie la plus savoureuse et aromatique du champignon." },
-      { q: "Quelles sont les erreurs à ne pas commettre lorsque je prépare mes morilles ?", a: "Voici les erreurs les plus courantes : 1) Ne jamais consommer de morilles crues ou insuffisamment cuites — elles contiennent de l'hémolysine, une toxine détruite uniquement par la cuisson (minimum 15 minutes à feu moyen). 2) Ne pas utiliser d'eau bouillante pour la réhydratation, car cela détruit la texture et les arômes — préférez de l'eau tiède (30-40°C) pendant 20 à 30 minutes. 3) Ne jamais jeter l'eau de trempage : c'est un concentré de saveur idéal pour vos sauces, risottos et veloutés. 4) Ouvrir les morilles en deux après réhydratation pour vérifier qu'il ne reste ni sable, ni insectes à l'intérieur du chapeau alvéolé. 5) Éviter de les noyer dans une sauce trop puissante : la morille de feu a un arôme subtil et fumé qui mérite d'être mis en valeur avec des accompagnements doux (crème, beurre, échalotes)." },
+      { q: "Quels sont les bons réflexes pour préparer vos morilles ?", a: "Voici nos conseils essentiels : 1) Toujours bien cuire les morilles — elles contiennent de l'hémolysine, une toxine détruite par la cuisson (minimum 15 minutes à feu moyen). Jamais crues ! 2) Préférez une eau tiède (30-40°C) pour la réhydratation pendant 20 à 30 minutes — l'eau bouillante altère la texture et les arômes. Astuce : essayez au vin blanc sec pour plus de complexité. 3) Gardez précieusement l'eau de trempage : c'est un concentré de saveur parfait pour vos sauces, risottos et veloutés. 4) Ouvrez les morilles en deux après réhydratation pour vérifier qu'il ne reste ni sable ni insectes dans le chapeau alvéolé. 5) Mettez-les en valeur avec des accompagnements doux (crème, beurre, échalotes) pour apprécier pleinement leur arôme fumé subtil." },
     ],
   },
   contact: {
@@ -149,5 +159,6 @@ export const fr = {
     terms: "CGV",
     delivery: "Livraison & Retours",
     recipes: "Recettes",
+    blog: "Journal du cueilleur",
   },
 };

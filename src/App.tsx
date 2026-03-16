@@ -76,6 +76,7 @@ const App = () => {
                   <Route path="/precommande-confirmee" element={<PreOrderSuccess />} />
                   <Route path="/admin" element={<AdminDashboard />} />
                   <Route path="/galerie" element={<Galerie />} />
+                  <Route path="/journal" element={<Journal />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>
