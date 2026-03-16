@@ -18,6 +18,8 @@ const Footer = () => {
             <span className="hidden md:inline">·</span>
             <Link to="/recettes" className="hover:text-primary transition-colors">{t("footer.recipes")}</Link>
             <span className="hidden md:inline">·</span>
+            <Link to="/journal" className="hover:text-primary transition-colors">{t("footer.blog")}</Link>
+            <span className="hidden md:inline">·</span>
             <span>© {new Date().getFullYear()} Morilles du Canada</span>
           </div>
         </div>
