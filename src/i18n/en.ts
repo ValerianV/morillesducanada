@@ -1,6 +1,6 @@
 export const en = {
   nav: {
-    story: "Our Story",
+    story: "Fire Morels",
     products: "Our Morels",
     recipes: "Recipes",
     professionals: "Professionals",
@@ -19,16 +19,26 @@ export const en = {
     story: "Our story",
   },
   origin: {
-    label: "Our Story",
+    label: "Fire Morels",
     title: "Born from",
     titleHighlight: "fire",
-    heading: "The oldest trade in the world, in the modern era",
-    p1: "Several summers spent hunting morels in Canada's boreal forests. I discovered an ancestral trade in the age of artificial intelligence: <strong>forager</strong>. Driven by a love of nature, wide-open spaces and adventure, I roam the fire-scarred lands of British Columbia and the Yukon to hand-pick these fleeting treasures.",
-    p2: "Every summer, massive wildfires sweep through these territories. The following spring, a miracle occurs: morels emerge by the thousands from the charred soil — the famous <strong>fire morels</strong>. Unlike cultivated morels from China or European varieties, they develop a unique aromatic profile: intense smoky notes and a depth of flavour that only fire can bestow.",
-    p3: "Morilles du Canada is a very small business with no middlemen. I work directly with other foragers I know personally in the field. No wholesaler, no reseller: a short chain from forager to your kitchen. 90% of my harvest is sold to Canadian businesses. The rest I bring back to France for discerning food lovers — wild morels, dried without stems, a blend of fire varieties: <em>M. tomentosa, M. conica, M. brunnea, M. americana</em> and other rare species.",
+    heading: "A legendary mushroom, forged by flames",
+    p1: "Every summer, massive wildfires sweep through Canada's boreal forests. Thousands of hectares of conifers vanish in the flames. But within this destruction, nature prepares a miracle: the following spring, morels emerge by the thousands from the charred soil. These are <strong>fire morels</strong> — a rare, ephemeral phenomenon that foragers worldwide await with fervour.",
+    p2: "Unlike greenhouse-cultivated or European morels, fire morels develop a <strong>unique aromatic profile</strong>: intense smoky notes, a woody depth and a meaty texture that only fire can bestow. Several rare species are found — <em>M. tomentosa, M. conica, M. brunnea, M. americana</em> — each with its own nuances.",
+    p3: "Picking them is an adventure in itself. You must venture deep into burned forests, sometimes hours from civilisation, walk through ash and charred trunks, sleep in a tent, face bears and mosquitoes. It's a physical, solitary and unpredictable trade — but when you discover a <strong>field of morels stretching to the horizon</strong>, the magic happens.",
     stat1: "Wild",
     stat2: "Weeks/year",
     stat3: "Pesticide",
+  },
+  about: {
+    label: "About",
+    title: "The story",
+    titleHighlight: "behind our morels",
+    heading: "Valérian, morel forager in Canada",
+    p1: "My name is Valérian. A few years ago, I left everything to go hunting morels in Canada's boreal forests. What was meant to be a brief adventure became a passion, then a trade. <strong>Forager</strong> — the oldest profession in the world, practised in the age of artificial intelligence.",
+    p2: "Every spring, I roam the fire-scarred lands of <strong>British Columbia</strong> and the <strong>Yukon</strong>, backpack on, knife in hand, alongside a handful of foragers I know personally. We live in camp, walk kilometres through the ashes, and return each evening with crates full of wild morels. It's tough, it's beautiful, and it's real.",
+    p3: "<strong>Morilles du Canada</strong> is a very small business. No wholesaler, no middleman: a short chain from forager to your kitchen. 90% of my harvest is sold in Canada. The rest I bring back to France for those who want to taste the most precious gift of the boreal forests. Every pouch, every jar has a story — and I want to share it with you.",
+    blogLink: "Read the forager's journal",
   },
   products: {
     label: "Our Morels",
@@ -47,8 +57,8 @@ export const en = {
     shipping: "Fast dispatch",
   },
   why: {
-    label: "Excellence",
-    title: "Why our morels are",
+    label: "Our morels",
+    title: "Why are our morels",
     titleHighlight: "different",
     reasons: [
       { title: "Unique smoky flavour", description: "Fire morels develop smoky, woody notes impossible to replicate through cultivation. A taste that only wildfire can impart." },
@@ -107,12 +117,12 @@ export const en = {
     titleHighlight: "questions",
     items: [
       { q: "How to store dried morels?", a: "Store them in an airtight container, away from light and moisture, at room temperature. They keep for at least 2 years with no loss of aroma." },
-      { q: "How to rehydrate morels?", a: "Soak them in warm water (not boiling) for 20 to 30 minutes. Keep the soaking water: it's a precious broth for your sauces and risottos." },
+      { q: "How to rehydrate morels?", a: "Soak them in warm water (not boiling) for 20 to 30 minutes. Keep the soaking water: it's a precious broth for your sauces and risottos. For a gourmet touch, you can also rehydrate them in dry white wine: the result is sublime, with even more complex aromas and a soaking liquid perfect for deglazing a pan." },
       { q: "What's the difference between fire morels and cultivated morels?", a: "Fire morels grow naturally on the burned soil of Canadian boreal forests. They develop an intense smoky aroma impossible to reproduce through cultivation. Cultivated morels (mainly Chinese) are grown in greenhouses and have a much more neutral taste." },
-      { q: "How much for a dish?", a: "Allow about 5 to 8 g of dried morels per person (they triple in volume when rehydrated). Our 12 g pouches serve 2 people, 30 g pouches serve 4 to 6." },
+      { q: "How much for a dish?", a: "Allow about 5 to 8 g of dried morels per person (they triple in volume when rehydrated). Our 12 g jars serve 2 people, 30 g jars serve 4 to 6." },
       { q: "Do you deliver outside France?", a: "For the moment, we only deliver to mainland France. We're working on expanding our delivery zones soon. Feel free to contact us to be notified when shipping becomes available in your country." },
       { q: "Are the morels stemless?", a: "Yes, all our morels are sold without stems (foot removed). You only buy the cap, the most flavourful and aromatic part of the mushroom." },
-      { q: "What mistakes should I avoid when preparing morels?", a: "Here are the most common mistakes: 1) Never eat morels raw or undercooked — they contain haemolysin, a toxin only destroyed by cooking (minimum 15 minutes over medium heat). 2) Don't use boiling water to rehydrate, as it destroys the texture and aromas — use warm water (30-40°C) for 20 to 30 minutes. 3) Never discard the soaking water: it's a concentrated flavour base perfect for sauces, risottos and soups. 4) Split morels in half after rehydration to check for sand or insects inside the honeycomb cap. 5) Avoid drowning them in an overpowering sauce: fire morels have a subtle smoky aroma best paired with gentle accompaniments (cream, butter, shallots)." },
+      { q: "What are the best tips for preparing morels?", a: "Here are our essential tips: 1) Always cook morels thoroughly — they contain haemolysin, a toxin only destroyed by cooking (minimum 15 minutes over medium heat). Never raw! 2) Use warm water (30-40°C) for rehydration for 20 to 30 minutes — boiling water damages the texture and aromas. Tip: try dry white wine for extra complexity. 3) Keep the soaking liquid: it's a concentrated flavour base perfect for sauces, risottos and soups. 4) Split morels in half after rehydration to check for sand or insects inside the honeycomb cap. 5) Pair them with gentle accompaniments (cream, butter, shallots) to fully appreciate their subtle smoky aroma." },
     ],
   },
   contact: {
@@ -149,5 +159,6 @@ export const en = {
     terms: "Terms & Conditions",
     delivery: "Shipping & Returns",
     recipes: "Recipes",
+    blog: "Forager's journal",
   },
 };

@@ -23,6 +23,7 @@ const PaymentSuccess = lazy(() => import("./pages/PaymentSuccess"));
 const PreOrderSuccess = lazy(() => import("./pages/PreOrderSuccess"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const Galerie = lazy(() => import("./pages/Galerie"));
+const Journal = lazy(() => import("./pages/Journal"));
 
 const queryClient = new QueryClient();
 
@@ -75,6 +76,7 @@ const App = () => {
                   <Route path="/precommande-confirmee" element={<PreOrderSuccess />} />
                   <Route path="/admin" element={<AdminDashboard />} />
                   <Route path="/galerie" element={<Galerie />} />
+                  <Route path="/journal" element={<Journal />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>

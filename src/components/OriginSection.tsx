@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import valerianPortrait from "@/assets/valerian-portrait.png";
+import landscapeFireweed from "@/assets/landscape-fireweed.jpg";
 import morelOverhead from "@/assets/morels/morels-overhead-needles.jpg";
 import morelBurnedLog from "@/assets/morels/morel-burned-log.jpg";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -30,16 +30,16 @@ const OriginSection = () => {
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
           <ScrollReveal direction="left" delay={0.1}>
             <div className="space-y-4">
-              <div className="relative rounded-sm overflow-hidden shadow-gold aspect-[3/4] max-h-[420px]">
-                <img src={valerianPortrait} alt="Valérian, cueilleur de morilles au Canada" loading="lazy" className="w-full h-full object-cover object-top" />
+              <div className="relative rounded-sm overflow-hidden shadow-gold aspect-[16/10] max-h-[420px]">
+                <img src={landscapeFireweed} alt="Paysage de forêt brûlée en Colombie-Britannique avec épilobes en fleur" loading="lazy" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
               </div>
               <div className="grid grid-cols-2 gap-3 overflow-hidden">
                 <motion.div style={{ y: imageParallax }} className="overflow-hidden rounded-sm">
-                  <img src={morelOverhead} alt="Morels overhead on pine needles" loading="lazy" className="w-full h-24 md:h-32 object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-500" />
+                  <img src={morelOverhead} alt="Morilles sur aiguilles de pin" loading="lazy" className="w-full h-24 md:h-32 object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-500" />
                 </motion.div>
                 <motion.div style={{ y: imageParallax2 }} className="overflow-hidden rounded-sm">
-                  <img src={morelBurnedLog} alt="Morel near a burned log" loading="lazy" className="w-full h-24 md:h-32 object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-500" />
+                  <img src={morelBurnedLog} alt="Morille près d'un tronc brûlé" loading="lazy" className="w-full h-24 md:h-32 object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-500" />
                 </motion.div>
               </div>
             </div>

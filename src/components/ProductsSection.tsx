@@ -75,7 +75,7 @@ const ProductsSection = () => {
 
                   {isVacuum && (
                     <div className="mb-4">
-                      <label className="block text-xs text-muted-foreground mb-2">Quantité (100g à 1kg, pas de 50g)</label>
+                      <label className="block text-xs text-muted-foreground mb-2">Sélectionner la quantité souhaitée</label>
                       <select
                         value={vacuumWeight}
                         onChange={(e) => setVacuumWeight(Number(e.target.value))}

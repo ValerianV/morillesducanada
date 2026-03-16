@@ -6,13 +6,14 @@ import JsonLdSchemas from "@/components/JsonLdSchemas";
 
 const OriginSection = lazy(() => import("@/components/OriginSection"));
 const ProductsSection = lazy(() => import("@/components/ProductsSection"));
+const ReviewsSection = lazy(() => import("@/components/ReviewsSection"));
 const TrustBadges = lazy(() => import("@/components/TrustBadges"));
 const WhySection = lazy(() => import("@/components/WhySection"));
 const ProcessSection = lazy(() => import("@/components/ProcessSection"));
 const GallerySection = lazy(() => import("@/components/GallerySection"));
+const AboutSection = lazy(() => import("@/components/AboutSection"));
 const ProfessionalSection = lazy(() => import("@/components/ProfessionalSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
-const ReviewsSection = lazy(() => import("@/components/ReviewsSection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
 const FloatingCTA = lazy(() => import("@/components/FloatingCTA"));
 
@@ -26,13 +27,14 @@ const Index = () => {
         <Suspense fallback={null}>
           <OriginSection />
           <ProductsSection />
+          <ReviewsSection />
           <TrustBadges />
           <WhySection />
           <ProcessSection />
           <GallerySection />
+          <AboutSection />
           <ProfessionalSection />
           <FAQSection />
-          <ReviewsSection />
           <ContactSection />
         </Suspense>
       </main>

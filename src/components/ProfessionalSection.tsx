@@ -52,7 +52,7 @@ const ProfessionalSection = () => {
                 <p className="text-sm text-muted-foreground font-light leading-relaxed" dangerouslySetInnerHTML={{ __html: t("professional.preorderDesc") }} />
               </div>
             </div>
-            <div className="mt-6 text-center md:text-left">
+            <div className="mt-6 text-center">
               <Link to="/pre-commande" className="inline-block px-8 py-3.5 bg-primary text-primary-foreground font-medium tracking-widest uppercase text-sm hover:bg-gold-light transition-colors duration-300 rounded-sm">
                 {t("professional.preorderCta")}
               </Link>
