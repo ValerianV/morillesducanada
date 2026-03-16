@@ -23,6 +23,7 @@ const PaymentSuccess = lazy(() => import("./pages/PaymentSuccess"));
 const PreOrderSuccess = lazy(() => import("./pages/PreOrderSuccess"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const Galerie = lazy(() => import("./pages/Galerie"));
+const Journal = lazy(() => import("./pages/Journal"));
 
 const queryClient = new QueryClient();
 
