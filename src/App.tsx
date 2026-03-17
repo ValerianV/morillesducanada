@@ -24,6 +24,7 @@ const PreOrderSuccess = lazy(() => import("./pages/PreOrderSuccess"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const Galerie = lazy(() => import("./pages/Galerie"));
 const Journal = lazy(() => import("./pages/Journal"));
+const PlaquettePro = lazy(() => import("./pages/PlaquettePro"));
 
 const queryClient = new QueryClient();
 
