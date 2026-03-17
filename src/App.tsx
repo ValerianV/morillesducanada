@@ -78,6 +78,7 @@ const App = () => {
                   <Route path="/admin" element={<AdminDashboard />} />
                   <Route path="/galerie" element={<Galerie />} />
                   <Route path="/journal" element={<Journal />} />
+                  <Route path="/plaquette-pro" element={<PlaquettePro />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>
