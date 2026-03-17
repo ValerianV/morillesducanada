@@ -8,7 +8,7 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const PRICE_PER_KG_CENTS = 30000; // 300€ per kg
+const PRICE_PER_KG_CENTS = 35000; // 350€ per kg
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
