@@ -169,7 +169,7 @@ const PreOrder = () => {
                   onChange={(e) => update("quantityKg", parseFloat(e.target.value) || 0)}
                   className="w-32 px-4 py-3 bg-secondary/30 border border-gold/15 rounded-sm text-foreground focus:outline-none focus:border-primary transition-colors text-center font-serif text-lg"
                 />
-                <span className="text-muted-foreground font-light">kg × 300 €/kg =</span>
+                <span className="text-muted-foreground font-light">kg × 350 €/kg =</span>
                 <span className="font-serif text-2xl text-gradient-gold">{totalPrice.toFixed(2)} €</span>
               </div>
             </div>
