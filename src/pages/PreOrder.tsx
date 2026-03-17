@@ -6,7 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const PRICE_PER_KG = 300;
+const PRICE_PER_KG = 350;
 
 const PreOrder = () => {
   const [form, setForm] = useState({
