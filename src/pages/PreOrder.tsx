@@ -202,7 +202,7 @@ const PreOrder = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Prix unitaire</span>
-                  <span>300 €/kg</span>
+                  <span>350 €/kg</span>
                 </div>
                 <div className="divider-gold my-3" />
                 <div className="flex justify-between text-base">

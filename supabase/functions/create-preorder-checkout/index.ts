@@ -86,7 +86,7 @@ serve(async (req) => {
             currency: "eur",
             product_data: {
               name: `Pré-commande ${morelLabel} — ${quantityKg} kg`,
-              description: `Pré-commande professionnelle saison 2026. ${morelLabel}, ${quantityKg} kg à 300€/kg.`,
+              description: `Pré-commande professionnelle saison 2026. ${morelLabel}, ${quantityKg} kg à 350€/kg.`,
             },
             unit_amount: totalAmountCents,
           },
