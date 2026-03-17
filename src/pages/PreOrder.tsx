@@ -63,7 +63,7 @@ const PreOrder = () => {
               Pré-commande <span className="italic text-gradient-gold">saison 2026</span>
             </h1>
             <p className="text-muted-foreground font-light max-w-lg mx-auto">
-              Réservez vos morilles de feu pour la saison 2026. Tarif fixe de <strong className="text-primary">300 €/kg</strong>, paiement intégral à l'avance requis pour garantir votre approvisionnement.
+              Réservez vos morilles de feu pour la saison 2026. Tarif fixe de <strong className="text-primary">350 €/kg</strong>, paiement intégral à l'avance requis pour garantir votre approvisionnement.
             </p>
           </div>
 
