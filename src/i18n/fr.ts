@@ -84,10 +84,10 @@ export const fr = {
     title: "Du sol brûlé à votre",
     titleHighlight: "assiette",
     steps: [
-      { title: "Cueillette sauvage", description: "Chaque morille est récoltée à la main sur les sols calcinés des forêts boréales, dans une fenêtre de 4 à 6 semaines par an. Aucune culture, aucun pesticide.", detail: "Colombie-Britannique & Yukon" },
-      { title: "Séchage naturel", description: "Les morilles sont séchées lentement à basse température pour préserver l'intégralité de leurs arômes fumés. Les queues sont retirées : vous n'achetez que la tête.", detail: "Basse température, sans additif" },
-      { title: "Contrôle qualité", description: "Chaque lot est trié et inspecté visuellement. Seules les morilles entières, bien formées et au profil aromatique optimal sont retenues.", detail: "Tri manuel, lot par lot" },
-      { title: "Expédition", description: "Les morilles sont conditionnées sous vide et en pots, puis expédiées en colis suivi vers la France et l'Europe.", detail: "Sous vide · Colis suivi" },
+      { title: "Cueillette sauvage", description: "Nos cueilleurs de confiance récoltent chaque morille à la main sur les sols calcinés des forêts boréales. Des amis que Valérian a côtoyés pendant trois saisons sur le terrain.", detail: "Colombie-Britannique & Yukon" },
+      { title: "Achat le soir même", description: "Notre personne de confiance sur place achète les morilles fraîches directement aux cueilleurs, chaque soir, en forêt. Zéro délai, zéro intermédiaire.", detail: "Circuit ultra-court, achat en forêt" },
+      { title: "Séchage professionnel", description: "Les morilles sont séchées le jour même de la cueillette dans un séchoir professionnel sur place. Queues retirées : vous n'achetez que la tête, la partie la plus aromatique.", detail: "Séchoir pro, sans additif" },
+      { title: "Expédition en France", description: "Les morilles séchées sont conditionnées sous vide et en pots hermétiques, puis expédiées directement vers la France en colis suivi.", detail: "Sous vide · Colis suivi" },
     ],
   },
   gallery: {
@@ -107,7 +107,7 @@ export const fr = {
       { title: "Service dédié", description: "Un interlocuteur unique pour vos commandes, devis personnalisés et approvisionnement régulier." },
     ],
     preorderTitle: "Saison 2026 — Réservez votre approvisionnement",
-    preorderDesc: "La saison de cueillette est très courte (juin-juillet) et les quantités limitées. Morilles brunes ou blondes à <strong>300 €/kg</strong>, paiement à l'avance. Pré-commandez dès maintenant pour garantir votre stock avec <strong>priorité de livraison</strong> et <strong>lot garanti</strong>.",
+    preorderDesc: "La saison de cueillette est très courte (juin-juillet) et les quantités limitées. Morilles brunes ou blondes à <strong>350 €/kg HT</strong>, paiement à l'avance. Pré-commandez dès maintenant pour garantir votre stock avec <strong>priorité de livraison</strong> et <strong>lot garanti</strong>.",
     preorderCta: "Pré-commander pour l'été 2026",
     quoteCta: "Demander un devis professionnel",
   },

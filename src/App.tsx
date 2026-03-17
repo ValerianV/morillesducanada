@@ -24,6 +24,7 @@ const PreOrderSuccess = lazy(() => import("./pages/PreOrderSuccess"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const Galerie = lazy(() => import("./pages/Galerie"));
 const Journal = lazy(() => import("./pages/Journal"));
+const PlaquettePro = lazy(() => import("./pages/PlaquettePro"));
 
 const queryClient = new QueryClient();
 
@@ -77,6 +78,7 @@ const App = () => {
                   <Route path="/admin" element={<AdminDashboard />} />
                   <Route path="/galerie" element={<Galerie />} />
                   <Route path="/journal" element={<Journal />} />
+                  <Route path="/plaquette-pro" element={<PlaquettePro />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>

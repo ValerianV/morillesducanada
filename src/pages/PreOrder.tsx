@@ -6,7 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const PRICE_PER_KG = 300;
+const PRICE_PER_KG = 350;
 
 const PreOrder = () => {
   const [form, setForm] = useState({
@@ -63,7 +63,7 @@ const PreOrder = () => {
               Pré-commande <span className="italic text-gradient-gold">saison 2026</span>
             </h1>
             <p className="text-muted-foreground font-light max-w-lg mx-auto">
-              Réservez vos morilles de feu pour la saison 2026. Tarif fixe de <strong className="text-primary">300 €/kg</strong>, paiement intégral à l'avance requis pour garantir votre approvisionnement.
+              Réservez vos morilles de feu pour la saison 2026. Tarif fixe de <strong className="text-primary">350 €/kg</strong>, paiement intégral à l'avance requis pour garantir votre approvisionnement.
             </p>
           </div>
 
@@ -169,7 +169,7 @@ const PreOrder = () => {
                   onChange={(e) => update("quantityKg", parseFloat(e.target.value) || 0)}
                   className="w-32 px-4 py-3 bg-secondary/30 border border-gold/15 rounded-sm text-foreground focus:outline-none focus:border-primary transition-colors text-center font-serif text-lg"
                 />
-                <span className="text-muted-foreground font-light">kg × 300 €/kg =</span>
+                <span className="text-muted-foreground font-light">kg × 350 €/kg =</span>
                 <span className="font-serif text-2xl text-gradient-gold">{totalPrice.toFixed(2)} €</span>
               </div>
             </div>
@@ -202,7 +202,7 @@ const PreOrder = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Prix unitaire</span>
-                  <span>300 €/kg</span>
+                  <span>350 €/kg</span>
                 </div>
                 <div className="divider-gold my-3" />
                 <div className="flex justify-between text-base">

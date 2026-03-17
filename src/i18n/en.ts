@@ -84,10 +84,10 @@ export const en = {
     title: "From burned soil to your",
     titleHighlight: "plate",
     steps: [
-      { title: "Wild harvest", description: "Each morel is hand-picked from the charred soil of boreal forests, within a 4 to 6 week window each year. No cultivation, no pesticides.", detail: "British Columbia & Yukon" },
-      { title: "Natural drying", description: "Morels are slowly dried at low temperature to preserve the full depth of their smoky aromas. Stems are removed: you only buy the cap.", detail: "Low temperature, no additives" },
-      { title: "Quality control", description: "Each batch is sorted and visually inspected. Only whole, well-formed morels with optimal aromatic profile are retained.", detail: "Hand-sorted, batch by batch" },
-      { title: "Shipping", description: "Morels are vacuum-sealed and packaged in jars, then dispatched via tracked parcel to France and Europe.", detail: "Vacuum-sealed · Tracked" },
+      { title: "Wild harvest", description: "Our trusted foragers hand-pick each morel from the charred soil of boreal forests. Friends Valérian worked alongside for three seasons in the field.", detail: "British Columbia & Yukon" },
+      { title: "Same-day purchase", description: "Our trusted agent on-site buys the fresh morels directly from foragers each evening, in the forest. Zero delay, zero middlemen.", detail: "Ultra-short supply chain" },
+      { title: "Professional drying", description: "Morels are dried the same day they're picked using a professional dryer on-site. Stems removed: you only buy the cap, the most aromatic part.", detail: "Professional dryer, no additives" },
+      { title: "Shipped to France", description: "Dried morels are vacuum-sealed and packaged in airtight jars, then shipped directly to France via tracked parcel.", detail: "Vacuum-sealed · Tracked" },
     ],
   },
   gallery: {
@@ -107,7 +107,7 @@ export const en = {
       { title: "Dedicated service", description: "A single point of contact for your orders, custom quotes and regular supply." },
     ],
     preorderTitle: "Season 2026 — Secure your supply",
-    preorderDesc: "The picking season is very short (June-July) and quantities are limited. Brown or blonde morels at <strong>€300/kg</strong>, full payment upfront. Pre-order now to guarantee your stock with <strong>priority delivery</strong> and <strong>guaranteed batch</strong>.",
+    preorderDesc: "The picking season is very short (June-July) and quantities are limited. Brown or blonde morels at <strong>€350/kg excl. VAT</strong>, full payment upfront. Pre-order now to guarantee your stock with <strong>priority delivery</strong> and <strong>guaranteed batch</strong>.",
     preorderCta: "Pre-order for summer 2026",
     quoteCta: "Request a professional quote",
   },
