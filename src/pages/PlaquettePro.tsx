@@ -4,14 +4,15 @@ import logo from "@/assets/logo.png";
 
 const VAT_RATE = 0.055; // 5.5% for food products in France
 
+// Prix TTC du site convertis en HT (÷ 1.055 pour TVA 5.5%)
 const productsHT = [
-  { name: "Morilles de feu séchées — Pot 12g", ref: "MDF-12G", unitHT: 10, format: "Pot verre 12g" },
-  { name: "Morilles de feu séchées — Pot 30g", ref: "MDF-30G", unitHT: 20, format: "Pot verre 30g" },
-  { name: "Morilles de feu séchées — Pot 45g", ref: "MDF-45G", unitHT: 25, format: "Pot verre 45g" },
-  { name: "Morilles de feu séchées — Sous vide 100g", ref: "MDF-SV100", unitHT: 45, format: "Sachet sous vide 100g" },
-  { name: "Morilles de feu séchées — Sous vide 200g", ref: "MDF-SV200", unitHT: 90, format: "Sachet sous vide 200g" },
-  { name: "Morilles de feu séchées — Sous vide 500g", ref: "MDF-SV500", unitHT: 200, format: "Sachet sous vide 500g" },
-  { name: "Morilles de feu séchées — Sous vide 1kg", ref: "MDF-SV1K", unitHT: 400, format: "Sachet sous vide 1kg" },
+  { name: "Morilles de feu séchées — Pot 12g", ref: "MDF-12G", unitHT: 9.48, format: "Pot verre 12g" },
+  { name: "Morilles de feu séchées — Pot 30g", ref: "MDF-30G", unitHT: 18.96, format: "Pot verre 30g" },
+  { name: "Morilles de feu séchées — Pot 45g", ref: "MDF-45G", unitHT: 23.70, format: "Pot verre 45g" },
+  { name: "Morilles de feu séchées — Sous vide 100g", ref: "MDF-SV100", unitHT: 42.65, format: "Sachet sous vide 100g" },
+  { name: "Morilles de feu séchées — Sous vide 200g", ref: "MDF-SV200", unitHT: 85.31, format: "Sachet sous vide 200g" },
+  { name: "Morilles de feu séchées — Sous vide 500g", ref: "MDF-SV500", unitHT: 189.57, format: "Sachet sous vide 500g" },
+  { name: "Morilles de feu séchées — Sous vide 1kg", ref: "MDF-SV1K", unitHT: 379.15, format: "Sachet sous vide 1kg" },
 ];
 
 const preorderOptions = [
