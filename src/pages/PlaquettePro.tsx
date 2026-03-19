@@ -16,8 +16,8 @@ const productsHT = [
 ];
 
 const preorderOptions = [
-  { type: "Morilles brunes", desc: "Arôme fumé intense, notes profondes et boisées. Variétés : M. tomentosa, M. brunnea, M. americana.", priceKg: 350 },
-  { type: "Morilles blondes", desc: "Plus douces, arôme délicat et subtil. Variétés : M. esculenta, M. conica, M. prava.", priceKg: 350 },
+  { type: "Morilles brunes", desc: "Arôme fumé intense, notes profondes et boisées. Variétés : M. conica, M. brunnea, M. septimelata, M. sextelata.", priceKg: 350 },
+  { type: "Morilles blondes", desc: "Plus douces, arôme délicat et subtil. Variétés : M. esculenta, M. prava, M. tomentosa, M. americana.", priceKg: 350 },
 ];
 
 const PlaquettePro = () => {
