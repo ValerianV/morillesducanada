@@ -42,8 +42,8 @@ const ScrollReveal = ({
     },
     visible: {
       opacity: 1,
-      ...(offset.x !== undefined ? { x: 0 } : {}),
-      ...(offset.y !== undefined ? { y: 0 } : {}),
+      ...("x" in offset ? { x: 0 } : {}),
+      ...("y" in offset ? { y: 0 } : {}),
       ...(blur ? { filter: "blur(0px)" } : {}),
       ...(scale ? { scale: 1 } : {}),
       transition: {
