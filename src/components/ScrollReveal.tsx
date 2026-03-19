@@ -42,14 +42,14 @@ const ScrollReveal = ({
     },
     visible: {
       opacity: 1,
-      x: 0,
-      y: 0,
-      filter: "blur(0px)",
-      scale: 1,
+      ...(offset.x !== undefined ? { x: 0 } : {}),
+      ...(offset.y !== undefined ? { y: 0 } : {}),
+      ...(blur ? { filter: "blur(0px)" } : {}),
+      ...(scale ? { scale: 1 } : {}),
       transition: {
         duration,
         delay,
-        ease: [0.22, 1, 0.36, 1], // custom cubic-bezier for luxury feel
+        ease: [0.22, 1, 0.36, 1],
       },
     },
   };
