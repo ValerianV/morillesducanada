@@ -140,8 +140,8 @@ const PlaquettePro = () => {
                 Elles développent un arôme fumé et boisé impossible à reproduire en culture. On distingue deux grandes familles selon la couleur :
               </p>
               <ul className="text-xs text-[#4a4a4a] leading-relaxed space-y-1">
-                <li>• <strong>Morilles brunes</strong> : M. tomentosa, M. brunnea, M. americana — arôme puissant, notes fumées profondes</li>
-                <li>• <strong>Morilles blondes</strong> : M. esculenta, M. conica, M. prava, M. sextelata, M. septimelata — arôme plus doux et délicat</li>
+                <li>• <strong>Morilles brunes</strong> : M. conica, M. brunnea, M. septimelata, M. sextelata — arôme puissant, notes fumées profondes</li>
+                <li>• <strong>Morilles blondes</strong> : M. esculenta, M. prava, M. tomentosa, M. americana — arôme plus doux et délicat</li>
               </ul>
               <p className="text-xs text-[#4a4a4a] leading-relaxed mt-3">
                 Toutes sont vendues séchées, sans queue, sans traitement chimique. Elles se conservent 2 ans minimum en conditions sèches et triplent de volume à la réhydratation.

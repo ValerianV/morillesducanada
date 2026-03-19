@@ -139,7 +139,7 @@ const faqSchema = {
       name: "Qu'est-ce qu'une morille de feu (fire morel) ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Une morille de feu est un champignon sauvage du genre Morchella qui pousse exclusivement sur les sols calcinés après un feu de forêt, principalement dans les forêts boréales du Canada. Elle se distingue par son arôme fumé intense, sa grande taille et sa texture charnue. Les principales espèces incluent M. tomentosa, M. conica, M. brunnea et M. americana.",
+        text: "Une morille de feu est un champignon sauvage du genre Morchella qui pousse exclusivement sur les sols calcinés après un feu de forêt, principalement dans les forêts boréales du Canada. Elle se distingue par son arôme fumé intense, sa grande taille et sa texture charnue. Les brunes incluent M. conica, M. brunnea, M. septimelata et M. sextelata ; les blondes incluent M. esculenta, M. prava, M. tomentosa et M. americana.",
       },
     },
   ],
