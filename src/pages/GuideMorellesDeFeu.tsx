@@ -86,11 +86,15 @@ const GuideMorellesDeFeu = () => {
                   Les forêts boréales du Canada abritent plusieurs espèces de morilles qui poussent après un feu. Nos récoltes sont un <strong>mélange naturel</strong> de ces variétés sauvages :
                 </p>
                 <ul className="space-y-2">
-                  <li><strong><em>Morchella tomentosa</em></strong> — La « morille grise de feu ». Espèce emblématique des brûlis, reconnaissable à sa surface veloutée et grisâtre. Très parfumée.</li>
+                  <li className="font-medium text-foreground mt-2">Morilles brunes :</li>
                   <li><strong><em>Morchella conica</em></strong> — La morille conique. Chapeau allongé et alvéoles régulières. Arôme boisé prononcé.</li>
                   <li><strong><em>Morchella brunnea</em></strong> — La morille brune. Grande taille, couleur foncée. Saveur riche et terreuse.</li>
-                  <li><strong><em>Morchella americana</em></strong> — La morille blonde. Plus claire, souvent la plus grande. Goût délicat avec des notes de noisette.</li>
-                  <li><strong><em>Morchella sextelata</em></strong> et <strong><em>M. septimelata</em></strong> — Espèces plus rares, spécifiques aux zones de haute altitude.</li>
+                  <li><strong><em>Morchella septimelata</em></strong> et <strong><em>M. sextelata</em></strong> — Espèces plus rares, spécifiques aux zones de haute altitude.</li>
+                  <li className="font-medium text-foreground mt-2">Morilles blondes :</li>
+                  <li><strong><em>Morchella esculenta</em></strong> — La morille commune blonde. Goût délicat avec des notes de noisette.</li>
+                  <li><strong><em>Morchella prava</em></strong> — Espèce blonde délicate, arôme subtil.</li>
+                  <li><strong><em>Morchella tomentosa</em></strong> — La « morille grise de feu ». Surface veloutée et grisâtre. Très parfumée.</li>
+                  <li><strong><em>Morchella americana</em></strong> — La morille blonde. Plus claire, souvent la plus grande.</li>
                 </ul>
                 <p>
                   Ce mélange de variétés est un atout : il offre une <strong>complexité aromatique</strong> que l'on ne retrouve pas avec une seule espèce. C'est la signature gustative des morilles de feu canadiennes.
