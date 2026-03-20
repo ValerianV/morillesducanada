@@ -1,10 +1,10 @@
-import { ChefHat, Truck, MessageSquare, CalendarClock } from "lucide-react";
+import { ChefHat, Truck, Phone, CalendarClock } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
 import { useI18n } from "@/i18n/context";
 
-const itemIcons = [ChefHat, Truck, MessageSquare];
+const itemIcons = [ChefHat, Truck, Phone];
 
 const ProfessionalSection = () => {
   const { t, translations } = useI18n();
@@ -41,6 +41,22 @@ const ProfessionalSection = () => {
             );
           })}
         </div>
+
+        {/* Phone CTA */}
+        <ScrollReveal delay={0.15}>
+          <div className="max-w-md mx-auto mt-10 text-center">
+            <a
+              href="tel:+33782162708"
+              className="inline-flex items-center gap-3 px-8 py-4 border-2 border-primary/50 rounded-sm text-foreground hover:border-primary hover:bg-primary/5 transition-all duration-300 group"
+            >
+              <Phone className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+              <span className="flex flex-col items-start">
+                <span className="text-sm font-medium tracking-wider uppercase">{t("professional.phoneCta")}</span>
+                <span className="text-xs text-muted-foreground font-light">{t("professional.phoneLabel")} — 07 82 16 27 08</span>
+              </span>
+            </a>
+          </div>
+        </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
           <div className="max-w-3xl mx-auto mt-12 p-6 md:p-8 border border-primary/30 rounded-sm bg-background/40 relative overflow-hidden">
