@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, MapPin, Loader2, CheckCircle } from "lucide-react";
+import { Mail, MapPin, Loader2, CheckCircle, Phone } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/i18n/context";
 
@@ -44,6 +44,10 @@ const ContactSection = () => {
           <div className="space-y-8">
             <p className="text-secondary-foreground/80 font-light leading-relaxed">{t("contact.description")}</p>
             <div className="space-y-4">
+              <a href="tel:+33782162708" className="flex items-center gap-4 group">
+                <Phone className="w-5 h-5 text-primary" />
+                <span className="text-sm text-muted-foreground font-light group-hover:text-primary transition-colors">07 82 16 27 08</span>
+              </a>
               <div className="flex items-center gap-4">
                 <Mail className="w-5 h-5 text-primary" />
                 <span className="text-sm text-muted-foreground font-light">contact@morillesducanada.fr</span>
@@ -55,7 +59,14 @@ const ContactSection = () => {
             </div>
             <div className="p-6 border border-gold/15 rounded-sm">
               <p className="font-serif text-lg mb-2">{t("contact.proTitle")}</p>
-              <p className="text-sm text-muted-foreground font-light">{t("contact.proDesc")}</p>
+              <p className="text-sm text-muted-foreground font-light mb-4">{t("contact.proDesc")}</p>
+              <a
+                href="tel:+33782162708"
+                className="inline-flex items-center gap-2 text-primary hover:text-gold-light transition-colors duration-300 font-medium text-sm"
+              >
+                <Phone className="w-4 h-4" />
+                {t("contact.phoneLabel")} — 07 82 16 27 08
+              </a>
             </div>
           </div>
 
