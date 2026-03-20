@@ -55,6 +55,7 @@ export const en = {
     delivery: "Shipping to France & Europe",
     payment: "Secure payment",
     shipping: "Fast dispatch",
+    experience: "2 years of direct sales",
   },
   why: {
     label: "Our morels",
