@@ -133,7 +133,8 @@ export const fr = {
     titleSuffix: "-nous",
     description: "Que vous soyez un particulier à la recherche de morilles d'exception ou un professionnel souhaitant un approvisionnement régulier, nous serons ravis d'échanger avec vous.",
     proTitle: "Commandes professionnelles",
-    proDesc: "Pour des volumes supérieurs à 200g ou un approvisionnement régulier, précisez « Professionnel » dans votre message pour recevoir nos tarifs dédiés.",
+    proDesc: "Pour des volumes supérieurs à 200g ou un approvisionnement régulier, précisez « Professionnel » dans votre message ou appelez directement Valérian.",
+    phoneLabel: "Appeler Valérian",
     form: {
       name: "Nom",
       email: "Email",
