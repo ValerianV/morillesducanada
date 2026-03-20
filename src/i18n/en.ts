@@ -134,7 +134,8 @@ export const en = {
     titleSuffix: " touch",
     description: "Whether you're an individual looking for exceptional morels or a professional seeking regular supply, we'd love to hear from you.",
     proTitle: "Professional orders",
-    proDesc: "For volumes over 200g or regular supply, select 'Professional' in your message to receive our dedicated pricing.",
+    proDesc: "For volumes over 200g or regular supply, select 'Professional' in your message or call Valérian directly.",
+    phoneLabel: "Call Valérian",
     form: {
       name: "Name",
       email: "Email",
