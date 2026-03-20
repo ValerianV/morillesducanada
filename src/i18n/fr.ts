@@ -55,6 +55,7 @@ export const fr = {
     delivery: "Livraison France & Europe",
     payment: "Paiement sécurisé",
     shipping: "Expédition rapide",
+    experience: "2 ans de vente directe",
   },
   why: {
     label: "Nos morilles",
