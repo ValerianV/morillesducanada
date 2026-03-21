@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Download } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 
 const VAT_RATE = 0.055; // 5.5% for food products in France
 

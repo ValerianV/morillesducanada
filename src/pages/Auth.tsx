@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import { Mail, Lock, User, ArrowLeft } from "lucide-react";
 
 type AuthView = "login" | "signup" | "forgot";

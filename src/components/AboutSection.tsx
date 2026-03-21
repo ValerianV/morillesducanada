@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import valerianPortrait from "@/assets/valerian-portrait.png";
+import valerianPortrait from "@/assets/valerian-portrait.webp";
 import ScrollReveal from "@/components/ScrollReveal";
 import { useI18n } from "@/i18n/context";
 
