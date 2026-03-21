@@ -95,6 +95,8 @@ const ProductsSection = () => {
                 </div>
               </div>
               </ScrollReveal>
+            );
+          })}
         </div>
 
         <ScrollReveal delay={0.3}>
