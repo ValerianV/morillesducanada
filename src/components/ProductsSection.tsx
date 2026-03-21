@@ -48,12 +48,8 @@ const ProductsSection = () => {
             const currentVacuumPrice = isVacuum ? getVacuumMorelPrice(vacuumWeight) : product.price;
 
             return (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: i * 0.15, ease: [0.25, 0.4, 0.25, 1] }}
+              <ScrollReveal key={product.id} delay={i * 0.1} direction="up">
+              <div
                 className="relative border border-gold/15 rounded-sm bg-background/50 hover:border-gold/40 hover:shadow-gold hover:-translate-y-1.5 transition-all duration-500 group overflow-hidden"
               >
                 <div className="aspect-square overflow-hidden">
