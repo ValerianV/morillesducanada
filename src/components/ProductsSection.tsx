@@ -93,9 +93,8 @@ const ProductsSection = () => {
                     {t("products.addToCart")}
                   </button>
                 </div>
-              </motion.div>
-            );
-          })}
+              </div>
+              </ScrollReveal>
         </div>
 
         <ScrollReveal delay={0.3}>
