@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import heroImage from "@/assets/hero-jars.png";
+import heroImage from "@/assets/hero-jars.webp";
 import { useI18n } from "@/i18n/context";
 
 const HeroSection = () => {

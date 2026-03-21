@@ -1,7 +1,7 @@
-import product12g from "@/assets/product-12g.png";
-import product30g from "@/assets/product-30g.png";
-import product45g from "@/assets/product-45g.png";
-import productVacuumBag from "@/assets/product-vacuum-bag.png";
+import product12g from "@/assets/product-12g.webp";
+import product30g from "@/assets/product-30g.webp";
+import product45g from "@/assets/product-45g.webp";
+import productVacuumBag from "@/assets/product-vacuum-bag.webp";
 
 export interface Product {
   id: string;

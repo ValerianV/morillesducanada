@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Menu, X, UserCircle, LogOut, Globe } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import { CartDrawer } from "@/components/CartDrawer";
 import { useI18n, type Locale } from "@/i18n/context";
 import type { Session } from "@supabase/supabase-js";

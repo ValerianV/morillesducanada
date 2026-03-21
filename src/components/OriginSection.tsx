@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import landscapeFireweed from "@/assets/landscape-fireweed.jpg";
-import morelOverhead from "@/assets/morels/morels-overhead-needles.jpg";
-import morelBurnedLog from "@/assets/morels/morel-burned-log.jpg";
+import landscapeFireweed from "@/assets/landscape-fireweed.webp";
+import morelOverhead from "@/assets/morels/morels-overhead-needles.webp";
+import morelBurnedLog from "@/assets/morels/morel-burned-log.webp";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import { useI18n } from "@/i18n/context";
